@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 interface TeamMember {
    id: number;
@@ -8,31 +9,33 @@ interface TeamMember {
    description: string;
 }
 
-const about_team_data: TeamMember[] = [
-   {
-      id: 1,
-      thumb: "/assets/img/team/team1.png",
-      name: "Yujin Han",
-      designation: "Founder & CEO",
-      description: "Expert in Korea-India business relations with 10+ years experience in international consulting."
-   },
-   {
-      id: 2,
-      thumb: "/assets/img/team/team2.png",
-      name: "Dr. Rajesh Kumar",
-      designation: "Director - India Operations",
-      description: "Former government official with deep expertise in Indian market regulations and compliance."
-   },
-   {
-      id: 3,
-      thumb: "/assets/img/team/team3.png",
-      name: "Kim Min-jun",
-      designation: "Cultural Exchange Director",
-      description: "Specialist in cross-cultural communication and educational program development."
-   }
-];
-
 const Team = () => {
+   const { t } = useTranslation()
+
+   const about_team_data: TeamMember[] = [
+      {
+         id: 1,
+         thumb: "/assets/img/team/team1.png",
+         name: t('about.team.members.yujin.name'),
+         designation: t('about.team.members.yujin.designation'),
+         description: t('about.team.members.yujin.description')
+      },
+      {
+         id: 2,
+         thumb: "/assets/img/team/team2.png",
+         name: t('about.team.members.rajesh.name'),
+         designation: t('about.team.members.rajesh.designation'),
+         description: t('about.team.members.rajesh.description')
+      },
+      {
+         id: 3,
+         thumb: "/assets/img/team/team3.png",
+         name: t('about.team.members.minjun.name'),
+         designation: t('about.team.members.minjun.designation'),
+         description: t('about.team.members.minjun.description')
+      }
+   ]
+
    return (
       <section className="teams-section pt-100 pb-100">
          <div className="container">
@@ -40,11 +43,11 @@ const Team = () => {
                <div className="col-lg-8 col-md-8">
                   <div className="section-header">
                      <div className="d-flex align-items-center gap-2 theme-clr fw-600 mb-2">
-                        <img src="/assets/img/icon/section-step1.png" alt="img" /> Our Team
+                        <img src="/assets/img/icon/section-step1.png" alt="img" /> {t('about.team.tag')}
                      </div>
                      <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                        Meet Our Expert Team
-                        <span className="fw-300">Leading Korea-India Business Collaboration</span>
+                        {t('about.team.title')}
+                        <span className="fw-300"> {t('about.team.subtitle')}</span>
                      </h2>
                   </div>
                </div>
@@ -53,7 +56,7 @@ const Team = () => {
                      <Link to="/team" className="theme-btn style1 pe-20">
                         <i
                            className="fa-solid fa-arrow-right w-36 h-36 bg-white rounded-circle d-center fz-14 theme-clr4"></i>
-                        View All Team
+                        {t('about.team.viewAll')}
                      </Link>
                   </div>
                </div>

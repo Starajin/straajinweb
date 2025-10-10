@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import { useState } from "react"
+import { useTranslation } from "react-i18next"
 
 interface ProjectType {
    id: number;
@@ -6,106 +8,235 @@ interface ProjectType {
    category: string;
    title: string;
    description: string;
+   date: string;
+   location: string;
+   participants: number;
+   status: 'completed' | 'ongoing' | 'upcoming';
 }
 
 const projects_data: ProjectType[] = [
    {
       id: 1,
       thumb: "/assets/img/blog/financial-thumb1.png",
-      category: "Web Development",
-      title: "E-commerce Platform Redesign",
-      description: "Complete redesign and development of a modern e-commerce platform with improved user experience and conversion rates."
+      category: "mou",
+      title: "G2B MoU: Softberry with Rajasthan Government",
+      description: "Strategic G2B MoU between Softberry and Rajasthan Government for facilitating Korean business investments and technology transfer.",
+      date: "2023-03-15",
+      location: "Jaipur, India",
+      participants: 50,
+      status: "completed"
    },
    {
       id: 2,
       thumb: "/assets/img/blog/financial-thumb2.png",
-      category: "Mobile App",
-      title: "Business Management App",
-      description: "Custom mobile application for business management with real-time analytics and team collaboration features."
+      category: "cultural",
+      title: "KOFICE Local Culture Exchange Project",
+      description: "KOFICE-supported local culture exchange project promoting Korean cultural content and fostering cross-cultural understanding.",
+      date: "2023-05-20",
+      location: "Multiple Cities",
+      participants: 150,
+      status: "completed"
    },
    {
       id: 3,
       thumb: "/assets/img/blog/financial-thumb3.png",
-      category: "Branding",
-      title: "Corporate Identity Design",
-      description: "Complete brand identity design including logo, marketing materials, and digital presence for a tech startup."
+      category: "publication",
+      title: "Launch of Super 30 (Korean Translation)",
+      description: "Successful launch of the Korean translation of the Indian bestseller 'Super 30', making this inspiring story accessible to Korean readers.",
+      date: "2023-08-10",
+      location: "Mumbai, India",
+      participants: 15,
+      status: "completed"
    },
    {
       id: 4,
       thumb: "/assets/img/team/team1.png",
-      category: "Web Development",
-      title: "SaaS Dashboard Interface",
-      description: "Modern and intuitive dashboard interface for a SaaS platform with advanced data visualization."
+      category: "tour",
+      title: "Korea Edu Tour 2025 – Pune",
+      description: "Comprehensive educational tour program connecting Pune-based students and professionals with Korean educational institutions and corporate culture.",
+      date: "2025-03-15",
+      location: "Pune to Korea",
+      participants: 30,
+      status: "upcoming"
    },
    {
       id: 5,
       thumb: "/assets/img/team/team2.png",
-      category: "Digital Marketing",
-      title: "SEO & Content Strategy",
-      description: "Comprehensive SEO optimization and content marketing strategy that increased organic traffic by 300%."
+      category: "cultural",
+      title: "India-Korea Artist Camp by Namisland",
+      description: "Intensive artist exchange program at Nami Island bringing together Korean and Indian artists for collaborative creative projects.",
+      date: "2024-06-20",
+      location: "Nami Island, Korea",
+      participants: 40,
+      status: "completed"
    },
    {
       id: 6,
       thumb: "/assets/img/team/team3.png",
-      category: "UI/UX Design",
-      title: "Healthcare App Design",
-      description: "User-centered design for a healthcare mobile application focusing on accessibility and patient experience."
+      category: "mou",
+      title: "B2B MoUs Portfolio",
+      description: "Series of strategic B2B MoUs facilitating business partnerships and collaborations between Korean and Indian companies.",
+      date: "2023-12-01",
+      location: "Multiple Locations",
+      participants: 100,
+      status: "ongoing"
    }
 ];
 
+const categories = [
+   { key: 'all', label: 'projects.filters.all' },
+   { key: 'mou', label: 'projects.filters.mou' },
+   { key: 'cultural', label: 'projects.filters.cultural' },
+   { key: 'publication', label: 'projects.filters.publication' },
+   { key: 'tour', label: 'projects.filters.tour' }
+];
+
 const ProjectsArea = () => {
+   const { t } = useTranslation()
+   const [activeFilter, setActiveFilter] = useState('all')
+
+   const filteredProjects = activeFilter === 'all' 
+      ? projects_data 
+      : projects_data.filter(project => project.category === activeFilter)
+
+   const getStatusColor = (status: string) => {
+      switch (status) {
+         case 'completed': return 'bg-success text-white';
+         case 'ongoing': return 'bg-primary text-white';
+         case 'upcoming': return 'bg-warning text-dark';
+         default: return 'bg-secondary text-white';
+      }
+   }
+
+   const formatDate = (dateString: string) => {
+      return new Date(dateString).toLocaleDateString('en-US', {
+         year: 'numeric',
+         month: 'short',
+         day: 'numeric'
+      })
+   }
+
    return (
-      <section className="blog-section section-bg pt-100 pb-100">
-         <div className="container">
-            <div className="row g-sm-4 g-3 justify-content-between align-items-end mb-40">
-               <div className="col-lg-6 col-md-7">
-                  <div className="section-header">
-                     <div className="d-flex align-items-center gap-2 theme-clr fw-600 mb-2">
-                        <img src="/assets/img/icon/section-step1.png" alt="img" /> Our Work
+      <>
+         {/* Hero Section */}
+         <section className="hero-section pt-100 pb-50">
+            <div className="container">
+               <div className="row g-lg-4 g-md-3 g-2 align-items-end mb-40">
+                  <div className="col-lg-7 col-md-7">
+                     <div className="section-header">
+                        <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
+                           {t('projects.hero.title')}
+                        </h2>
                      </div>
-                     <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                        Showcasing Our Best
-                        <span className="fw-300">Projects & Achievements</span>
-                     </h2>
                   </div>
-               </div>
-               <div className="col-lg-6 col-md-5">
-                  <div className="wow fadeInUp" data-wow-delay=".4s">
-                     <p>
-                        Explore our portfolio of successful projects across various industries. Each project represents our 
-                        commitment to excellence, innovation, and delivering results that exceed client expectations.
-                     </p>
+                  <div className="col-lg-5 col-md-5">
+                     <div className="wow fadeInUp" data-wow-delay=".4s">
+                        <p className="theme-clr4 mb-lg-4 mb-3">
+                           {t('projects.hero.subtitle')}
+                        </p>
+                     </div>
                   </div>
                </div>
             </div>
-            <div className="row g-4">
-               {projects_data.map((item) => (
-                  <div key={item.id} className="col-md-6 col-lg-4">
-                     <div className="team-items hover-translate8 bg-white px-xxl-6 px-xl-4 px-3 section-bg rounded-4">
-                        <div className="thumb w-100 overflow-hidden">
-                           <img src={item.thumb} alt="img" className="w-100 rounded-bottom-3" />
-                        </div>
-                        <div className="content d-flex align-items-end gap-3 justify-content-between">
-                           <div>
-                              <span className="fz-14 theme-clr fw-500 mb-2 d-block">{item.category}</span>
-                              <h5 className="max-270 mb-2 wow fadeInUp" data-wow-delay=".3s">
-                                 <Link to="/projects" className="theme-clr4 lh-110 fw-600">
-                                    {item.title}
-                                 </Link>
-                              </h5>
-                              <p className="fz-14 theme-clr4 mb-0">{item.description}</p>
+         </section>
+
+         {/* Filter Section */}
+         <section className="filter-section pb-50">
+            <div className="container">
+               <div className="row justify-content-center">
+                  <div className="col-lg-10">
+                     <div className="d-flex flex-wrap justify-content-center gap-3 mb-5">
+                        {categories.map((category) => (
+                           <button
+                              key={category.key}
+                              onClick={() => setActiveFilter(category.key)}
+                              className={`btn fw-600 px-4 py-2 rounded-pill transition-all ${
+                                 activeFilter === category.key
+                                    ? 'btn-primary text-white'
+                                    : 'btn-outline-primary'
+                              }`}
+                           >
+                              <i className="fa-light fa-filter me-2"></i>
+                              {t(category.label)}
+                           </button>
+                        ))}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         {/* Projects Grid */}
+         <section className="projects-section section-bg pt-50 pb-100">
+            <div className="container">
+               <div className="row g-4">
+                  {filteredProjects.map((item) => (
+                     <div key={item.id} className="col-md-6 col-lg-4">
+                        <div className="project-card bg-white rounded-4 overflow-hidden shadow-sm hover-translate8 h-100">
+                           {/* Image */}
+                           <div className="position-relative">
+                              <div className="thumb w-100 overflow-hidden" style={{height: '200px'}}>
+                                 <img src={item.thumb} alt="img" className="w-100 h-100" style={{objectFit: 'cover'}} />
+                              </div>
+                              
+                              {/* Status Badge */}
+                              <div className="position-absolute top-3 end-3">
+                                 <span className={`badge ${getStatusColor(item.status)} px-3 py-2 rounded-pill`}>
+                                    {t(`projects.project.status.${item.status}`)}
+                                 </span>
+                              </div>
                            </div>
-                           <Link to="/projects"
-                              className="theme-clr4 border hover-theme1 min-w-48 w-48 h-48 white-bg rounded-circle d-center d-xl-block d-none fs-five">
-                              <i className="fa-light fa-arrow-right"></i>
-                           </Link>
+
+                           {/* Content */}
+                           <div className="p-4 d-flex flex-column h-100">
+                              <div className="flex-grow-1">
+                                 <span className="badge bg-light text-primary fw-600 mb-2 px-3 py-2 rounded-pill">
+                                    {item.category.toUpperCase()}
+                                 </span>
+                                 
+                                 <h5 className="theme-clr4 fw-bold mb-3 lh-sm">
+                                    <Link to="/project-details" className="text-decoration-none theme-clr4 hover-theme1">
+                                       {item.title}
+                                    </Link>
+                                 </h5>
+                                 
+                                 <p className="theme-clr4 mb-4 small lh-relaxed">
+                                    {item.description}
+                                 </p>
+
+                                 {/* Meta Info */}
+                                 <div className="meta-info mb-4">
+                                    <div className="d-flex align-items-center mb-2 small text-muted">
+                                       <i className="fa-light fa-calendar me-2"></i>
+                                       {formatDate(item.date)}
+                                    </div>
+                                    <div className="d-flex align-items-center mb-2 small text-muted">
+                                       <i className="fa-light fa-map-marker me-2"></i>
+                                       {item.location}
+                                    </div>
+                                    <div className="d-flex align-items-center small text-muted">
+                                       <i className="fa-light fa-users me-2"></i>
+                                       {item.participants} {t('projects.project.participants')}
+                                    </div>
+                                 </div>
+                              </div>
+
+                              {/* CTA */}
+                              <div className="mt-auto">
+                                 <Link to="/project-details" 
+                                    className="btn btn-outline-primary btn-sm w-100 d-flex align-items-center justify-content-center">
+                                    <span>{t('projects.project.viewDetails')}</span>
+                                    <i className="fa-light fa-arrow-right ms-2"></i>
+                                 </Link>
+                              </div>
+                           </div>
                         </div>
                      </div>
-                  </div>
-               ))}
+                  ))}
+               </div>
             </div>
-         </div>
-      </section>
+         </section>
+      </>
    )
 }
 

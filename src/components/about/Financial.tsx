@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import financial_data from "../../data/FinancialData"
 
 const Financial = () => {
+   const { t } = useTranslation()
+   
    return (
       <section className="financial-section section-bg pt-100 pb-100">
          <div className="container">
@@ -9,15 +12,15 @@ const Financial = () => {
                <div className="col-lg-7 col-md-7">
                   <div className="section-header">
                      <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                        Empowering Your Business Journey
-                        <span className="fw-300">with Clarity and Confidence</span>
+                        {t('about.financial.title')}
+                        <span className="fw-300"> {t('about.financial.subtitle')}</span>
                      </h2>
                   </div>
                </div>
                <div className="col-lg-5 col-md-5">
                   <div className="wow fadeInUp" data-wow-delay=".4s">
                      <p className="theme-clr4 mb-lg-4 mb-3">
-                        We're a team of expert consultants committed to helping businesses make strategic decisions for successful expansion between Korea and India with tailored strategies and trusted guidance
+                        {t('about.financial.description')}
                      </p>
                      <Link to="/services" className="theme-btn style1 pe-20">
                         <i

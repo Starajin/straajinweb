@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface DataType {
    id: number;
    date: string;
@@ -5,40 +7,42 @@ interface DataType {
    desc: string;
 }
 
-const solution_data: DataType[] = [
-   {
-      id: 1,
-      date: "2020",
-      title: "Founded STARAJIN",
-      desc: "Advisor for Wellness Tourism Cluster Project. India business development for Specialty Chemical company in Korea. KOFICE Local Culture international Exchange project operation for art group Damso in Haenam.",
-   },
-   {
-      id: 2,
-      date: "2021",
-      title: "Strategic Partnerships",
-      desc: "MOU with G2B consulting firm THEISTIC. Advisory for Gwangju FEZ regarding Automotive & IT Manpower exchange. India Marketing & Promotion for R&F Chemical <Magic Copper Mask>.",
-   },
-   {
-      id: 3,
-      date: "2022",
-      title: "Business Expansion",
-      desc: "Technology Commercialization & Biz Development for Waste to Energy project. India business official partner for K-Culture Center in Gwangju city. Official marketing partner of Maison India Travels and Books. MOU with India government PR agency MMJP Media.",
-   },
-   {
-      id: 4,
-      date: "2023",
-      title: "Project Leadership",
-      desc: "Korea Partner for Waste management pilot project of 9 state of India. India-Korea Artist Camp Advisor for Namjisland Culture and education group. Selected for Media Startup Supporting Project by Korea Press Foundation.",
-   },
-   {
-      id: 5,
-      date: "2024",
-      title: "Innovation & Growth",
-      desc: "Korea-India Business matching platform 'Konnectin' Launching. MOU with India Specialty Chemical Manufacturer Association. MOU with India Startup Association 'WeSpark'. MOU with Law & Regulation consulting company Milano Consultants. MOU with VERYWORDS, Korea's Climate Platform with EV.",
-   },
-];
-
 const Solution = () => {
+   const { t } = useTranslation()
+
+   const solution_data: DataType[] = [
+      {
+         id: 1,
+         date: "2020",
+         title: t('about.solution.timeline.2020.title'),
+         desc: t('about.solution.timeline.2020.desc'),
+      },
+      {
+         id: 2,
+         date: "2021",
+         title: t('about.solution.timeline.2021.title'),
+         desc: t('about.solution.timeline.2021.desc'),
+      },
+      {
+         id: 3,
+         date: "2022",
+         title: t('about.solution.timeline.2022.title'),
+         desc: t('about.solution.timeline.2022.desc'),
+      },
+      {
+         id: 4,
+         date: "2023",
+         title: t('about.solution.timeline.2023.title'),
+         desc: t('about.solution.timeline.2023.desc'),
+      },
+      {
+         id: 5,
+         date: "2024",
+         title: t('about.solution.timeline.2024.title'),
+         desc: t('about.solution.timeline.2024.desc'),
+      },
+   ]
+
    return (
       <section className="step-solution section-bg pt-100 pb-100">
          <div className="container">
@@ -46,8 +50,8 @@ const Solution = () => {
                <div className="col-12">
                   <div className="section-header text-center mb-5">
                      <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                        Our Journey
-                        <span className="fw-300">Building Excellence Over 4+ Years</span>
+                        {t('about.solution.title')}
+                        <span className="fw-300"> {t('about.solution.subtitle')}</span>
                      </h2>
                   </div>
                </div>

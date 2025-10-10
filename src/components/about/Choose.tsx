@@ -1,5 +1,6 @@
 import { JSX } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface DataType {
    id: number;
@@ -8,34 +9,36 @@ interface DataType {
    desc: string;
 }
 
-const choose_data: DataType[] = [
-   {
-      id: 1,
-      icon: "/assets/img/icon/choose-icon1.png",
-      title: (<>15+ <br /> years in India</>),
-      desc: "15 years of experience in India with experts & Knowhows",
-   },
-   {
-      id: 2,
-      icon: "/assets/img/icon/choose-icon2.png",
-      title: (<>1000+ <br /> Network</>),
-      desc: "Built an intimate network across Korean-Indian government, companies, and institutions",
-   },
-   {
-      id: 3,
-      icon: "/assets/img/icon/choose-icon3.png",
-      title: (<>50+ <br /> Success Case</>),
-      desc: "Many success stories with data-driven, customized strategies",
-   },
-   {
-      id: 4,
-      icon: "/assets/img/icon/choose-icon4.png",
-      title: (<>100% <br /> Total Support</>),
-      desc: "Comprehensive support from market entry to growth",
-   },
-];
-
 const Choose = () => {
+   const { t } = useTranslation()
+
+   const choose_data: DataType[] = [
+      {
+         id: 1,
+         icon: "/assets/img/icon/choose-icon1.png",
+         title: (<>{t('about.choose.achievements.experience').split(' ')[0]} <br /> {t('about.choose.achievements.experience').split(' ').slice(1).join(' ')}</>),
+         desc: t('about.choose.achievements.experienceDesc'),
+      },
+      {
+         id: 2,
+         icon: "/assets/img/icon/choose-icon2.png",
+         title: (<>{t('about.choose.achievements.network').split(' ')[0]} <br /> {t('about.choose.achievements.network').split(' ').slice(1).join(' ')}</>),
+         desc: t('about.choose.achievements.networkDesc'),
+      },
+      {
+         id: 3,
+         icon: "/assets/img/icon/choose-icon3.png",
+         title: (<>{t('about.choose.achievements.cases').split(' ')[0]} <br /> {t('about.choose.achievements.cases').split(' ').slice(1).join(' ')}</>),
+         desc: t('about.choose.achievements.casesDesc'),
+      },
+      {
+         id: 4,
+         icon: "/assets/img/icon/choose-icon4.png",
+         title: (<>{t('about.choose.achievements.support').split(' ')[0]} <br /> {t('about.choose.achievements.support').split(' ').slice(1).join(' ')}</>),
+         desc: t('about.choose.achievements.supportDesc'),
+      },
+   ]
+
    return (
       <section className="choose4-section pt-100 pb-100">
          <div className="container">
@@ -43,19 +46,18 @@ const Choose = () => {
                <div className="col-lg-7 col-md-7">
                   <div className="section-header">
                      <div className="d-flex align-items-center gap-2 theme-clr fw-600 mb-lg-3 m-2">
-                        <img src="/assets/img/icon/section-step1.png" alt="img" /> Why Choose Us
+                        <img src="/assets/img/icon/section-step1.png" alt="img" /> {t('about.choose.tag')}
                      </div>
                      <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                        Your Trusted Partner for
-                        <span className="fw-300">Korea-India Business Success</span>
+                        {t('about.choose.title')}
+                        <span className="fw-300"> {t('about.choose.subtitle')}</span>
                      </h2>
                   </div>
                </div>
                <div className="col-lg-5 col-md-5">
                   <div className="wow fadeInUp" data-wow-delay=".4s">
                      <p className="theme-clr4">
-                        With 15+ years of experience and a network of 1000+ connections, we deliver proven results 
-                        through 50+ successful cases and provide comprehensive support for your Korea-India business expansion journey.
+                        {t('about.choose.description')}
                      </p>
                   </div>
                </div>

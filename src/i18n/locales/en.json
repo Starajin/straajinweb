@@ -23,6 +23,108 @@
     "pricing": "Pricing",
     "faq": "FAQ"
   },
+  "about": {
+    "financial": {
+      "title": "Empowering Your Business Journey",
+      "subtitle": "with Clarity and Confidence",
+      "description": "We're a team of expert consultants committed to helping businesses make strategic decisions for successful expansion between Korea and India with tailored strategies and trusted guidance"
+    },
+    "choose": {
+      "tag": "Why Choose Us",
+      "title": "Your Trusted Partner for",
+      "subtitle": "Korea-India Business Success",
+      "description": "With 15+ years of experience and a network of 1000+ connections, we deliver proven results through 50+ successful cases and provide comprehensive support for your Korea-India business expansion journey.",
+      "achievements": {
+        "experience": "15+ years in India",
+        "experienceDesc": "15 years of experience in India with experts & Knowhows",
+        "network": "1000+ Network",
+        "networkDesc": "Built an intimate network across Korean-Indian government, companies, and institutions",
+        "cases": "50+ Success Case",
+        "casesDesc": "Many success stories with data-driven, customized strategies",
+        "support": "100% Total Support",
+        "supportDesc": "Comprehensive support from market entry to growth"
+      }
+    },
+    "solution": {
+      "title": "Our Journey",
+      "subtitle": "Building Excellence Over 4+ Years",
+      "timeline": {
+        "2020": {
+          "title": "Founded STARAJIN",
+          "desc": "Advisor for Wellness Tourism Cluster Project. India business development for Specialty Chemical company in Korea. KOFICE Local Culture international Exchange project operation for art group Damso in Haenam."
+        },
+        "2021": {
+          "title": "Strategic Partnerships",
+          "desc": "MOU with G2B consulting firm THEISTIC. Advisory for Gwangju FEZ regarding Automotive & IT Manpower exchange. India Marketing & Promotion for R&F Chemical <Magic Copper Mask>."
+        },
+        "2022": {
+          "title": "Business Expansion",
+          "desc": "Technology Commercialization & Biz Development for Waste to Energy project. India business official partner for K-Culture Center in Gwangju city. Official marketing partner of Maison India Travels and Books. MOU with India government PR agency MMJP Media."
+        },
+        "2023": {
+          "title": "Project Leadership",
+          "desc": "Korea Partner for Waste management pilot project of 9 state of India. India-Korea Artist Camp Advisor for Namjisland Culture and education group. Selected for Media Startup Supporting Project by Korea Press Foundation."
+        },
+        "2024": {
+          "title": "Innovation & Growth",
+          "desc": "Korea-India Business matching platform 'Konnectin' Launching. MOU with India Specialty Chemical Manufacturer Association. MOU with India Startup Association 'WeSpark'. MOU with Law & Regulation consulting company Milano Consultants. MOU with VERYWORDS, Korea's Climate Platform with EV."
+        }
+      }
+    },
+    "team": {
+      "tag": "Our Team",
+      "title": "Meet Our Expert Team",
+      "subtitle": "Leading Korea-India Business Collaboration",
+      "viewAll": "View All Team",
+      "members": {
+        "yujin": {
+          "name": "Yujin Han",
+          "designation": "Founder & CEO",
+          "description": "Expert in Korea-India business relations with 10+ years experience in international consulting."
+        },
+        "rajesh": {
+          "name": "Dr. Rajesh Kumar",
+          "designation": "Director - India Operations",
+          "description": "Former government official with deep expertise in Indian market regulations and compliance."
+        },
+        "minjun": {
+          "name": "Kim Min-jun",
+          "designation": "Cultural Exchange Director",
+          "description": "Specialist in cross-cultural communication and educational program development."
+        }
+      }
+    }
+  },
+  "projects": {
+    "hero": {
+      "title": "Our Projects & Partnerships",
+      "subtitle": "Discover our successful initiatives bridging Korean and Indian businesses, cultures, and communities"
+    },
+    "filters": {
+      "all": "All Projects",
+      "mou": "MoUs",
+      "cultural": "Cultural Exchange", 
+      "publication": "Publications",
+      "tour": "Tours"
+    },
+    "stats": {
+      "title": "Our Impact",
+      "subtitle": "Measurable results from our Korea-India initiatives",
+      "projects": "Successful Projects",
+      "participants": "Participants", 
+      "partners": "Partner Organizations",
+      "years": "Years of Excellence"
+    },
+    "project": {
+      "viewDetails": "View Details",
+      "participants": "participants",
+      "status": {
+        "completed": "Completed",
+        "ongoing": "Ongoing", 
+        "upcoming": "Upcoming"
+      }
+    }
+  },
   "banner": {
     "slide1": {
       "title": "Market Entry",
