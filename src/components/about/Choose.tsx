@@ -12,26 +12,26 @@ const choose_data: DataType[] = [
    {
       id: 1,
       icon: "/assets/img/icon/choose-icon1.png",
-      title: (<>Expert <br /> Knowledge</>),
-      desc: "10+ years in financial planning & strategy",
+      title: (<>15+ <br /> years in India</>),
+      desc: "15 years of experience in India with experts & Knowhows",
    },
    {
       id: 2,
       icon: "/assets/img/icon/choose-icon2.png",
-      title: (<>Data-Driven <br /> Policies</>),
-      desc: "We use analytics to guide every decision",
+      title: (<>1000+ <br /> Network</>),
+      desc: "Built an intimate network across Korean-Indian government, companies, and institutions",
    },
    {
       id: 3,
       icon: "/assets/img/icon/choose-icon3.png",
-      title: (<>Proven Track <br /> Record</>),
-      desc: "Hundreds of clients across the industries",
+      title: (<>50+ <br /> Success Case</>),
+      desc: "Many success stories with data-driven, customized strategies",
    },
    {
       id: 4,
       icon: "/assets/img/icon/choose-icon4.png",
-      title: (<>Responsive <br /> Support</>),
-      desc: "Quick and honest communication always",
+      title: (<>100% <br /> Total Support</>),
+      desc: "Comprehensive support from market entry to growth",
    },
 ];
 
@@ -46,17 +46,16 @@ const Choose = () => {
                         <img src="/assets/img/icon/section-step1.png" alt="img" /> Why Choose Us
                      </div>
                      <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                        Make the Smartest
-                        <span className="fw-300">Move for Your Financial Future!</span>
+                        Your Trusted Partner for
+                        <span className="fw-300">Korea-India Business Success</span>
                      </h2>
                   </div>
                </div>
                <div className="col-lg-5 col-md-5">
                   <div className="wow fadeInUp" data-wow-delay=".4s">
                      <p className="theme-clr4">
-                        Designed to meet your unique financial needs no matter where you are on your journey
-                        designed to meet your unique
-                        financial needs no matter where you are on your journey
+                        With 15+ years of experience and a network of 1000+ connections, we deliver proven results 
+                        through 50+ successful cases and provide comprehensive support for your Korea-India business expansion journey.
                      </p>
                   </div>
                </div>

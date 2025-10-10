@@ -5,6 +5,7 @@ import Contact from "../homes/home-one/Contact"
 import Choose from "./Choose"
 import Financial from "./Financial"
 import Solution from "./Solution"
+import Team from "./Team"
 
 const About = () => {
   return (
@@ -14,6 +15,7 @@ const About = () => {
       <Financial />
       <Choose />
       <Solution />
+      <Team />
       <Contact />
       <FooterOne />
     </>
