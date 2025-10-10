@@ -3,16 +3,20 @@ import HeaderOne from "../../../layouts/headers/HeaderOne"
 import BreadCrumb from "../../common/BreadCrumb"
 import Choose from "./Choose"
 import ServiceArea from "./Service"
-import WhatdoStart from "./WhatdoStart"
+import Solutions from "./Solutions"
+import HowWeWork from "./HowWeWork"
+import CTA from "./CTA"
 
 const Service = () => {
   return (
     <>
       <HeaderOne />
       <BreadCrumb title="Services" />
-      <WhatdoStart />
-      <Choose />
+      <Solutions />
+      <HowWeWork />
       <ServiceArea />
+      <Choose />
+      <CTA />
       <FooterOne />
     </>
   )

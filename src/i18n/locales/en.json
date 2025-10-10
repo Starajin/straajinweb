@@ -9,6 +9,19 @@
     "contact": "Contact",
     "pages": "Pages"
   },
+  "pages": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "contact": "Contact",
+    "blog": "Blog",
+    "projects": "Projects",
+    "case-studies": "Case Studies",
+    "team": "Team",
+    "testimonial": "Testimonial",
+    "pricing": "Pricing",
+    "faq": "FAQ"
+  },
   "banner": {
     "slide1": {
       "title": "Market Entry",
@@ -68,6 +81,52 @@
         "description": "Comprehensive services from market research to business establishment and ongoing support."
       }
     ]
+  },
+  "howWeWork": {
+    "title": "How We Work",
+    "subtitle": "Our Strategic Process",
+    "description": "Delivering Results Through Proven Methods",
+    "items": [
+      {
+        "step": "01",
+        "title": "Identify G2B and B2B partners",
+        "description": "Find the right partners for government and corporate partnerships"
+      },
+      {
+        "step": "02",
+        "title": "JV and M&A Support",
+        "description": "Provides strategic support in identifying the right companies for joint ventures and mergers and acquisitions"
+      },
+      {
+        "step": "03",
+        "title": "Investigate partner financial stability and growth",
+        "description": "Analyze the financial health and growth potential of potential partners"
+      },
+      {
+        "step": "04",
+        "title": "Distribution and supply chain expansion",
+        "description": "Supports your efficient distribution network and optimize your supply chain"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Expand Your Business to Korea?",
+    "description": "Let our expert team guide you through the Korean market entry process. Get personalized strategies and proven solutions for your business success.",
+    "buttonText": "Schedule Free Consultation",
+    "contactInfo": {
+      "phone": {
+        "title": "24/7 Support",
+        "number": "+82-2-123-4567"
+      },
+      "email": {
+        "title": "Email Us",
+        "address": "info@starajin.com"
+      },
+      "location": {
+        "title": "Visit Us",
+        "address": "Seoul, South Korea"
+      }
+    }
   },
   "achievements": {
     "title": "Key Achievements",
@@ -141,6 +200,42 @@
         "description": "Project Planning, Project Coordination"
       }
     ]
+  },
+  "solutions": {
+    "title": "Core Business Solutions",
+    "subtitle": "Strategic consulting that transforms your vision into Korean market success",
+    "description1": "At StaraJIN, we believe that successful market entry starts with deep understanding and strategic action. Our consulting services are designed to provide comprehensive market insights, tailored strategies, and proven methodologies to help you establish a strong presence in the Korean market.",
+    "description2": "Whether you're looking to expand your business operations, establish partnerships, or navigate regulatory requirements, we're here to guide you through every step of your Korean market journey.",
+    "keyAreasTitle": "Key Areas We Focus On",
+    "focusAreas": [
+      "Enabling your business to penetrate the Indian market successfully",
+      "Offering strategy, procurement, collaboration, and acquisition proposal consultation for the sustainable growth of your company",
+      "Fostering talent and cultural exchange"
+    ],
+    "cards": {
+      "mission": {
+        "title": "Driven by Purpose, Guided by Results",
+        "description": "We deliver comprehensive market entry strategies that align with your business objectives and Korean market dynamics."
+      },
+      "trust": {
+        "title": "Built on Trust. Backed by Experience",
+        "description": "Our proven track record and deep local expertise ensure reliable guidance through every step of your Korean market journey."
+      },
+      "principles": {
+        "title": "The Principles That Guide Every Step We Take",
+        "description": "Excellence, integrity, and cultural understanding form the foundation of our consulting approach and client relationships."
+      }
+    },
+    "keyFocus": {
+      "title": "Our Key Focus Areas",
+      "description": "Market Entry Strategy, Cultural Integration, Business Development, Legal & Regulatory Compliance, Partnership Facilitation, Operational Excellence",
+      "item1": "Market Entry Strategy",
+      "item2": "Cultural Integration",
+      "item3": "Business Development",
+      "item4": "Legal & Regulatory Compliance",
+      "item5": "Partnership Facilitation",
+      "item6": "Operational Excellence"
+    }
   },
   "partners": {
     "title": "Trust & Partnership",
