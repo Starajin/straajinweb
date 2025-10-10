@@ -1,12 +1,13 @@
 import { JSX } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface DataType {
    id: number;
    thumb: string;
    icon: string;
-   title: JSX.Element;
-   desc: string;
+   titleKey: string;
+   descKey: string;
 }
 
 const service_data: DataType[] = [
@@ -14,47 +15,49 @@ const service_data: DataType[] = [
       id: 1,
       icon: "/assets/img/service/service-icon1.png",
       thumb: "/assets/img/service/service-thumb10.png",
-      title: (<>Business <br /> Entry</>),
-      desc: "Company Incorporation, Accounting/Taxation advisory, Market Research"
+      titleKey: "services.items.0.title",
+      descKey: "services.items.0.description"
    },
    {
       id: 2,
       icon: "/assets/img/service/service-icon2.png",
       thumb: "/assets/img/service/service-thumb2.png",
-      title: (<>Investment <br /> Advisory</>),
-      desc: "Alternative Investment portfolio advisory (Startups, Bond, etc.), Indian Startups reports"
+      titleKey: "services.items.1.title",
+      descKey: "services.items.1.description"
    },
    {
       id: 3,
       icon: "/assets/img/service/service-icon3.png",
       thumb: "/assets/img/service/B2b.jpg",
-      title: (<>B2B Partner <br /> Matching</>),
-      desc: "M&A(Merge and Acquisitions), Technology Transferring, Commodity & Industrial goods procurement"
+      titleKey: "services.items.2.title",
+      descKey: "services.items.2.description"
    },
    {
       id: 4,
       icon: "/assets/img/service/service-icon4.png",
       thumb: "/assets/img/service/service-thumb4.png",
-      title: (<>Strategy <br /> Consultation</>),
-      desc: "Market Entry Strategy, Brand Building strategy, Sales Strategy, Marketing Strategy"
+      titleKey: "services.items.3.title",
+      descKey: "services.items.3.description"
    },
    {
       id: 5,
       icon: "/assets/img/service/service-icon1.png",
       thumb: "/assets/img/service/Business data.jpg",
-      title: (<>Business <br /> Data</>),
-      desc: "KOnnectIN platform, Buyer & Seller search, India Industry & market news"
+      titleKey: "services.items.4.title",
+      descKey: "services.items.4.description"
    },
    {
       id: 6,
       icon: "/assets/img/service/service-icon2.png",
       thumb: "/assets/img/service/Cultural Planning.jpg",
-      title: (<>Cultural Project <br /> & Talent Development</>),
-      desc: "Project Planning, Project Coordination"
+      titleKey: "services.items.5.title",
+      descKey: "services.items.5.description"
    },
 ]
 
 const Service = () => {
+   const { t } = useTranslation();
+   
    return (
       <section className="service-section section-bg pt-100 pb-100">
          <div className="pt-100 d-xxl-block d-none"></div>
@@ -63,11 +66,10 @@ const Service = () => {
                <div className="col-lg-6 col-md-7">
                   <div className="section-header">
                      <div className="d-flex align-items-center gap-2 theme-clr fw-600 mb-2">
-                        <img src="assets/img/icon/section-step1.png" alt="img" /> Our Services
+                        <img src="assets/img/icon/section-step1.png" alt="img" /> {t('services.title')}
                      </div>
                      <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                        Tailored Services to
-                        <span className="fw-300">Grow & Protect Your Wealth</span>
+                        {t('services.subtitle')}
                      </h2>
                   </div>
                </div>
@@ -76,7 +78,7 @@ const Service = () => {
                      <Link to="/services" className="theme-btn style1 pe-20">
                         <i
                            className="fa-solid fa-arrow-right w-36 h-36 bg-white rounded-circle d-center fz-14 theme-clr4"></i>
-                        Check All Services
+                        {t('common.viewMore')}
                      </Link>
                   </div>
                </div>
@@ -108,10 +110,10 @@ const Service = () => {
                                     <div>
                                        <h5 className="mb-sm-2 mb-1 wow fadeInUp" data-wow-delay=".3s">
                                           <Link to="/services-details" className="theme-clr4 lh-110 fw-600">
-                                             {item.title}
+                                             {t(item.titleKey)}
                                           </Link>
                                        </h5>
-                                       <span className="fz-14 d-block theme-clr4 fw-500 mb-1">{item.desc}</span>
+                                       <span className="fz-14 d-block theme-clr4 fw-500 mb-1">{t(item.descKey)}</span>
                                     </div>
                                     <Link to="/services-details"
                                        className="theme-clr4 border hover-theme1 min-w-48 w-48 h-48 white-bg rounded-circle d-center d-xl-block d-none fs-five">

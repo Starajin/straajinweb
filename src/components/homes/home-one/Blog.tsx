@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import blog_data from "../../../data/BlogData"
 
 const Blog = () => {
+   const { t } = useTranslation();
+   
    return (
       <section className="blog-section pt-100 pb-100">
          <div className="container">
@@ -9,11 +12,10 @@ const Blog = () => {
                <div className="col-lg-6 col-md-7">
                   <div className="section-header">
                      <div className="d-flex align-items-center gap-2 theme-clr fw-600 mb-2">
-                        <img src="/assets/img/icon/section-step1.png" alt="img" /> Insights
+                        <img src="/assets/img/icon/section-step1.png" alt="img" /> {t('insights.title')}
                      </div>
                      <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                        Stay Informed with the
-                        <span className="fw-300">Latest Happenings!</span>
+                        {t('insights.subtitle')}
                      </h2>
                   </div>
                </div>
@@ -22,7 +24,7 @@ const Blog = () => {
                      <Link to="/blog" className="theme-btn style1 pe-20">
                         <i
                            className="fa-solid fa-arrow-right w-36 h-36 bg-white rounded-circle d-center fz-14 theme-clr4"></i>
-                        Check All Team members
+                        {t('insights.viewAll')}
                      </Link>
                   </div>
                </div>

@@ -30,7 +30,7 @@ const Industries = () => {
          <div className="container">
             <div className="row mb-5">
                <div className="col-12">
-                  <h2 className="section-title fw-bold">Indian Market Entry Consulting</h2>
+                  <h2 className="section-title fw-bold">{t('industries.title')}</h2>
                </div>
             </div>
             <div className="row g-4 justify-content-between">

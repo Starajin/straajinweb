@@ -121,20 +121,28 @@
     "cultural": "Art & Cultural Exchange",
     "items": [
       {
-        "title": "Market Entry Strategy",
-        "description": "Comprehensive market analysis and entry strategies for Korean markets with regulatory compliance support."
+        "title": "Business Entry",
+        "description": "Company Incorporation, Accounting/Taxation advisory, Market Research"
       },
       {
-        "title": "Business Consulting",
-        "description": "Strategic business consulting services tailored for Korea-India business relationships and market dynamics."
+        "title": "Investment Advisory",
+        "description": "Alternative Investment portfolio advisory (Startups, Bond, etc.), Indian Startups reports"
       },
       {
-        "title": "Partnership Development", 
-        "description": "B2B partnership facilitation and relationship building between Korean and Indian companies."
+        "title": "B2B Partner Matching", 
+        "description": "M&A(Merge and Acquisitions), Technology Transferring, Commodity & Industrial goods procurement"
       },
       {
-        "title": "Cultural Exchange Programs",
-        "description": "Educational and cultural exchange initiatives to foster stronger Korea-India business relationships."
+        "title": "Strategy Consultation",
+        "description": "Market Entry Strategy, Brand Building strategy, Sales Strategy, Marketing Strategy"
+      },
+      {
+        "title": "Business Data",
+        "description": "KOnnectIN platform, Buyer & Seller search, India Industry & market news"
+      },
+      {
+        "title": "Cultural Project & Talent Development",
+        "description": "Project Planning, Project Coordination"
       }
     ]
   },

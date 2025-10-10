@@ -145,30 +145,30 @@ const FooterOne = () => {
                               </li>
                            </ul>
 
-                           <h4 className="h5 fw-semibold mt-5 mb-4" style={{ color: '#ffc700' }}>Services</h4>
+                           <h4 className="h5 fw-semibold mt-5 mb-4" style={{ color: '#ffc700' }}>{t('footer.services')}</h4>
                            <ul className="list-unstyled">
                               <li className="mb-2">
                                  <a href="#" className="text-white opacity-50 text-decoration-none service-link" 
                                     style={{ fontSize: '1rem', transition: 'color 0.2s ease' }}>
-                                    Business Development
+                                    {t('services.businessDev')}
                                  </a>
                               </li>
                               <li className="mb-2">
                                  <a href="#" className="text-white opacity-50 text-decoration-none service-link" 
                                     style={{ fontSize: '1rem', transition: 'color 0.2s ease' }}>
-                                    Business Strategy & Consulting
+                                    {t('services.consulting')}
                                  </a>
                               </li>
                               <li className="mb-2">
                                  <a href="#" className="text-white opacity-50 text-decoration-none service-link" 
                                     style={{ fontSize: '1rem', transition: 'color 0.2s ease' }}>
-                                    B2B Partner Matching
+                                    {t('services.partnerMatching')}
                                  </a>
                               </li>
                               <li className="mb-2">
                                  <a href="#" className="text-white opacity-50 text-decoration-none service-link" 
                                     style={{ fontSize: '1rem', transition: 'color 0.2s ease' }}>
-                                    Art & Cultural Exchange
+                                    {t('services.cultural')}
                                  </a>
                               </li>
                            </ul>
