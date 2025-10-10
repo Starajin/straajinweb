@@ -155,7 +155,7 @@ const BlogDetailsArea = () => {
       }
    };
 
-   const currentBlog = blogContent[blogId] || blogContent[1];
+   const currentBlog = blogContent[blogId as keyof typeof blogContent] || blogContent[1];
 
    return (
       <section className="blog-details-section section-bg pt-100 pb-100">
