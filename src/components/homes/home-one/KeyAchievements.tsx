@@ -81,7 +81,7 @@ const KeyAchievements = () => {
               >
                 <div className="d-flex align-items-center gap-2">
                   <span className="fw-bold">📊</span>
-                  <span className="fw-bold">Key Achievements</span>
+                  <span className="fw-bold">{t('achievements.title')}</span>
                 </div>
               </motion.div>
               <motion.h2 
@@ -125,7 +125,7 @@ const KeyAchievements = () => {
                     ease: "easeInOut"
                   }}
                 >
-                  Leading Korea-India
+                  {t('achievements.mainTitle')}
                 </motion.span>
                 <br />
                 <motion.span 
@@ -141,7 +141,7 @@ const KeyAchievements = () => {
                     delay: 0.5
                   }}
                 >
-                  Business Collaboration
+                  {t('achievements.mainSubtitle')}
                 </motion.span>
               </motion.h2>
             </div>

@@ -105,7 +105,7 @@ const FooterOne = () => {
 
                         {/* Quick Links */}
                         <div className="col-lg-3 col-md-6">
-                           <h3 className="h5 fw-semibold mb-4" style={{ color: '#ffc700' }}>Quick Links</h3>
+                           <h3 className="h5 fw-semibold mb-4" style={{ color: '#ffc700' }}>{t('footer.quickLinks')}</h3>
                            <ul className="list-unstyled">
                               <li className="mb-3">
                                  <Link 
@@ -113,7 +113,7 @@ const FooterOne = () => {
                                     className="text-white opacity-75 text-decoration-none footer-link"
                                     style={{ fontSize: '1rem', transition: 'all 0.2s ease' }}
                                  >
-                                    About Us
+                                    {t('nav.about')}
                                  </Link>
                               </li>
                               <li className="mb-3">
@@ -122,7 +122,7 @@ const FooterOne = () => {
                                     className="text-white opacity-75 text-decoration-none footer-link"
                                     style={{ fontSize: '1rem', transition: 'all 0.2s ease' }}
                                  >
-                                    Services
+                                    {t('nav.services')}
                                  </Link>
                               </li>
                               <li className="mb-3">
@@ -131,7 +131,7 @@ const FooterOne = () => {
                                     className="text-white opacity-75 text-decoration-none footer-link"
                                     style={{ fontSize: '1rem', transition: 'all 0.2s ease' }}
                                  >
-                                    Projects
+                                    {t('nav.projects')}
                                  </Link>
                               </li>
                               <li className="mb-3">
@@ -140,7 +140,7 @@ const FooterOne = () => {
                                     className="text-white opacity-75 text-decoration-none footer-link"
                                     style={{ fontSize: '1rem', transition: 'all 0.2s ease' }}
                                  >
-                                    Contact
+                                    {t('nav.contact')}
                                  </Link>
                               </li>
                            </ul>
