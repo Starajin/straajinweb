@@ -1,62 +1,153 @@
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
-const industry_list: {titleKey: string, descriptionKey: string, icon: string}[] = [
+const industry_list: {titleKey: string, descriptionKey: string, icon: string, gradient: string}[] = [
    {
       titleKey: "industries.items.0.title",
       descriptionKey: "industries.items.0.description",
-      icon: "fa-solid fa-building"
+      icon: "fa-solid fa-building",
+      gradient: "linear-gradient(135deg, var(--theme) 0%, var(--theme2) 100%)"
    },
    {
       titleKey: "industries.items.1.title", 
       descriptionKey: "industries.items.1.description",
-      icon: "fa-solid fa-search-location"
+      icon: "fa-solid fa-search-location",
+      gradient: "linear-gradient(135deg, var(--theme2) 0%, var(--theme) 100%)"
    },
    {
       titleKey: "industries.items.2.title",
       descriptionKey: "industries.items.2.description",
-      icon: "fa-solid fa-clipboard-check"
+      icon: "fa-solid fa-clipboard-check",
+      gradient: "linear-gradient(135deg, var(--theme) 0%, var(--theme2) 100%)"
    },
    {
       titleKey: "industries.items.3.title",
       descriptionKey: "industries.items.3.description",
-      icon: "fa-solid fa-chart-line"
+      icon: "fa-solid fa-chart-line",
+      gradient: "linear-gradient(135deg, var(--theme2) 0%, var(--theme) 100%)"
    }
 ];
 
 const Industries = () => {
    const { t } = useTranslation();
    return (
-      <section className="industries-section section-bg pt-100 pb-100">
-         <div className="container">
+      <section className="industries-section pt-100 pb-100" style={{ 
+         background: 'var(--theme)',
+         position: 'relative'
+      }}>
+         {/* Overlay for better readability */}
+         <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.05)',
+            pointerEvents: 'none'
+         }} />
+         
+         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+            {/* Section Header */}
             <div className="row mb-5">
                <div className="col-12">
-                  <h2 className="section-title fw-bold">{t('industries.title')}</h2>
+                  <motion.div
+                     initial={{ opacity: 0, y: 20 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     viewport={{ once: true }}
+                     transition={{ duration: 0.6 }}
+                  >
+                     <h2 className="fw-bold mb-3" style={{ color: '#ffffff !important', fontSize: '2.5rem' }}>{t('industries.title')}</h2>
+                     <p className="fs-5" style={{ lineHeight: '1.6', color: 'rgba(255, 255, 255, 0.9)', maxWidth: '800px' }}>
+                        {t('industries.description')}
+                     </p>
+                  </motion.div>
                </div>
             </div>
-            <div className="row g-4 justify-content-between">
-               <div className="col-xl-6 col-lg-6">
-                  <div className="graph-image-container position-relative">
-                     <img src="assets/img/element/Graph.png" alt="img" className="w-100" />
+
+            {/* Services Grid */}
+            <div className="row g-4">
+               {industry_list.map((item, i) => (
+                  <div key={i} className="col-lg-6 col-md-6">
+                     <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: i * 0.1 }}
+                        style={{
+                           height: '100%',
+                           background: '#ffffff',
+                           borderRadius: '16px',
+                           padding: '40px 30px',
+                           boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
+                           border: '1px solid rgba(255,255,255,0.2)',
+                           position: 'relative',
+                           overflow: 'hidden',
+                           transition: 'all 0.3s ease'
+                        }}
+                        whileHover={{ 
+                           y: -8,
+                           boxShadow: '0 16px 50px rgba(0,0,0,0.25)'
+                        }}
+                     >
+                        {/* Background Decoration */}
+                        <div style={{
+                           position: 'absolute',
+                           top: '-50px',
+                           right: '-50px',
+                           width: '150px',
+                           height: '150px',
+                           background: item.gradient,
+                           opacity: 0.05,
+                           borderRadius: '50%'
+                        }} />
+
+                        {/* Icon Circle */}
+                        <div className="mb-4" style={{
+                           width: '70px',
+                           height: '70px',
+                           borderRadius: '50%',
+                           background: item.gradient,
+                           display: 'flex',
+                           alignItems: 'center',
+                           justifyContent: 'center',
+                           position: 'relative',
+                           zIndex: 1
+                        }}>
+                           <i className={item.icon} style={{
+                              fontSize: '30px',
+                              color: '#ffffff'
+                           }} />
+                        </div>
+
+                        {/* Content */}
+                        <h4 className="fw-bold mb-3" style={{
+                           fontSize: '1.25rem',
+                           color: '#1a1a1a',
+                           lineHeight: '1.4'
+                        }}>
+                           {t(item.titleKey)}
+                        </h4>
+                        
+                        <p className="mb-0" style={{
+                           color: '#6b7280',
+                           fontSize: '0.95rem',
+                           lineHeight: '1.7'
+                        }}>
+                           {t(item.descriptionKey)}
+                        </p>
+
+                        {/* Bottom Accent Line */}
+                        <div style={{
+                           position: 'absolute',
+                           bottom: 0,
+                           left: 0,
+                           right: 0,
+                           height: '4px',
+                           background: item.gradient
+                        }} />
+                     </motion.div>
                   </div>
-               </div>
-               <div className="col-xl-5 col-lg-6">
-                  <div className="industries-content h-100">
-                     <img src="assets/img/element/industry-links.png" alt="img" className="industries-shape" />
-                     <div className="boxex h-100 d-flex flex-column justify-content-center">
-                        <ul>
-                           {industry_list.map((item, i) => (
-                              <li key={i} className="d-flex py-2 align-items-start fw-600 theme-clr4 justify-content-between gap-2 flex-sm-nowrap flex-wrap py-1 wow fadeInUp"
-                                 data-wow-delay=".2s">
-                                 <div className="w-100">
-                                    <div className="industry-title fw-bold fs-5 mb-2">{t(item.titleKey)}</div>
-                                    <p className="industry-description mb-0 mt-1 text-muted fw-light">{t(item.descriptionKey)}</p>
-                                 </div>
-                              </li>
-                           ))}
-                        </ul>
-                     </div>
-                  </div>
-               </div>
+               ))}
             </div>
          </div>
       </section>

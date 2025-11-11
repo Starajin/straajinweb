@@ -79,7 +79,7 @@ const Partners = () => {
       whiteSpace: 'nowrap' as const,
       width: '100%',
       background: 'transparent',
-      padding: '1rem 0'
+      padding: '1.5rem 0'
    };
 
    const contentStyle = {
@@ -141,7 +141,7 @@ const Partners = () => {
             }
             `}
          </style>
-         <section className="partners-section partners-with-bg" style={{paddingTop: '20px', paddingBottom: '20px'}}>
+         <section className="partners-section partners-with-bg" style={{paddingTop: '20px', paddingBottom: '20px', marginTop: '80px'}}>
             <div className="container">
                <div className="row g-sm-4 g-3 align-items-end mb-20">
                   <div className="col-lg-6 col-md-7">

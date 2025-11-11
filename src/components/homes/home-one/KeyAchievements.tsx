@@ -1,106 +1,216 @@
 ﻿import { motion } from "framer-motion";
-import { Building2, Globe, Briefcase } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-interface TimelineItem {
-  id: number;
-  title: string;
-  icon: React.ComponentType<any>;
+interface AchievementItem {
+  number: string;
+  label: string;
+  description: string;
   items: string[];
 }
 
 const KeyAchievements = () => {
   const { t } = useTranslation();
   
-  const achievementsData = t('achievements.stats', { returnObjects: true }) as any[];
-  
-  const timelineItems: TimelineItem[] = achievementsData.map((item, index) => ({
-    id: index + 1,
-    title: item.label + (item.description ? ` ; ${item.description}` : ''),
-    icon: [Building2, Globe, Briefcase][index] || Building2,
-    items: item.items
-  }));
+  const achievementsData = t('achievements.stats', { returnObjects: true }) as AchievementItem[];
+
+  // Icon configurations matching the theme
+  const iconConfig = [
+    {
+      icon: "fa-solid fa-handshake",
+      gradient: "linear-gradient(135deg, var(--theme) 0%, var(--theme3) 100%)",
+      image: "/assets/img/service/service-thumb10.png"
+    },
+    {
+      icon: "fa-solid fa-globe",
+      gradient: "linear-gradient(135deg, var(--theme2) 0%, var(--theme) 100%)",
+      image: "/assets/img/service/Cultural Planning.jpg"
+    },
+    {
+      icon: "fa-solid fa-briefcase",
+      gradient: "linear-gradient(135deg, var(--theme3) 0%, var(--theme) 100%)",
+      image: "/assets/img/service/B2b.jpg"
+    }
+  ];
 
   return (
-    <section className="py-0">
-      {/* Header Section - No Background Color */}
-      <div className="py-5">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
-            className="row"
-          >
-            <div className="col-12">
-              <div className="d-flex align-items-center gap-2 mb-3">
-                <div className="d-flex align-items-center gap-2">
-                  <span className="fw-bold">📊</span>
-                  <span className="fw-bold">{t('achievements.title')}</span>
-                </div>
+    <section className="section-bg py-100">
+      <div className="container">
+        {/* Header */}
+        <div className="row g-lg-4 g-md-3 g-2 align-items-end mb-60">
+          <div className="col-lg-6 col-md-7">
+            <div className="section-header">
+              <div className="d-flex align-items-center gap-2 theme-clr fw-600 mb-2">
+                <img src="/assets/img/icon/section-step1.png" alt="img" /> {t('achievements.title')}
               </div>
-              <h2 className="text-dark fw-bold display-4 mb-0">
-                <span>{t('achievements.mainTitle')}</span>
-                <br />
-                <span className="fw-300">{t('achievements.mainSubtitle')}</span>
+              <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
+                {t('achievements.mainTitle')}
+                <span className="fw-300 d-block">{t('achievements.mainSubtitle')}</span>
               </h2>
             </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Content Section - No Background */}
-      <div className="py-5">
-        <div className="container">
-          {/* Horizontal Cards Layout */}
-          <div className="row g-4">
-            {timelineItems.map((item, index) => (
-              <div key={item.id} className="col-12">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="achievement-horizontal-card rounded-4 p-4 shadow-sm border"
-                  style={{ 
-                    background: "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)"
-                  }}
-                >
-                  <div className="d-flex align-items-start gap-4">
-                    <div className="achievement-icon-horizontal bg-primary d-flex align-items-center justify-content-center flex-shrink-0">
-                      <item.icon size={32} className="text-white" />
-                    </div>
-                    <div className="flex-grow-1">
-                      <div className="row">
-                        <div className="col-lg-4 col-md-12">
-                          <h4 className="fw-bold mb-3 text-dark lh-base">
-                            {item.title}
-                          </h4>
-                        </div>
-                        <div className="col-lg-8 col-md-12">
-                          <ul className="horizontal-list list-unstyled mb-0">
-                            {item.items.map((listItem, idx) => (
-                              <li 
-                                key={idx} 
-                                className="horizontal-list-item text-muted mb-2 lh-base"
-                              >
-                                <span className="bullet-point me-2 text-primary">
-                                  •
-                                </span>
-                                {listItem}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            ))}
           </div>
         </div>
+
+        {/* Achievement Cards Grid */}
+        <div className="row g-4">
+          {achievementsData.map((item, index) => (
+            <div key={index} className="col-lg-4 col-md-6">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="achievement-card h-100 rounded-4 overflow-hidden hover-translate8"
+                style={{
+                  background: '#ffffff',
+                  boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
+                  position: 'relative'
+                }}
+              >
+                {/* Image Header */}
+                <div className="achievement-card-image position-relative" style={{ height: '180px', overflow: 'visible' }}>
+                  <div style={{ height: '180px', overflow: 'hidden' }}>
+                    <img 
+                      src={iconConfig[index].image} 
+                      alt={item.label}
+                      className="w-100 h-100"
+                      style={{ objectFit: 'cover' }}
+                    />
+                    <div 
+                      className="position-absolute top-0 start-0 w-100"
+                      style={{
+                        background: iconConfig[index].gradient,
+                        opacity: 0.75,
+                        height: '180px'
+                      }}
+                    ></div>
+                  </div>
+                  
+                  {/* Floating Icon Circle */}
+                  <div 
+                    className="position-absolute"
+                    style={{
+                      bottom: '-30px',
+                      left: '30px',
+                      width: '60px',
+                      height: '60px',
+                      borderRadius: '50%',
+                      background: '#ffffff',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+                      zIndex: 2
+                    }}
+                  >
+                    <i 
+                      className={iconConfig[index].icon}
+                      style={{
+                        fontSize: '24px',
+                        background: iconConfig[index].gradient,
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text'
+                      }}
+                    ></i>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="achievement-card-content p-4" style={{ paddingTop: '50px' }}>
+                  {/* Number Badge */}
+                  <div className="mb-3">
+                    <span 
+                      className="achievement-number fw-bold d-inline-block px-3 py-1 rounded-pill"
+                      style={{
+                        background: 'var(--theme)',
+                        color: '#ffffff',
+                        fontSize: '20px',
+                        letterSpacing: '0.5px'
+                      }}
+                    >
+                      {item.number}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h4 className="fw-bold theme-clr4 mb-2 lh-base">
+                    {item.label}
+                  </h4>
+                  {item.description && (
+                    <p className="text-muted mb-3 fz-14">{item.description}</p>
+                  )}
+
+                  {/* Divider */}
+                  <div 
+                    className="mb-3"
+                    style={{
+                      height: '2px',
+                      width: '40px',
+                      background: 'var(--theme2)',
+                      borderRadius: '2px'
+                    }}
+                  ></div>
+
+                  {/* Items List */}
+                  <ul className="list-unstyled mb-0">
+                    {item.items.map((listItem, idx) => (
+                      <li 
+                        key={idx} 
+                        className="d-flex align-items-start gap-2 mb-2"
+                      >
+                        <i 
+                          className="fa-solid fa-check-circle mt-1"
+                          style={{
+                            color: 'var(--theme)',
+                            fontSize: '12px',
+                            flexShrink: 0
+                          }}
+                        ></i>
+                        <span className="theme-clr4 fz-14 lh-base">
+                          {listItem}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Stats Bar (Optional Enhancement) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="row g-4 mt-5"
+        >
+          <div className="col-12">
+            <div 
+              className="rounded-4 p-4 text-center"
+              style={{
+                background: 'linear-gradient(135deg, var(--theme) 0%, var(--theme3) 100%)',
+                color: '#ffffff'
+              }}
+            >
+              <div className="row align-items-center">
+                <div className="col-md-4 mb-3 mb-md-0">
+                  <h3 className="fw-bold mb-1" style={{ color: '#ffffff' }}>50+</h3>
+                  <p className="mb-0 fz-14" style={{ color: 'rgba(255,255,255,0.9)' }}>Strategic MoUs Signed</p>
+                </div>
+                <div className="col-md-4 mb-3 mb-md-0">
+                  <h3 className="fw-bold mb-1" style={{ color: '#ffffff' }}>25+</h3>
+                  <p className="mb-0 fz-14" style={{ color: 'rgba(255,255,255,0.9)' }}>Consulting Projects</p>
+                </div>
+                <div className="col-md-4">
+                  <h3 className="fw-bold mb-1" style={{ color: '#ffffff' }}>100+</h3>
+                  <p className="mb-0 fz-14" style={{ color: 'rgba(255,255,255,0.9)' }}>Partner Matches</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
