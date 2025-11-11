@@ -116,3 +116,494 @@
     padding: 0 10px;
   }
 }
+
+/* ===================================================
+   HERO BANNER CTA BUTTON HOVER
+   ================================================== */
+.hero-cta-btn:hover {
+  background-color: var(--hero-cta-hover-bg) !important;
+  color: #2d2d2d !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.hero-cta-btn:hover .hero-arrow {
+  transform: translateX(4px);
+  color: #2d2d2d !important;
+}
+
+/* ===================================================
+   WHY CHOOSE US - SELECTED ITEM STYLING
+   ================================================== */
+.choose-items.selected {
+  background-color: rgba(var(--theme2-rgb), 0.24) !important;
+  border-color: var(--theme2) !important;
+}
+
+.choose-items .choose-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background-color: rgba(var(--theme2-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.choose-items .choose-icon-wrapper i {
+  font-size: 28px;
+  color: var(--theme2);
+  transition: all 0.3s ease;
+}
+
+.choose-items.selected .choose-icon-wrapper {
+  background-color: var(--theme2);
+}
+
+.choose-items.selected .choose-icon-wrapper i {
+  color: #fff;
+}
+
+/* Navy & Amber Theme - Navy background with white text on ALL selected items */
+:root.theme-navy-amber .choose-items.selected {
+  background-color: var(--theme2) !important;
+  border-color: var(--theme2) !important;
+}
+
+:root.theme-navy-amber .choose-items.selected h4,
+:root.theme-navy-amber .choose-items.selected p {
+  color: #2d2d2d !important;
+}
+
+:root.theme-navy-amber .choose-items.selected .choose-icon-wrapper {
+  background-color: var(--theme);
+}
+
+:root.theme-navy-amber .choose-items.selected .choose-icon-wrapper i {
+  color: #fff;
+}
+
+/* ===================================================
+   NAVY & AMBER THEME - WHITE TEXT ON HOVER/ACTIVE STATES
+   ================================================== */
+
+/* Team Items (Services, About, etc.) - Hover state */
+:root.theme-navy-amber .team-items:hover h3,
+:root.theme-navy-amber .team-items:hover h4,
+:root.theme-navy-amber .team-items:hover h5,
+:root.theme-navy-amber .team-items:hover p,
+:root.theme-navy-amber .team-items:hover span,
+:root.theme-navy-amber .team-items:hover a {
+  color: #fff !important;
+}
+
+/* Service Items 2 - Hover state */
+:root.theme-navy-amber .service-items2:hover h3,
+:root.theme-navy-amber .service-items2:hover h4,
+:root.theme-navy-amber .service-items2:hover h5,
+:root.theme-navy-amber .service-items2:hover p,
+:root.theme-navy-amber .service-items2:hover span {
+  color: #fff !important;
+}
+
+/* Service Items 3 - Already has hover styles but ensure white text */
+:root.theme-navy-amber .service-items3:hover h3,
+:root.theme-navy-amber .service-items3:hover h4,
+:root.theme-navy-amber .service-items3:hover h5,
+:root.theme-navy-amber .service-items3:hover p,
+:root.theme-navy-amber .service-items3:hover span,
+:root.theme-navy-amber .service-items3:hover a {
+  color: #fff !important;
+}
+
+/* Blog Items - Hover state */
+:root.theme-navy-amber .blog-items2:hover h3,
+:root.theme-navy-amber .blog-items2:hover h4,
+:root.theme-navy-amber .blog-items2:hover h5,
+:root.theme-navy-amber .blog-items2:hover p,
+:root.theme-navy-amber .blog-items2:hover span,
+:root.theme-navy-amber .blog-items2:hover a {
+  color: #fff !important;
+}
+
+/* Blog Hover Primary 3 */
+:root.theme-navy-amber .blog-hove-primary3:hover h3,
+:root.theme-navy-amber .blog-hove-primary3:hover h4,
+:root.theme-navy-amber .blog-hove-primary3:hover h5,
+:root.theme-navy-amber .blog-hove-primary3:hover p,
+:root.theme-navy-amber .blog-hove-primary3:hover span {
+  color: #fff !important;
+}
+
+/* Financial Items Subbox */
+:root.theme-navy-amber .financial-subbox h3,
+:root.theme-navy-amber .financial-subbox h4,
+:root.theme-navy-amber .financial-subbox h5,
+:root.theme-navy-amber .financial-subbox p,
+:root.theme-navy-amber .financial-subbox span,
+:root.theme-navy-amber .financial-subbox a {
+  color: #fff !important;
+}
+
+/* Approch Items */
+:root.theme-navy-amber .approch-items:hover h3,
+:root.theme-navy-amber .approch-items:hover h4,
+:root.theme-navy-amber .approch-items:hover h5,
+:root.theme-navy-amber .approch-items:hover p,
+:root.theme-navy-amber .approch-items:hover span {
+  color: #fff !important;
+}
+
+/* ===================================================
+   ROYAL BLUE & GOLD THEME - WHITE TEXT ON HOVER/ACTIVE STATES
+   ================================================== */
+
+/* Team Items (Services, About, etc.) - Hover state */
+:root.theme-royal-blue .team-items:hover h3,
+:root.theme-royal-blue .team-items:hover h4,
+:root.theme-royal-blue .team-items:hover h5,
+:root.theme-royal-blue .team-items:hover p,
+:root.theme-royal-blue .team-items:hover span,
+:root.theme-royal-blue .team-items:hover a {
+  color: #fff !important;
+}
+
+/* Service Items 2 - Hover state */
+:root.theme-royal-blue .service-items2:hover h3,
+:root.theme-royal-blue .service-items2:hover h4,
+:root.theme-royal-blue .service-items2:hover h5,
+:root.theme-royal-blue .service-items2:hover p,
+:root.theme-royal-blue .service-items2:hover span {
+  color: #fff !important;
+}
+
+/* Service Items 3 - White text on hover */
+:root.theme-royal-blue .service-items3:hover h3,
+:root.theme-royal-blue .service-items3:hover h4,
+:root.theme-royal-blue .service-items3:hover h5,
+:root.theme-royal-blue .service-items3:hover p,
+:root.theme-royal-blue .service-items3:hover span,
+:root.theme-royal-blue .service-items3:hover a {
+  color: #fff !important;
+}
+
+/* Blog Items - Hover state */
+:root.theme-royal-blue .blog-items2:hover h3,
+:root.theme-royal-blue .blog-items2:hover h4,
+:root.theme-royal-blue .blog-items2:hover h5,
+:root.theme-royal-blue .blog-items2:hover p,
+:root.theme-royal-blue .blog-items2:hover span,
+:root.theme-royal-blue .blog-items2:hover a {
+  color: #fff !important;
+}
+
+/* Blog Hover Primary 3 */
+:root.theme-royal-blue .blog-hove-primary3:hover h3,
+:root.theme-royal-blue .blog-hove-primary3:hover h4,
+:root.theme-royal-blue .blog-hove-primary3:hover h5,
+:root.theme-royal-blue .blog-hove-primary3:hover p,
+:root.theme-royal-blue .blog-hove-primary3:hover span {
+  color: #fff !important;
+}
+
+/* Financial Items Subbox */
+:root.theme-royal-blue .financial-subbox h3,
+:root.theme-royal-blue .financial-subbox h4,
+:root.theme-royal-blue .financial-subbox h5,
+:root.theme-royal-blue .financial-subbox p,
+:root.theme-royal-blue .financial-subbox span,
+:root.theme-royal-blue .financial-subbox a {
+  color: #fff !important;
+}
+
+/* Approch Items */
+:root.theme-royal-blue .approch-items:hover h3,
+:root.theme-royal-blue .approch-items:hover h4,
+:root.theme-royal-blue .approch-items:hover h5,
+:root.theme-royal-blue .approch-items:hover p,
+:root.theme-royal-blue .approch-items:hover span {
+  color: #fff !important;
+}
+
+/* ===================================================
+   FINANCIAL/MISSION CARDS - ICON BACKGROUND IN DEFAULT STATE
+   ================================================== */
+
+/* Default state: Circle = Theme color, Icon = White */
+.financial-items .icon.theme-bg.white-bg {
+  background-color: var(--theme) !important;
+}
+
+.financial-items .icon.theme-bg.white-bg img {
+  filter: brightness(0) invert(1);
+}
+
+/* Ensure icon background is visible in all themes - DEFAULT STATE */
+:root.theme-royal-blue .financial-items .icon.theme-bg {
+  background-color: #023EDA !important;
+}
+
+:root.theme-teal-coral .financial-items .icon.theme-bg {
+  background-color: #0D9488 !important;
+}
+
+:root.theme-navy-amber .financial-items .icon.theme-bg {
+  background-color: #1E3A8A !important;
+}
+
+/* Hover state: Circle = White, Icon = Theme color */
+.financial-items:hover .icon.theme-bg.white-bg {
+  background-color: #ffffff !important;
+}
+
+.financial-items:hover .icon.theme-bg.white-bg img {
+  filter: none;
+}
+
+/* Theme-specific hover icon colors */
+:root.theme-royal-blue .financial-items:hover .icon.theme-bg img {
+  filter: brightness(0) saturate(100%) invert(20%) sepia(90%) saturate(4000%) hue-rotate(215deg) brightness(95%) contrast(105%);
+}
+
+:root.theme-teal-coral .financial-items:hover .icon.theme-bg img {
+  filter: brightness(0) saturate(100%) invert(47%) sepia(61%) saturate(1234%) hue-rotate(138deg) brightness(91%) contrast(101%);
+}
+
+:root.theme-navy-amber .financial-items:hover .icon.theme-bg img {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(72%) saturate(2547%) hue-rotate(213deg) brightness(90%) contrast(108%);
+}
+
+/* ===================================================
+   ABOUT US - WHY CHOOSE US SECTION ICONS
+   ================================================== */
+
+/* Make all cards same height */
+.choose-items4 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.choose-items4 .boxes {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Icon circle container - smaller and cuter */
+.choose-icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.choose-icon-circle i {
+  font-size: 24px;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+/* Royal Blue & Gold - Circle in Royal Blue, Icon White */
+:root.theme-royal-blue .choose-icon-circle {
+  background-color: #023EDA;
+}
+
+/* Teal & Slate Grey - Circle in Teal, Icon White */
+:root.theme-teal-coral .choose-icon-circle {
+  background-color: #0D9488;
+}
+
+/* Navy & Amber - Circle in Navy, Icon White */
+:root.theme-navy-amber .choose-icon-circle {
+  background-color: #1E3A8A;
+}
+
+/* Hover state - Circle becomes secondary color, Icon stays white */
+:root.theme-royal-blue .choose-items4:hover .choose-icon-circle {
+  background-color: #ffc700;
+  transform: scale(1.15);
+}
+
+:root.theme-teal-coral .choose-items4:hover .choose-icon-circle {
+  background-color: #9333EA;
+  transform: scale(1.15);
+}
+
+:root.theme-navy-amber .choose-items4:hover .choose-icon-circle {
+  background-color: #F59E0B;
+  transform: scale(1.15);
+}
+
+/* ===================================================
+   SERVICES PAGE - OUR SERVICES SECTION
+   ================================================== */
+
+/* Make all service cards same height */
+.service-items1 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-items1 .content {
+  flex-shrink: 0;
+}
+
+.service-items1 .thumb {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  max-height: 280px;
+}
+
+.service-items1 .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Service icon circles with theme colors */
+.service-icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.service-icon-circle i {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.service-icon-circle:hover {
+  transform: scale(1.15);
+}
+
+/* Royal Blue & Gold - Icon circle in Gold */
+:root.theme-royal-blue .service-icon-circle {
+  background-color: #ffc700;
+}
+
+/* Teal & Slate Grey - Icon circle in Slate Grey */
+:root.theme-teal-coral .service-icon-circle {
+  background-color: #64748B;
+}
+
+/* Navy & Amber - Icon circle in Amber */
+:root.theme-navy-amber .service-icon-circle {
+  background-color: #F59E0B;
+}
+
+/* ===================================================
+   SERVICES PAGE - WHY CHOOSE US SECTION ICONS (WHITE)
+   ================================================== */
+
+/* Make SVG icons white in default state for all themes */
+.work-list-item .icon svg path {
+  fill: #ffffff !important;
+}
+
+/* ===================================================
+   SERVICES PAGE - CTA CONTACT INFO ICON CIRCLES
+   ================================================== */
+
+/* Royal Blue & Gold - Icon circles in Royal Blue */
+:root.theme-royal-blue .cta-icon-circle {
+  background-color: #023EDA !important;
+}
+
+/* Teal & Slate Grey - Icon circles in Teal */
+:root.theme-teal-coral .cta-icon-circle {
+  background-color: #0D9488 !important;
+}
+
+/* Navy & Amber - Icon circles in Navy */
+:root.theme-navy-amber .cta-icon-circle {
+  background-color: #1E3A8A !important;
+}
+
+/* ===================================================
+/* FAQ SECTION - WHITE TEXT
+   ================================================== */
+
+.faq-content_wrap h3,
+.faq-content_wrap p {
+  color: #ffffff !important;
+}
+
+/* ===================================================
+   PROJECTS PAGE - FILTER TABS WITH THEME COLORS
+   ================================================== */
+
+/* Default state - outline with theme color */
+.project-filter-btn {
+  border: 2px solid var(--theme) !important;
+  color: var(--theme) !important;
+  background-color: transparent !important;
+}
+
+.project-filter-btn:hover {
+  background-color: var(--theme) !important;
+  color: #ffffff !important;
+}
+
+/* Active state - filled with theme color */
+.project-filter-btn.active {
+  background-color: var(--theme) !important;
+  color: #ffffff !important;
+  border-color: var(--theme) !important;
+}
+
+/* ===================================================
+   CONTACT PAGE - CONTACT INFO ICONS
+   ================================================== */
+
+/* Ensure icon circles use primary theme color */
+.contact-mail-items .theme-bg {
+  background-color: var(--theme) !important;
+}
+
+/* Ensure SVG icons inside are white */
+.contact-mail-items .theme-bg svg path {
+  fill: #ffffff !important;
+}
+
+/* Contact office info icons */
+.mail-address-items .theme-bg {
+  background-color: var(--theme) !important;
+}
+
+.mail-address-items .theme-bg svg path {
+  fill: #ffffff !important;
+}
+
+/* ===================================================
+   HEADER - PHONE ICON CIRCLE
+   ================================================== */
+
+.header-phone-icon {
+  background-color: var(--theme) !important;
+  color: #ffffff !important;
+}
+
+/* Header Contact button hover - change to primary color */
+.header-hamburger-inner .theme-btn.style-white:hover {
+  background-color: var(--theme) !important;
+  color: #ffffff !important;
+}
+
+.header-hamburger-inner .theme-btn.style-white:hover i {
+  background-color: #ffffff !important;
+  color: var(--theme) !important;
+}

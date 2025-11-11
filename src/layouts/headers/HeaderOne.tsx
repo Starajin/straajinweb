@@ -50,8 +50,7 @@ const HeaderOne = () => {
                            {t('nav.contact')}
                         </Link>
                         <div className="d-flex align-items-center gap-3">
-                           <i className="fa-solid fa-phone w-48 h-48 rounded-circle d-center" 
-                              style={{ backgroundColor: '#ffc700', color: '#000' }}></i>
+                           <i className="fa-solid fa-phone w-48 h-48 rounded-circle d-center header-phone-icon"></i>
                            <Link to="tel:+11002345909" className="fw-normal d-xxl-block d-none" style={{ color: '#333' }}>
                               24/7 Support <br />
                               <span className="fw-600 text-nowrap" style={{ color: '#023EDA' }}>(++597)678 09876</span>

@@ -135,7 +135,7 @@ const Banner = () => {
                                        <h2 className="fw-bold" 
                                            style={{ 
                                               fontSize: 'clamp(1.5rem, 4vw, 3rem)',
-                                              color: '#ffc700',
+                                              color: 'var(--hero-subtitle-color)',
                                               wordBreak: 'break-word',
                                               fontFamily: 'Malgun Gothic, sans-serif'
                                            }}>
@@ -161,7 +161,7 @@ const Banner = () => {
                                        <Link to="/contact" 
                                              className="btn d-inline-flex align-items-center justify-content-center px-4 px-lg-5 py-3 py-lg-4 fw-semibold rounded-3 text-white text-decoration-none hero-cta-btn"
                                              style={{ 
-                                                backgroundColor: '#023EDA',
+                                                backgroundColor: 'var(--hero-cta-bg)',
                                                 boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                                                 transition: 'all 0.3s ease'
                                              }}>
@@ -192,7 +192,7 @@ const Banner = () => {
                                                 <div style={{ 
                                                    width: 'clamp(6px, 1.5vw, 8px)', 
                                                    height: 'clamp(6px, 1.5vw, 8px)', 
-                                                   backgroundColor: '#ffc700',
+                                                   backgroundColor: 'var(--hero-dot-color)',
                                                    borderRadius: '50%'
                                                 }}></div>
                                                 <div className="feature-icon-container"
@@ -217,7 +217,7 @@ const Banner = () => {
                                              </h4>
                                              <div style={{ 
                                                 height: '2px', 
-                                                background: 'linear-gradient(to right, rgba(255,199,0,0.6), rgba(255,255,255,0.2))',
+                                                background: 'var(--hero-line-gradient)',
                                                 borderRadius: '1px'
                                              }}></div>
                                           </div>

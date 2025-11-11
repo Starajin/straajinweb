@@ -96,8 +96,8 @@ const Faq = () => {
                         <img src="/assets/img/icon/message-icon.png" alt="img" className="w-48 h-48 ml-auto" />
                      </div>
                      <p className="fz-15 lh-md theme-clr4 mb-lg-4 mb-3">
-                        We’re here to help. If you didn’t find the answer you were looking for, feel free to reach
-                        out to our team. We’ll make
+                        We're here to help. If you didn't find the answer you were looking for, feel free to reach
+                        out to our team. We'll make
                         sure you get the clarity you need to move forward with confidence.
                      </p>
                      <Link to="/faqs" className="theme-btn style1 pe-20">
@@ -105,7 +105,6 @@ const Faq = () => {
                            className="fa-solid fa-arrow-right w-36 h-36 bg-white rounded-circle d-center fz-14 theme-clr4"></i>
                         Check All Questions
                      </Link>
-                     <img src="/assets/img/element/faq-element.png" alt="img" className="faq-shape1" />
                   </div>
                </div>
             </div>

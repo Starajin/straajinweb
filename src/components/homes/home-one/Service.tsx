@@ -120,8 +120,6 @@ const Service = () => {
                                  </div>
                                  <div className="thumb w-100 overflow-hidden position-relative">
                                     <img src={item.thumb} className="w-100 rounded-bottom-3" />
-                                    <img src={item.icon} alt="img"
-                                       className="service-icon position-absolute bottom-0 start-0 m-3" />
                                  </div>
                               </div>
                            </div>

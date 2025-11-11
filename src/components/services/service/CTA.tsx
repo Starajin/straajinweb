@@ -32,7 +32,7 @@ const CTA = () => {
                   <div className="col-lg-4">
                      <div className="text-lg-start text-center">
                         <div className="d-flex align-items-center justify-content-lg-start justify-content-center gap-3 mb-3">
-                           <div className="w-48 h-48 rounded-circle d-center" style={{ backgroundColor: '#023EDA' }}>
+                           <div className="w-48 h-48 rounded-circle d-center cta-icon-circle">
                               <i className="fa-solid fa-phone text-white"></i>
                            </div>
                            <div className="text-start">
@@ -45,7 +45,7 @@ const CTA = () => {
                   <div className="col-lg-4">
                      <div className="text-center">
                         <div className="d-flex align-items-center justify-content-center gap-3 mb-3">
-                           <div className="w-48 h-48 rounded-circle d-center" style={{ backgroundColor: '#023EDA' }}>
+                           <div className="w-48 h-48 rounded-circle d-center cta-icon-circle">
                               <i className="fa-solid fa-envelope text-white"></i>
                            </div>
                            <div className="text-start">
@@ -58,7 +58,7 @@ const CTA = () => {
                   <div className="col-lg-4">
                      <div className="text-lg-end text-center">
                         <div className="d-flex align-items-center justify-content-lg-end justify-content-center gap-3 mb-3">
-                           <div className="w-48 h-48 rounded-circle d-center" style={{ backgroundColor: '#023EDA' }}>
+                           <div className="w-48 h-48 rounded-circle d-center cta-icon-circle">
                               <i className="fa-solid fa-map-marker-alt text-white"></i>
                            </div>
                            <div className="text-start">

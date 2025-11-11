@@ -16,8 +16,8 @@ body {
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 32px;
-	color: $text-color;
-	background-color: $white;
+	color: var(--text);
+	background-color: var(--white);
 	padding: 0;
 	margin: 0;
 	overflow-x: hidden;
@@ -36,12 +36,12 @@ button {
 }
 
 input:focus {
-	color: $text-color;
+	color: var(--text);
 	outline: none;
 }
 
 input {
-	color: $text-color;
+	color: var(--text);
 }
 
 h1,
@@ -53,7 +53,7 @@ h6 {
 	font-family: $heading-font;
 	margin: 0px;
 	padding: 0;
-	color: $text-color;
+	color: var(--text);
 	@include transition;
 	font-weight: 700;
 }

@@ -150,10 +150,10 @@ const ProjectsArea = () => {
                            <button
                               key={category.key}
                               onClick={() => setActiveFilter(category.key)}
-                              className={`btn fw-600 px-4 py-2 rounded-pill transition-all ${
+                              className={`btn fw-600 px-4 py-2 rounded-pill transition-all project-filter-btn ${
                                  activeFilter === category.key
-                                    ? 'btn-primary text-white'
-                                    : 'btn-outline-primary'
+                                    ? 'active'
+                                    : ''
                               }`}
                            >
                               <i className="fa-light fa-filter me-2"></i>

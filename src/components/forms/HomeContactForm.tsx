@@ -102,23 +102,13 @@ const HomeContactForm = () => {
                   <div className="form__grp wow fadeInUp" data-wow-delay=".3s">
                      <button 
                         type="submit" 
-                        className="btn w-100 d-flex align-items-center justify-content-center gap-2 py-3 px-4 border-0 rounded-pill fw-bold text-white"
+                        className="btn w-100 d-flex align-items-center justify-content-center gap-2 py-3 px-4 border-0 rounded-pill fw-bold text-white btn-theme-contact"
                         style={{
-                           backgroundColor: '#2563eb',
+                           backgroundColor: 'var(--theme)',
                            fontSize: '16px',
                            lineHeight: '1.5',
                            transition: 'all 0.3s ease',
-                           boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3)'
-                        }}
-                        onMouseOver={(e) => {
-                           e.currentTarget.style.backgroundColor = '#1d4ed8';
-                           e.currentTarget.style.transform = 'translateY(-1px)';
-                           e.currentTarget.style.boxShadow = '0 6px 16px rgba(37, 99, 235, 0.4)';
-                        }}
-                        onMouseOut={(e) => {
-                           e.currentTarget.style.backgroundColor = '#2563eb';
-                           e.currentTarget.style.transform = 'translateY(0)';
-                           e.currentTarget.style.boxShadow = '0 4px 12px rgba(37, 99, 235, 0.3)';
+                           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
                         }}
                      >
                         <i className="fa-solid fa-calendar-check"></i>

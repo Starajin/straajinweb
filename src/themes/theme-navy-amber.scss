@@ -1,0 +1,60 @@
+/* Theme 3: Navy & Amber - Classic & Elegant */
+:root.theme-navy-amber {
+  /* Primary Colors */
+  --color-primary: #1E3A8A;
+  --color-secondary: #F59E0B;
+  --color-theme: #1E3A8A;
+  --color-theme2: #F59E0B;
+  --color-theme3: #1E40AF;
+  --color-theme4: #111827;
+
+  /* Text & Background Colors */
+  --color-dark: #111827;
+  --color-light: #F3F4F6;
+  --color-white: #fff;
+  --color-black: #111827;
+  --color-header: #0F172A;
+  --color-text: #111827;
+  --color-border: rgba(30, 58, 138, 0.11);
+  --color-bg: #F3F4F6;
+  --color-bg-2: #0F172A;
+
+  /* Main SCSS Variables Override */
+  --theme: #1E3A8A;
+  --theme2: #F59E0B;
+  --theme2-rgb: 245, 158, 11;
+  --theme3: #1E40AF;
+  --theme4: #111827;
+  --header: #0F172A;
+  --text: #111827;
+  --border: rgba(30, 58, 138, 0.11);
+  --bg: #F3F4F6;
+  --bg-2: #0F172A;
+  --black: #111827;
+  --white: #fff;
+  --body: #F3F4F6;
+
+  /* Footer Colors */
+  --footer-bg: #1E293B;
+  --footer-newsletter-bg: #334155;
+  --footer-input-bg: #334155;
+  --footer-border: #475569;
+  --footer-text: #ffffff;
+  --footer-link-hover: #F59E0B;
+  --footer-social-bg: #1E3A8A;
+
+  /* Button Styles */
+  --button-bg-primary: var(--color-primary);
+  --button-bg-secondary: var(--color-secondary);
+  --button-text-primary: #fff;
+  --button-text-secondary: #2d2d2d;
+  --button-hover-primary: var(--color-secondary);
+  --button-hover-secondary: var(--color-primary);
+
+  /* Hero Banner Specific Colors */
+  --hero-subtitle-color: #F59E0B;
+  --hero-cta-bg: #1E3A8A;
+  --hero-cta-hover-bg: #F59E0B;
+  --hero-line-gradient: linear-gradient(to right, rgba(245,158,11,0.6), rgba(255,255,255,0.2));
+  --hero-dot-color: #F59E0B;
+}

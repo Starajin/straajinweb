@@ -1,14 +1,30 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import menu_data from "../../../data/MenuData";
+import menu_data, { getMenuData } from "../../../data/MenuData";
 
 const MobileMenu = () => {
    const { t } = useTranslation();
    const [navTitle, setNavTitle] = useState("");
    const [, setSubNavTitle] = useState("");
+   const [menuItems, setMenuItems] = useState(menu_data); // Start with static data
+
+   // Load dynamic menu data from CMS
+   useEffect(() => {
+      const loadMenuData = async () => {
+         try {
+            const cmsMenuData = await getMenuData();
+            setMenuItems(cmsMenuData);
+         } catch (error) {
+            console.error('Failed to load CMS menu data in mobile menu:', error);
+            // Keep using static menu_data as fallback
+         }
+      };
+      
+      loadMenuData();
+   }, []);
 
    // Open or close the parent menu
    const openMobileMenu = (menu: any) => {
@@ -29,6 +45,8 @@ const MobileMenu = () => {
             return t('nav.projects');
          case 'contact':
             return t('nav.contact');
+         case 'blog':
+            return t('nav.blog');
          default:
             return title;
       }
@@ -36,7 +54,7 @@ const MobileMenu = () => {
 
    return (
       <ul>
-         {menu_data.map((menu) => (
+         {menuItems.map((menu) => (
             menu.mega_menus ? (
                <li key={menu.id} className={`has-dropdown active menu-thumb ${navTitle === menu.title ? "dropdown-opened" : ""}`}>
                   <Link to={menu.link}>

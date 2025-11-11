@@ -1,0 +1,60 @@
+/* Theme 2: Teal & Slate Grey (Modern & Professional) */
+:root.theme-teal-coral {
+  /* Primary Colors */
+  --color-primary: #0D9488;
+  --color-secondary: #64748B;
+  --color-theme: #0D9488;
+  --color-theme2: #64748B;
+  --color-theme3: #0F766E;
+  --color-theme4: #1F2937;
+
+  /* Text & Background Colors */
+  --color-dark: #1F2937;
+  --color-light: #F9FAFB;
+  --color-white: #fff;
+  --color-black: #1F2937;
+  --color-header: #111827;
+  --color-text: #1F2937;
+  --color-border: rgba(13, 148, 136, 0.11);
+  --color-bg: #F9FAFB;
+  --color-bg-2: #111827;
+
+  /* Main SCSS Variables Override */
+  --theme: #0D9488;
+  --theme2: #64748B;
+  --theme2-rgb: 100, 116, 139;
+  --theme3: #0F766E;
+  --theme4: #1F2937;
+  --header: #111827;
+  --text: #1F2937;
+  --border: rgba(13, 148, 136, 0.11);
+  --bg: #F9FAFB;
+  --bg-2: #111827;
+  --black: #1F2937;
+  --white: #fff;
+  --body: #F9FAFB;
+
+  /* Footer Colors */
+  --footer-bg: #115E59;
+  --footer-newsletter-bg: #0F766E;
+  --footer-input-bg: #0F766E;
+  --footer-border: #14B8A6;
+  --footer-text: #ffffff;
+  --footer-link-hover: #64748B;
+  --footer-social-bg: #0D9488;
+
+  /* Button Styles */
+  --button-bg-primary: var(--color-primary);
+  --button-bg-secondary: var(--color-secondary);
+  --button-text-primary: #fff;
+  --button-text-secondary: #fff;
+  --button-hover-primary: var(--color-secondary);
+  --button-hover-secondary: var(--color-primary);
+
+  /* Hero Banner Specific Colors */
+  --hero-subtitle-color: #64748B;
+  --hero-cta-bg: #0D9488;
+  --hero-cta-hover-bg: #64748B;
+  --hero-line-gradient: linear-gradient(to right, rgba(100,116,139,0.6), rgba(255,255,255,0.2));
+  --hero-dot-color: #64748B;
+}

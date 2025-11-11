@@ -10,8 +10,8 @@
 	text-transform: capitalize;
 	text-align: center;
 	border-radius: 30px;
-	background: $theme-color4;
-	color: $white;
+	background: var(--theme4);
+	color: var(--white);
 	font-size: 15px;
 	font-weight: 600;
 	padding: 6px 7px;
@@ -31,36 +31,33 @@
 		}
 	}
 	&.style2 {
-		background-color: $theme-color;
+		background-color: var(--theme);
 		i {
 			transform: rotate(-40deg);
 		}
 		&:hover {
-			color: $white !important;
+			color: var(--white) !important;
 			i {
-				color: $white;
+				color: var(--white);
 				transform: rotate(40deg);
 			}
 		}
 	}
 	&.style3 {
-		background-color: $theme-color2;
-		color: $black;
-		i {
-			// transform: rotate(-40deg);
-		}
+		background-color: var(--theme2);
+		color: var(--black);
 		&:hover {
-			color: $white !important;
-			border: 1px solid $theme-color2;
+			color: var(--white) !important;
+			border: 1px solid var(--theme2);
 			i {
-				color: $black;
+				color: var(--black);
 				transform: rotate(40deg);
 			}
 		}
 	}
 	&.style4{
-		background-color: $theme-color3 !important;
-		color: $white;
+		background-color: var(--theme3) !important;
+		color: var(--white);
 	}
 	&.white-blur{
 		border-radius: 40.037px;
@@ -69,19 +66,19 @@
 	}
 	&.style-black{
 		background-color: #000;
-		color: $white;
+		color: var(--white);
 	}
 	&.style-white {
-		background-color: $white;
-		color: $text-color;
+		background-color: var(--white);
+		color: var(--text);
 	}
 	&.outline-btn {
 		background-color: transparent;
-		border: 1px solid $theme-color4;
-		color: $theme-color4;
+		border: 1px solid var(--theme4);
+		color: var(--theme4);
 		&:hover {
 			i {
-				color: $white;
+				color: var(--white);
 			}
 		}
 	}
@@ -93,14 +90,14 @@
 		bottom: 0;
 		left: 0;
 		width: 0;
-		background-color: $header-color;
+		background-color: var(--header);
 		z-index: -1;
 		transition: all 0.4s ease-out;
 		border-radius: inherit;
 	}
 
 	&:hover {
-		color: $white;
+		color: var(--white);
 		&::before {
 			width: 100%;
 		}
@@ -113,7 +110,7 @@
 	display: inline-block;
 	font-family: "Open Sans", sans-serif;
 	text-transform: capitalize;
-	color: $theme-color;
+	color: var(--theme);
 
 	i {
 		transform: rotate(-40deg);

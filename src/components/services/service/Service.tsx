@@ -13,42 +13,42 @@ interface DataType {
 const service_data: DataType[] = [
    {
       id: 1,
-      icon: "/assets/img/service/service-icon1.png",
+      icon: "fa-solid fa-building",
       thumb: "/assets/img/service/service-thumb10.png",
       titleKey: "services.items.0.title",
       descKey: "services.items.0.description"
    },
    {
       id: 2,
-      icon: "/assets/img/service/service-icon2.png",
+      icon: "fa-solid fa-chart-line",
       thumb: "/assets/img/service/service-thumb2.png",
       titleKey: "services.items.1.title",
       descKey: "services.items.1.description"
    },
    {
       id: 3,
-      icon: "/assets/img/service/service-icon3.png",
+      icon: "fa-solid fa-handshake",
       thumb: "/assets/img/service/B2b.jpg",
       titleKey: "services.items.2.title",
       descKey: "services.items.2.description"
    },
    {
       id: 4,
-      icon: "/assets/img/service/service-icon4.png",
+      icon: "fa-solid fa-lightbulb",
       thumb: "/assets/img/service/service-thumb4.png",
       titleKey: "services.items.3.title",
       descKey: "services.items.3.description"
    },
    {
       id: 5,
-      icon: "/assets/img/service/service-icon1.png",
+      icon: "fa-solid fa-database",
       thumb: "/assets/img/service/Business data.jpg",
       titleKey: "services.items.4.title",
       descKey: "services.items.4.description"
    },
    {
       id: 6,
-      icon: "/assets/img/service/service-icon2.png",
+      icon: "fa-solid fa-globe",
       thumb: "/assets/img/service/Cultural Planning.jpg",
       titleKey: "services.items.5.title",
       descKey: "services.items.5.description"
@@ -94,8 +94,9 @@ const ServiceArea = () => {
                         </div>
                         <div className="thumb w-100 overflow-hidden position-relative">
                            <img src={item.thumb} className="w-100 rounded-bottom-3" />
-                           <img src={item.icon} alt="img"
-                              className="service-icon position-absolute bottom-0 start-0 m-3" />
+                           <div className="service-icon-circle position-absolute bottom-0 start-0 m-3">
+                              <i className={item.icon}></i>
+                           </div>
                         </div>
                      </div>
                   </div>

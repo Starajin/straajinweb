@@ -6,7 +6,7 @@ const FooterOne = () => {
 
    return (
       <>
-         <footer className="footer-section fix position-relative" style={{ backgroundColor: '#1a1a1a', overflow: 'hidden' }}>
+         <footer className="footer-section fix position-relative" style={{ backgroundColor: 'var(--footer-bg)', overflow: 'hidden' }}>
             {/* Background Pattern */}
             <div className="position-absolute w-100 h-100" style={{ opacity: 0.05, backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="4"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
             
@@ -39,7 +39,7 @@ const FooterOne = () => {
                                  style={{ 
                                     width: '56px', 
                                     height: '56px', 
-                                    backgroundColor: '#023EDA', 
+                                    backgroundColor: 'var(--footer-social-bg)', 
                                     borderRadius: '50%', 
                                     transition: 'all 0.3s ease',
                                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
@@ -50,7 +50,7 @@ const FooterOne = () => {
                                  style={{ 
                                     width: '56px', 
                                     height: '56px', 
-                                    backgroundColor: '#023EDA', 
+                                    backgroundColor: 'var(--footer-social-bg)', 
                                     borderRadius: '50%', 
                                     transition: 'all 0.3s ease',
                                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
@@ -61,7 +61,7 @@ const FooterOne = () => {
                                  style={{ 
                                     width: '56px', 
                                     height: '56px', 
-                                    backgroundColor: '#023EDA', 
+                                    backgroundColor: 'var(--footer-social-bg)', 
                                     borderRadius: '50%', 
                                     transition: 'all 0.3s ease',
                                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
@@ -72,7 +72,7 @@ const FooterOne = () => {
                                  style={{ 
                                     width: '56px', 
                                     height: '56px', 
-                                    backgroundColor: '#023EDA', 
+                                    backgroundColor: 'var(--footer-social-bg)', 
                                     borderRadius: '50%', 
                                     transition: 'all 0.3s ease',
                                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
@@ -82,7 +82,7 @@ const FooterOne = () => {
                            </div>
 
                            {/* Newsletter */}
-                           <div className="p-4 rounded-3" style={{ backgroundColor: '#333333' }}>
+                           <div className="p-4 rounded-3" style={{ backgroundColor: 'var(--footer-newsletter-bg)' }}>
                               <h4 className="h5 fw-semibold mb-3 text-white">{t('footer.stayUpdated')}</h4>
                               <p className="text-white opacity-75 mb-4" style={{ fontSize: '1rem' }}>{t('footer.getLatestInsights')}</p>
                               <div className="d-flex">
@@ -91,12 +91,12 @@ const FooterOne = () => {
                                     placeholder={t('footer.enterEmail')}
                                     className="form-control border-0 rounded-start"
                                     style={{ 
-                                       backgroundColor: '#555555', 
-                                       color: 'white',
-                                       borderColor: '#666666'
+                                       backgroundColor: '#ffffff', 
+                                       color: '#2d2d2d',
+                                       borderColor: 'var(--footer-border)'
                                     }}
                                  />
-                                 <button className="btn px-4 rounded-end" style={{ backgroundColor: '#ffc700', border: 'none' }}>
+                                 <button className="btn px-4 rounded-end" style={{ backgroundColor: 'var(--theme2)', border: 'none' }}>
                                     <i className="fa-light fa-arrow-right text-white" style={{ fontSize: '20px' }}></i>
                                  </button>
                               </div>

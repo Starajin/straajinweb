@@ -15,25 +15,25 @@ const Choose = () => {
    const choose_data: DataType[] = [
       {
          id: 1,
-         icon: "/assets/img/icon/choose-icon1.png",
+         icon: "fa-solid fa-calendar-check",
          title: (<>{t('about.choose.achievements.experience').split(' ')[0]} <br /> {t('about.choose.achievements.experience').split(' ').slice(1).join(' ')}</>),
          desc: t('about.choose.achievements.experienceDesc'),
       },
       {
          id: 2,
-         icon: "/assets/img/icon/choose-icon2.png",
+         icon: "fa-solid fa-network-wired",
          title: (<>{t('about.choose.achievements.network').split(' ')[0]} <br /> {t('about.choose.achievements.network').split(' ').slice(1).join(' ')}</>),
          desc: t('about.choose.achievements.networkDesc'),
       },
       {
          id: 3,
-         icon: "/assets/img/icon/choose-icon3.png",
+         icon: "fa-solid fa-briefcase",
          title: (<>{t('about.choose.achievements.cases').split(' ')[0]} <br /> {t('about.choose.achievements.cases').split(' ').slice(1).join(' ')}</>),
          desc: t('about.choose.achievements.casesDesc'),
       },
       {
          id: 4,
-         icon: "/assets/img/icon/choose-icon4.png",
+         icon: "fa-solid fa-headset",
          title: (<>{t('about.choose.achievements.support').split(' ')[0]} <br /> {t('about.choose.achievements.support').split(' ').slice(1).join(' ')}</>),
          desc: t('about.choose.achievements.supportDesc'),
       },
@@ -67,7 +67,9 @@ const Choose = () => {
                   <div key={item.id} className="col-sm-6 col-lg-3">
                      <div className="choose-items4 wow fadeInDown" data-wow-delay=".2s">
                         <div className="boxes">
-                           <img src={item.icon} alt="img" className="mb-lg-5 mb-4" />
+                           <div className="choose-icon-circle mb-lg-5 mb-4">
+                              <i className={item.icon}></i>
+                           </div>
                            <h5 className="border-bottom pb-3 mb-4">
                               <Link to="/about" className="text-uppercase fw-600 theme-clr4">
                                  {item.title}
