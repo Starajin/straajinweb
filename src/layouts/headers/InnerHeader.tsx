@@ -1,15 +1,40 @@
 import NavMenu from "./Menu/NavMenu"
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import Offcanvas from "./Menu/Offcanvas";
 import HeaderSearch from "./Menu/HeaderSearch";
 import UseSticky from "../../hooks/UseSticky";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const InnerHeader = () => {
 
    const { sticky } = UseSticky();
+   const { i18n } = useTranslation();
    const [offCanvas, setOffCanvas] = useState<boolean>(false);
    const [isSearch, setIsSearch] = useState<boolean>(false);
+
+   const isKorean = (i18n.resolvedLanguage || i18n.language || "").toLowerCase().startsWith("ko");
+   const whatsappDigits = "59767809876";
+
+   const support: { href: string; fallbackHref?: string; label: string } = isKorean
+      ? {
+         href: "kakaotalk://launch",
+         fallbackHref: "https://open.kakao.com/",
+         label: "KakaoTalk",
+      }
+      : {
+         href: `https://wa.me/${whatsappDigits}`,
+         label: "WhatsApp",
+      };
+
+   const onSupportClick = (event: MouseEvent<HTMLAnchorElement>) => {
+      if (!support.fallbackHref) return;
+      event.preventDefault();
+      window.location.href = support.href;
+      window.setTimeout(() => {
+         window.location.href = support.fallbackHref!;
+      }, 700);
+   };
 
    return (
       <>
@@ -59,13 +84,23 @@ const InnerHeader = () => {
                               <i className="fa-solid fa-magnifying-glass"></i>
                            </button>
                            
-                           {/* Phone Icon */}
-                           <button 
-                              className="header-action-btn phone-btn d-flex align-items-center justify-content-center"
-                              title="Call Us"
+                           {/* WhatsApp / KakaoTalk */}
+                           <a
+                              href={support.href}
+                              onClick={onSupportClick}
+                              className="header-action-btn phone-btn d-flex align-items-center justify-content-center header-support-link"
+                              title={support.label}
+                              aria-label={support.label}
+                              rel="noreferrer"
                            >
-                              <i className="fa-solid fa-phone"></i>
-                           </button>
+                              {isKorean ? (
+                                 <span className="header-support-icon header-support-icon--kakao" aria-hidden="true">
+                                    K
+                                 </span>
+                              ) : (
+                                 <i className="fa-brands fa-whatsapp header-support-icon header-support-icon--whatsapp" aria-hidden="true"></i>
+                              )}
+                           </a>
                         </div>
 
                         {/* Mobile Elements */}

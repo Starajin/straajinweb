@@ -5,7 +5,6 @@ import Choose from "./Choose"
 import ServiceArea from "./Service"
 import Solutions from "./Solutions"
 import HowWeWork from "./HowWeWork"
-import CTA from "./CTA"
 
 const Service = () => {
   return (
@@ -16,7 +15,6 @@ const Service = () => {
       <HowWeWork />
       <ServiceArea />
       <Choose />
-      <CTA />
       <FooterOne />
     </>
   )

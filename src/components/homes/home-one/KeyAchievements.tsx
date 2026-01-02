@@ -68,21 +68,18 @@ const KeyAchievements = () => {
               >
                 {/* Image Header */}
                 <div className="achievement-card-image position-relative" style={{ height: '180px', overflow: 'visible' }}>
-                  <div style={{ height: '180px', overflow: 'hidden' }}>
+                  <div style={{ height: '180px', width: '100%', overflow: 'hidden' }}>
                     <img 
                       src={iconConfig[index].image} 
                       alt={item.label}
-                      className="w-100 h-100"
-                      style={{ objectFit: 'cover' }}
-                    />
-                    <div 
-                      className="position-absolute top-0 start-0 w-100"
                       style={{
-                        background: iconConfig[index].gradient,
-                        opacity: 0.75,
-                        height: '180px'
+                        width: '100%',
+                        height: '100%',
+                        display: 'block',
+                        objectFit: 'cover',
+                        objectPosition: 'center'
                       }}
-                    ></div>
+                    />
                   </div>
                   
                   {/* Floating Icon Circle */}
@@ -106,10 +103,7 @@ const KeyAchievements = () => {
                       className={iconConfig[index].icon}
                       style={{
                         fontSize: '24px',
-                        background: iconConfig[index].gradient,
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text'
+                        color: 'var(--theme)'
                       }}
                     ></i>
                   </div>

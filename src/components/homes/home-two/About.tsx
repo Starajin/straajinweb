@@ -8,11 +8,6 @@ const About = () => {
             <div className="row g-4 justify-content-between align-items-end">
                <div className="col-lg-5">
                   <div className="about-thumb2 position-relative">
-                     <div className="text-circles d-sm-block d-none">
-                        <img src="/assets/img/service/text-circle.png" alt="img" className="circle360" />
-                        <img src="/assets/img/service/txt-tumb.png" alt="img"
-                           className="shapee position-absolute top-50 start-50" />
-                     </div>
                      <div className="about-image wow img-custom-anim-right w-100" data-wow-duration="1.3s"
                         data-wow-delay="0.3s">
                         <img src="/assets/img/about/about-thumb2.png" alt="img" className="w-100" />

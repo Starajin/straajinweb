@@ -12,43 +12,43 @@ interface DataType {
 const service_data: DataType[] = [
    {
       id: 1,
-      icon: "/assets/img/service/service-icon1.png",
-      thumb: "/assets/img/service/service-thumb10.png",
+      icon: "fa-solid fa-handshake",
+      thumb: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.0.title",
       descKey: "services.items.0.description"
    },
    {
       id: 2,
-      icon: "/assets/img/service/service-icon2.png",
-      thumb: "/assets/img/service/service-thumb2.png",
+      icon: "fa-solid fa-calendar-days",
+      thumb: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.1.title",
       descKey: "services.items.1.description"
    },
    {
       id: 3,
-      icon: "/assets/img/service/service-icon3.png",
-      thumb: "/assets/img/service/B2b.jpg",
+      icon: "fa-solid fa-building-columns",
+      thumb: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.2.title",
       descKey: "services.items.2.description"
    },
    {
       id: 4,
-      icon: "/assets/img/service/service-icon4.png",
-      thumb: "/assets/img/service/service-thumb4.png",
+      icon: "fa-solid fa-chart-line",
+      thumb: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.3.title",
       descKey: "services.items.3.description"
    },
    {
       id: 5,
-      icon: "/assets/img/service/service-icon1.png",
-      thumb: "/assets/img/service/Business data.jpg",
+      icon: "fa-solid fa-plane",
+      thumb: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.4.title",
       descKey: "services.items.4.description"
    },
    {
       id: 6,
-      icon: "/assets/img/service/service-icon2.png",
-      thumb: "/assets/img/service/Cultural Planning.jpg",
+      icon: "fa-solid fa-gears",
+      thumb: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.5.title",
       descKey: "services.items.5.description"
    },
@@ -58,8 +58,7 @@ const Service = () => {
    const { t } = useTranslation();
    
    return (
-      <section className="service-section section-bg pb-100" style={{ paddingTop: '80px' }}>
-         <div className="d-xxl-block d-none" style={{ paddingTop: '80px' }}></div>
+      <section className="service-section section-bg pt-100 pb-100">
          <div className="container">
             <div className="row g-sm-4 g-3 align-items-end mb-40">
                <div className="col-lg-6 col-md-7">
@@ -83,50 +82,30 @@ const Service = () => {
                </div>
             </div>
             <div className="row g-4">
-               <div className="col-12">
-                  <div className="service-slider-container" style={{
-                     overflowX: 'auto',
-                     overflowY: 'hidden',
-                     whiteSpace: 'nowrap',
-                     paddingBottom: '10px',
-                     scrollbarWidth: 'thin'
-                  }}>
-                     <div className="d-flex gap-4" style={{
-                        width: 'max-content',
-                        minWidth: '100%'
-                     }}>
-                        {service_data.map((item) => (
-                           <div key={item.id} style={{
-                              minWidth: '280px',
-                              maxWidth: '320px',
-                              flex: '0 0 auto'
-                           }}>
-                              <div
-                                 className="team-items service-items1 hover-translate8 px-xxl-6 px-xxl-4 px-sm-3 px-3 section-bg rounded-4" 
-                                 style={{ height: '100%', whiteSpace: 'normal' }}>
-                                 <div className="content d-flex align-items-start gap-3 justify-content-between">
-                                    <div>
-                                       <h5 className="mb-sm-2 mb-1 wow fadeInUp" data-wow-delay=".3s">
-                                          <Link to="/services-details" className="theme-clr4 lh-110 fw-600">
-                                             {t(item.titleKey)}
-                                          </Link>
-                                       </h5>
-                                       <span className="fz-14 d-block theme-clr4 fw-500 mb-1">{t(item.descKey)}</span>
-                                    </div>
-                                    <Link to="/services-details"
-                                       className="theme-clr4 border hover-theme1 min-w-48 w-48 h-48 white-bg rounded-circle d-center d-xl-block d-none fs-five">
-                                       <i className="fa-solid fa-arrow-right"></i>
-                                    </Link>
-                                 </div>
-                                 <div className="thumb w-100 overflow-hidden position-relative">
-                                    <img src={item.thumb} className="w-100 rounded-bottom-3" />
-                                 </div>
-                              </div>
+               {service_data.map((item) => (
+                  <div key={item.id} className="col-lg-4 col-md-6">
+                     <div
+                        className="team-items service-items1 hover-translate8 px-xxl-6 px-xxl-4 px-sm-3 px-3 section-bg rounded-4 h-100">
+                        <div className="content d-flex align-items-start gap-3 justify-content-between">
+                           <div>
+                              <h5 className="mb-sm-2 mb-1 wow fadeInUp" data-wow-delay=".3s">
+                                 <Link to="/services-details" className="theme-clr4 lh-110 fw-600">
+                                    {t(item.titleKey)}
+                                 </Link>
+                              </h5>
+                              <span className="fz-14 d-block theme-clr4 fw-500 mb-1">{t(item.descKey)}</span>
                            </div>
-                        ))}
+                           <Link to="/services-details"
+                              className="theme-clr4 border hover-theme1 min-w-48 w-48 h-48 white-bg rounded-circle d-center d-xl-block d-none fs-five">
+                              <i className="fa-solid fa-arrow-right"></i>
+                           </Link>
+                        </div>
+                        <div className="thumb w-100 overflow-hidden position-relative">
+                           <img src={item.thumb} className="w-100 rounded-bottom-3" alt={t(item.titleKey)} />
+                        </div>
                      </div>
                   </div>
-               </div>
+               ))}
             </div>
          </div>
       </section>

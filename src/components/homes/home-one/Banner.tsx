@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next";
 
@@ -8,346 +7,136 @@ interface Slide {
    descriptionKey: string;
    ctaKey: string;
    backgroundImage: string;
-   featuresKey: string[];
-   graphic: string;
 }
 
 const Banner = () => {
    const { t } = useTranslation();
-   const [currentSlide, setCurrentSlide] = useState(0);
-   const [isAnimating, setIsAnimating] = useState(false);
-
-   const slides: Slide[] = [
-      {
-         titleKey: "banner.slide1.title",
-         subtitleKey: "banner.slide1.subtitle", 
-         descriptionKey: "banner.slide1.description",
-         ctaKey: "banner.slide1.cta",
-         backgroundImage: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-         featuresKey: ["banner.slide1.features.0", "banner.slide1.features.1", "banner.slide1.features.2", "banner.slide1.features.3"],
-         graphic: "market-entry"
-      },
-      {
-         titleKey: "banner.slide2.title",
-         subtitleKey: "banner.slide2.subtitle",
-         descriptionKey: "banner.slide2.description", 
-         ctaKey: "banner.slide2.cta",
-         backgroundImage: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-         featuresKey: ["banner.slide2.features.0", "banner.slide2.features.1", "banner.slide2.features.2", "banner.slide2.features.3"],
-         graphic: "investment"
-      },
-      {
-         titleKey: "banner.slide3.title",
-         subtitleKey: "banner.slide3.subtitle",
-         descriptionKey: "banner.slide3.description",
-         ctaKey: "banner.slide3.cta", 
-         backgroundImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-         featuresKey: ["banner.slide3.features.0", "banner.slide3.features.1", "banner.slide3.features.2", "banner.slide3.features.3"],
-         graphic: "cultural-exchange"
-      }
-   ];
-
-   useEffect(() => {
-      const timer = setInterval(() => {
-         if (!isAnimating) {
-            setCurrentSlide((prev) => (prev + 1) % slides.length);
-         }
-      }, 6000);
-      return () => clearInterval(timer);
-   }, [slides.length, isAnimating]);
-
-   const nextSlide = () => {
-      if (!isAnimating) {
-         setIsAnimating(true);
-         setCurrentSlide((prev) => (prev + 1) % slides.length);
-         setTimeout(() => setIsAnimating(false), 500);
-      }
-   };
-
-   const prevSlide = () => {
-      if (!isAnimating) {
-         setIsAnimating(true);
-         setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-         setTimeout(() => setIsAnimating(false), 500);
-      }
-   };
-
-   const goToSlide = (index: number) => {
-      if (!isAnimating && index !== currentSlide) {
-         setIsAnimating(true);
-         setCurrentSlide(index);
-         setTimeout(() => setIsAnimating(false), 500);
-      }
+   const slide: Slide = {
+      titleKey: "banner.slide1.title",
+      subtitleKey: "banner.slide1.subtitle",
+      descriptionKey: "banner.slide1.description",
+      ctaKey: "banner.slide1.cta",
+      backgroundImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
    };
 
    return (
       <>
-         {/* Hero Slider Section */}
+         {/* Hero Banner Section */}
          <section className="banner-section style1 position-relative overflow-hidden" 
                   style={{ 
                      height: '100vh',
-                     minHeight: '700px',
-                     paddingTop: '75px'
+                     minHeight: '600px',
+                     paddingTop: '70px'
                   }}>
             <div className="position-relative w-100 h-100">
-               {/* Slides */}
-               {slides.map((slide, index) => (
+               <div
+                  className="position-absolute w-100 h-100"
+                  style={{
+                     backgroundImage: `url(${slide.backgroundImage})`,
+                     backgroundSize: 'cover',
+                     backgroundPosition: 'center',
+                     backgroundRepeat: 'no-repeat',
+                     zIndex: 10,
+                  }}
+               >
+                  {/* Dark Overlay for Content Visibility */}
+                  <div className="position-absolute w-100 h-100" style={{ backgroundColor: 'rgba(0,0,0,0.55)' }}></div>
+
+                  {/* Gradient Overlay */}
                   <div
-                     key={index}
-                     className={`position-absolute w-100 h-100 ${
-                        index === currentSlide ? 'opacity-100' : 'opacity-0'
-                     }`}
-                     style={{ 
-                        backgroundImage: `url(${slide.backgroundImage})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat',
-                        transition: 'opacity 0.5s ease-in-out',
-                        zIndex: index === currentSlide ? 10 : 0
+                     className="position-absolute w-100 h-100"
+                     style={{
+                        background: 'linear-gradient(135deg, rgba(0,0,0,0.4) 0%, transparent 50%, rgba(0,0,0,0.3) 100%)',
                      }}
-                  >
-                     {/* Dark Overlay for Content Visibility */}
-                     <div className="position-absolute w-100 h-100" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}></div>
-                     
-                     {/* Optional Subtle Pattern Overlay */}
-                     <div className="position-absolute w-100 h-100" 
-                          style={{ 
-                             background: 'linear-gradient(to right, rgba(0,0,0,0.3), transparent, rgba(0,0,0,0.2))' 
-                          }}></div>
+                  ></div>
 
-                     <div className="position-relative h-100 d-flex align-items-center" style={{ zIndex: 20 }}>
-                        <div className="container-fluid" style={{ maxWidth: '1200px' }}>
-                           <div className="row g-4 g-lg-5 align-items-center">
-                              {/* Content - Left Side */}
-                              <div className="col-lg-6">
-                                 <div className="text-white text-center text-lg-start">
-                                    {/* Main Title */}
-                                    <div className="mb-4 mb-lg-5">
-                                       <h1 className="fw-bold mb-2 text-white" 
-                                           style={{ 
-                                              fontSize: 'clamp(2rem, 5vw, 4rem)',
-                                              lineHeight: 1.2,
-                                              fontFamily: 'Malgun Gothic, sans-serif',
-                                              color: '#ffffff'
-                                           }}>
-                                          {t(slide.titleKey)}
-                                       </h1>
-                                       <h2 className="fw-bold" 
-                                           style={{ 
-                                              fontSize: 'clamp(1.5rem, 4vw, 3rem)',
-                                              color: 'var(--hero-subtitle-color)',
-                                              wordBreak: 'break-word',
-                                              fontFamily: 'Malgun Gothic, sans-serif'
-                                           }}>
+                  <div className="position-relative h-100 d-flex align-items-center" style={{ zIndex: 20 }}>
+                     <div className="container">
+                        <div className="row justify-content-center">
+                           {/* Centered Content */}
+                           <div className="col-lg-10 col-xl-8">
+                              <div className="text-white text-center">
+                                 {/* Main Title */}
+                                 <div className="mb-4">
+                                    <h1
+                                       className="fw-bold mb-0 text-white"
+                                       style={{
+                                          fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+                                          lineHeight: 1.3,
+                                       }}
+                                    >
+                                       {t(slide.titleKey)}{' '}
+                                       <span style={{ color: 'var(--hero-subtitle-color)' }}>
                                           {t(slide.subtitleKey)}
-                                       </h2>
-                                    </div>
-                                    
-                                    {/* Description */}
-                                    <p className="mb-4 mb-lg-5" 
-                                       style={{ 
-                                          fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
-                                          color: 'rgba(255,255,255,0.9)',
-                                          lineHeight: 1.6,
-                                          maxWidth: '32rem',
-                                          margin: '0 auto',
-                                          fontWeight: 'normal'
-                                       }}>
-                                       {t(slide.descriptionKey)}
-                                    </p>
-
-                                    {/* CTA Button */}
-                                    <div className="pt-3">
-                                       <Link to="/contact" 
-                                             className="btn d-inline-flex align-items-center justify-content-center px-4 px-lg-5 py-3 py-lg-4 fw-semibold rounded-3 text-white text-decoration-none hero-cta-btn"
-                                             style={{ 
-                                                backgroundColor: 'var(--hero-cta-bg)',
-                                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                                                transition: 'all 0.3s ease'
-                                             }}>
-                                          {t(slide.ctaKey)}
-                                          <i className="fa-light fa-arrow-right ms-2 hero-arrow" 
-                                             style={{ 
-                                                fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-                                                transition: 'transform 0.3s ease'
-                                             }}></i>
-                                       </Link>
-                                    </div>
+                                       </span>
+                                    </h1>
                                  </div>
-                              </div>
 
-                              {/* Features Grid - Right Side */}
-                              <div className="col-lg-6 d-none d-md-block">
-                                 <div className="row g-3 g-lg-4">
-                                    {slide.featuresKey.map((featureKey, featureIndex) => (
-                                       <div key={featureIndex} className="col-sm-6">
-                                          <div className="p-3 p-lg-4 rounded-3 feature-card"
-                                               style={{ 
-                                                  backgroundColor: 'rgba(255,255,255,0.2)', 
-                                                  backdropFilter: 'blur(16px)',
-                                                  border: '1px solid rgba(255,255,255,0.3)',
-                                                  transition: 'all 0.3s ease'
-                                               }}>
-                                             <div className="d-flex align-items-center justify-content-between mb-2">
-                                                <div style={{ 
-                                                   width: 'clamp(6px, 1.5vw, 8px)', 
-                                                   height: 'clamp(6px, 1.5vw, 8px)', 
-                                                   backgroundColor: 'var(--hero-dot-color)',
-                                                   borderRadius: '50%'
-                                                }}></div>
-                                                <div className="feature-icon-container"
-                                                     style={{ 
-                                                        width: 'clamp(20px, 5vw, 24px)', 
-                                                        height: 'clamp(20px, 5vw, 24px)', 
-                                                        border: '1px solid rgba(255,255,255,0.4)',
-                                                        borderRadius: '4px',
-                                                        transition: 'border-color 0.3s ease'
-                                                     }}>
-                                                   <div className="w-100 h-100 rounded"
-                                                        style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}></div>
-                                                </div>
-                                             </div>
-                                             <h4 className="text-white fw-semibold mb-2" 
-                                                 style={{ 
-                                                    fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
-                                                    lineHeight: 1.3,
-                                                    fontFamily: 'Malgun Gothic, sans-serif'
-                                                 }}>
-                                                {t(featureKey)}
-                                             </h4>
-                                             <div style={{ 
-                                                height: '2px', 
-                                                background: 'var(--hero-line-gradient)',
-                                                borderRadius: '1px'
-                                             }}></div>
-                                          </div>
-                                       </div>
-                                    ))}
+                                 {/* Description */}
+                                 <p
+                                    className="mx-auto mb-4"
+                                    style={{
+                                       fontSize: 'clamp(0.875rem, 1.2vw, 1rem)',
+                                       color: 'rgba(255,255,255,0.9)',
+                                       lineHeight: 1.6,
+                                       maxWidth: '550px',
+                                    }}
+                                 >
+                                    {t(slide.descriptionKey)}
+                                 </p>
+
+                                 {/* CTA Button */}
+                                 <div>
+                                    <Link
+                                       to="/contact"
+                                       className="btn d-inline-flex align-items-center justify-content-center px-4 py-3 fw-semibold rounded-pill text-white text-decoration-none hero-cta-btn"
+                                       style={{
+                                          backgroundColor: 'var(--hero-cta-bg)',
+                                          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+                                          transition: 'all 0.3s ease',
+                                          fontSize: '1rem',
+                                       }}
+                                    >
+                                       {t(slide.ctaKey)}
+                                       <i
+                                          className="fa-light fa-arrow-right ms-2 hero-arrow"
+                                          style={{ transition: 'transform 0.3s ease' }}
+                                       ></i>
+                                    </Link>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
                   </div>
-               ))}
-
-               {/* Slide Navigation */}
-               <div className="position-absolute w-100 d-flex justify-content-center"
-                    style={{ 
-                       bottom: 'clamp(1rem, 4vw, 2rem)',
-                       zIndex: 30
-                    }}>
-                  <div className="d-flex align-items-center" style={{ gap: 'clamp(0.5rem, 2vw, 1rem)' }}>
-                     <button
-                        onClick={prevSlide}
-                        disabled={isAnimating}
-                        className="btn d-flex align-items-center justify-content-center rounded-circle text-white nav-btn"
-                        style={{ 
-                           width: 'clamp(40px, 10vw, 48px)', 
-                           height: 'clamp(40px, 10vw, 48px)',
-                           backgroundColor: 'rgba(255,255,255,0.2)', 
-                           backdropFilter: 'blur(8px)',
-                           border: '1px solid rgba(255,255,255,0.3)',
-                           transition: 'all 0.3s ease'
-                        }}
-                     >
-                        <i className="fa-light fa-chevron-left" 
-                           style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}></i>
-                     </button>
-                     
-                     <div className="d-flex" style={{ gap: 'clamp(0.25rem, 1vw, 0.5rem)' }}>
-                        {slides.map((_, index) => (
-                           <button
-                              key={index}
-                              onClick={() => goToSlide(index)}
-                              disabled={isAnimating}
-                              className="border-0 rounded-pill slide-indicator"
-                              style={{ 
-                                 height: 'clamp(8px, 2vw, 12px)',
-                                 width: index === currentSlide 
-                                    ? 'clamp(24px, 6vw, 32px)' 
-                                    : 'clamp(8px, 2vw, 12px)',
-                                 backgroundColor: index === currentSlide 
-                                    ? 'white' 
-                                    : 'rgba(255,255,255,0.4)',
-                                 transition: 'all 0.3s ease'
-                              }}
-                           />
-                        ))}
-                     </div>
-                     
-                     <button
-                        onClick={nextSlide}
-                        disabled={isAnimating}
-                        className="btn d-flex align-items-center justify-content-center rounded-circle text-white nav-btn"
-                        style={{ 
-                           width: 'clamp(40px, 10vw, 48px)', 
-                           height: 'clamp(40px, 10vw, 48px)',
-                           backgroundColor: 'rgba(255,255,255,0.2)', 
-                           backdropFilter: 'blur(8px)',
-                           border: '1px solid rgba(255,255,255,0.3)',
-                           transition: 'all 0.3s ease'
-                        }}
-                     >
-                        <i className="fa-light fa-chevron-right" 
-                           style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}></i>
-                     </button>
-                  </div>
                </div>
             </div>
          </section>
 
-         {/* Custom Styles for Enhanced Interactions */}
+         {/* Custom Styles */}
          <style>{`
             @media (min-width: 576px) {
-               .position-relative section {
-                  height: 70vh !important;
-                  min-height: 700px !important;
-               }
-            }
-            
-            @media (min-width: 768px) {
-               .position-relative section {
+               .banner-section.style1 {
                   height: 80vh !important;
-                  min-height: 800px !important;
+                  min-height: 550px !important;
                }
             }
             
             @media (min-width: 992px) {
-               .position-relative section {
-                  min-height: 100vh !important;
+               .banner-section.style1 {
+                  height: 85vh !important;
+                  min-height: 600px !important;
                }
             }
             
             .hero-cta-btn:hover {
-               background-color: rgba(2, 62, 218, 0.8) !important;
-               box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
-               transform: translateY(-2px);
-            }
-            
-            .hero-arrow {
-               transition: transform 0.3s ease;
+               background-color: var(--hero-cta-hover-bg) !important;
+               box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+               transform: translateY(-3px);
             }
             
             .hero-cta-btn:hover .hero-arrow {
-               transform: translateX(4px);
-            }
-            
-            .feature-card:hover {
-               background-color: rgba(255,255,255,0.3) !important;
-            }
-            
-            .feature-card:hover .feature-icon-container {
-               border-color: #ffc700 !important;
-            }
-            
-            .nav-btn:hover {
-               background-color: white !important;
-               color: #333 !important;
-            }
-            
-            .slide-indicator:hover {
-               background-color: white !important;
+               transform: translateX(5px);
             }
          `}</style>
       </>

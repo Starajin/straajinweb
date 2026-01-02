@@ -2,7 +2,6 @@ import { HelmetProvider } from "react-helmet-async"
 import { useEffect } from "react"
 import AppNavigation from "./navigation/Navigation"
 import { useLanguageEffect } from "./hooks/useLanguageEffect"
-import ThemeSwitcher from "./components/ThemeSwitcher"
 
 function App() {
   // Apply language effects (HTML lang attribute, CSS classes)
@@ -10,14 +9,23 @@ function App() {
 
   // Initialize theme on app start
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "theme-royal-blue";
-    document.documentElement.className = savedTheme;
+    const theme = "theme-navy-amber";
+    const root = document.documentElement;
+
+    // Preserve any existing non-theme classes (e.g. language classes)
+    Array.from(root.classList).forEach((className) => {
+      if (className.startsWith("theme-")) {
+        root.classList.remove(className);
+      }
+    });
+
+    root.classList.add(theme);
+    localStorage.setItem("theme", theme);
   }, []);
 
   return (
     <>
       <HelmetProvider>
-        <ThemeSwitcher />
         <AppNavigation />
       </HelmetProvider>
     </>

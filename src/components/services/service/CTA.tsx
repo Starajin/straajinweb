@@ -36,8 +36,8 @@ const CTA = () => {
                               <i className="fa-solid fa-phone text-white"></i>
                            </div>
                            <div className="text-start">
-                              <h6 className="theme-clr4 mb-1">{t('cta.contactInfo.phone.title')}</h6>
-                              <p className="theme-clr4 opacity-75 mb-0 small">{t('cta.contactInfo.phone.number')}</p>
+                              <h6 className="theme-clr4 mb-1">{t('cta.supportInfo.phone.title')}</h6>
+                              <p className="theme-clr4 opacity-75 mb-0 small">{t('cta.supportInfo.phone.number')}</p>
                            </div>
                         </div>
                      </div>
@@ -49,8 +49,8 @@ const CTA = () => {
                               <i className="fa-solid fa-envelope text-white"></i>
                            </div>
                            <div className="text-start">
-                              <h6 className="theme-clr4 mb-1">{t('cta.contactInfo.email.title')}</h6>
-                              <p className="theme-clr4 opacity-75 mb-0 small">{t('cta.contactInfo.email.address')}</p>
+                              <h6 className="theme-clr4 mb-1">{t('cta.supportInfo.email.title')}</h6>
+                              <p className="theme-clr4 opacity-75 mb-0 small">{t('cta.supportInfo.email.address')}</p>
                            </div>
                         </div>
                      </div>
@@ -62,8 +62,8 @@ const CTA = () => {
                               <i className="fa-solid fa-map-marker-alt text-white"></i>
                            </div>
                            <div className="text-start">
-                              <h6 className="theme-clr4 mb-1">{t('cta.contactInfo.location.title')}</h6>
-                              <p className="theme-clr4 opacity-75 mb-0 small">{t('cta.contactInfo.location.address')}</p>
+                              <h6 className="theme-clr4 mb-1">{t('cta.supportInfo.location.title')}</h6>
+                              <p className="theme-clr4 opacity-75 mb-0 small">{t('cta.supportInfo.location.address')}</p>
                            </div>
                         </div>
                      </div>

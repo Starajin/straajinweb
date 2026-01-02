@@ -13,8 +13,6 @@
 @import "/assets/scss/main.scss";
 
 /* Theme files */
-@import "../themes/theme-royal-blue.scss";
-@import "../themes/theme-teal-coral.scss";
 @import "../themes/theme-navy-amber.scss";
 
 /* Custom overrides - must be last to take precedence */

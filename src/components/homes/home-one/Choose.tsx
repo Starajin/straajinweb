@@ -40,10 +40,7 @@ const Choose = () => {
    const [selectedItem, setSelectedItem] = useState<number>(1); // Default to first item
 
    return (
-      <section className="choose-section d-center z-1 position-relative section-bg">
-         <div className="choose-wrapper-section">
-            <img src="/assets/img/service/choose-bg.png" alt="img" />
-         </div>
+      <section className="choose-section z-1 position-relative section-bg pt-100 pb-100">
          <div className="container">
             <div className="row g-4">
                <div className="col-lg-6 pt-lg-5 mt-5">
@@ -81,11 +78,6 @@ const Choose = () => {
                         </div>
                         <div className="thumb rounded-3 position-relative w-100 " >
                            <img src="assets/img/service/Choose.jpg" alt="img" className="w-100 rounded-3" />
-                           <div className="text-circles">
-                              <img src="assets/img/service/cIRCLE.png" alt="img" className="circle360" />
-                              <img src="assets/img/service/Icon-1.png" alt="img"
-                                 className="shapee position-absolute top-50 start-50" />
-                           </div>
                         </div>
                      </div>
                   </div>

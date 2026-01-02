@@ -138,11 +138,11 @@
     },
     "offices": {
       "korea": {
-        "title": "KR Korea Office",
+        "title": "Korea Office",
         "location": "Seoul, South Korea"
       },
       "india": {
-        "title": "IN India Office", 
+        "title": "India Office", 
         "location": "Mumbai, India"
       }
     },
@@ -166,10 +166,10 @@
   },
   "banner": {
     "slide1": {
-      "title": "Market Entry",
-      "subtitle": "Strategy",
-      "description": "Transform your business aspirations into reality with our comprehensive market entry solutions for Korean markets.",
-      "cta": "Start Your Journey",
+      "title": "Connecting Korea & India",
+      "subtitle": "for Business Success",
+      "description": "Your trusted partner for trade promotion, business matchmaking, and strategic partnerships between Korea and India.",
+      "cta": "Get Started",
       "features": [
         "Comprehensive Market Analysis",
         "Regulatory Compliance Support", 
@@ -331,28 +331,28 @@
     "cultural": "Art & Cultural Exchange",
     "items": [
       {
-        "title": "Business Entry",
-        "description": "Company Incorporation, Accounting/Taxation advisory, Market Research"
+        "title": "Trade Promotion & Business Matchmaking",
+        "description": "Organizing B2B meetings and sector-specific trade fairs. Facilitating export promotion and sourcing partnerships. Hosting buyer-seller meets and roundtables with CEOs and decision-makers."
       },
       {
-        "title": "Investment Advisory",
-        "description": "Alternative Investment portfolio advisory (Startups, Bond, etc.), Indian Startups reports"
+        "title": "Exhibition & Event Management (B2B)",
+        "description": "Organizing flagship events like India Trend Fair, India Fashion & Lifestyle Show, India Auto Parts Show, India Food Fair Korea. Collaborating with Korean and Indian trade bodies and embassies. Supporting exporters to participate in exhibitions."
       },
       {
-        "title": "B2B Partner Matching", 
-        "description": "M&A(Merge and Acquisitions), Technology Transferring, Commodity & Industrial goods procurement"
+        "title": "MICE & Stand Building, Pavilion Construction",
+        "description": "Designing and executing Meetings, Incentives, Conferences, and Exhibitions (MICE) for corporates. Organize Press Conferences, product launches. Exhibition Booth, Pavilion Construction & Decoration."
       },
       {
-        "title": "Strategy Consultation",
-        "description": "Market Entry Strategy, Brand Building strategy, Sales Strategy, Marketing Strategy"
+        "title": "Export Promotion Support / Market Research",
+        "description": "Conduct in-depth, sector-specific market research for companies entering India or Korea. Support for product adaptation, packaging design, and labeling. Language & translation support for product catalogs."
       },
       {
-        "title": "Business Data",
-        "description": "KOnnectIN platform, Buyer & Seller search, India Industry & market news"
+        "title": "Delegation Support & Business Tours",
+        "description": "Coordinating high-level government and business delegations. Arranging factory visits, farm visits, technology tours, seminars, and visits to innovation and R&D centers. Facilitating G2G and B2B dialogues."
       },
       {
-        "title": "Cultural Project & Talent Development",
-        "description": "Project Planning, Project Coordination"
+        "title": "Technology Transfer & Joint Venture Collaboration",
+        "description": "Identifying and facilitating Joint Venture / technology transfer opportunities between Indian and Korean firms. Supporting collaborations in technical textiles, smart manufacturing, and precision agriculture."
       }
     ]
   },

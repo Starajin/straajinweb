@@ -102,11 +102,8 @@ const Partners = () => {
       maxHeight: '45px',
       maxWidth: '130px',
       objectFit: 'contain' as const,
-      filter: 'grayscale(60%) opacity(0.8)',
+      filter: 'none',
       transition: 'all 0.3s ease',
-      imageRendering: 'crisp-edges' as const,
-      WebkitFontSmoothing: 'antialiased' as const,
-      MozOsxFontSmoothing: 'grayscale' as const,
       backfaceVisibility: 'hidden' as const,
       WebkitBackfaceVisibility: 'hidden' as const,
       transform: 'translateZ(0)',
@@ -124,19 +121,13 @@ const Partners = () => {
             }
             
             .partner-logo-sharp {
-               image-rendering: -webkit-optimize-contrast !important;
-               image-rendering: -moz-crisp-edges !important;
-               image-rendering: crisp-edges !important;
-               image-rendering: pixelated !important;
-               -webkit-font-smoothing: antialiased !important;
-               -moz-osx-font-smoothing: grayscale !important;
+               image-rendering: auto !important;
                transform: translateZ(0) !important;
                backface-visibility: hidden !important;
                perspective: 1000px !important;
             }
             
             .partner-logo-sharp:hover {
-               filter: grayscale(0%) opacity(1) contrast(1.1) brightness(1.05) !important;
                transform: translateZ(0) scale(1.02) !important;
             }
             `}

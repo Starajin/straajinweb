@@ -13,43 +13,43 @@ interface DataType {
 const service_data: DataType[] = [
    {
       id: 1,
-      icon: "fa-solid fa-building",
-      thumb: "/assets/img/service/service-thumb10.png",
+      icon: "fa-solid fa-handshake",
+      thumb: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.0.title",
       descKey: "services.items.0.description"
    },
    {
       id: 2,
-      icon: "fa-solid fa-chart-line",
-      thumb: "/assets/img/service/service-thumb2.png",
+      icon: "fa-solid fa-calendar-days",
+      thumb: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.1.title",
       descKey: "services.items.1.description"
    },
    {
       id: 3,
-      icon: "fa-solid fa-handshake",
-      thumb: "/assets/img/service/B2b.jpg",
+      icon: "fa-solid fa-building-columns",
+      thumb: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.2.title",
       descKey: "services.items.2.description"
    },
    {
       id: 4,
-      icon: "fa-solid fa-lightbulb",
-      thumb: "/assets/img/service/service-thumb4.png",
+      icon: "fa-solid fa-chart-line",
+      thumb: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.3.title",
       descKey: "services.items.3.description"
    },
    {
       id: 5,
-      icon: "fa-solid fa-database",
-      thumb: "/assets/img/service/Business data.jpg",
+      icon: "fa-solid fa-plane",
+      thumb: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.4.title",
       descKey: "services.items.4.description"
    },
    {
       id: 6,
-      icon: "fa-solid fa-globe",
-      thumb: "/assets/img/service/Cultural Planning.jpg",
+      icon: "fa-solid fa-gears",
+      thumb: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       titleKey: "services.items.5.title",
       descKey: "services.items.5.description"
    },

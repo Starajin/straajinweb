@@ -5,12 +5,9 @@
 /* Industries Section - Extended Background Image Coverage */
 .industries-section {
   position: relative;
-  background-image: url('assets/img/element/industry-bg.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 700px !important;
-  padding: 30px 0 50px 0 !important;
+  background-image: none !important;
+  min-height: auto !important;
+  padding: 0 !important;
 }
 
 .industries-section .container {
@@ -18,96 +15,52 @@
   z-index: 2;
 }
 
-/* Left-align section title like other sections */
-.industries-section .section-title {
-  text-align: left !important;
-  font-size: 2.5rem !important;
-  font-weight: bold !important;
-  color: #333 !important;
-  margin-bottom: 1rem !important;
-  margin-top: 0 !important;
+/* Industries Section - refreshed layout */
+.industries-section .industries-description {
+  max-width: 820px;
+  color: var(--text);
+  opacity: 0.9;
 }
 
-/* Move title row up */
-.industries-section .row.mb-5 {
-  margin-bottom: 0.5rem !important;
+.industry-card {
+  display: flex;
+  gap: 16px;
+  padding: 22px 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background-color: var(--white);
 }
 
-/* Graph image container */
-.graph-image-container {
-  position: relative;
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+.industry-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
 }
 
-/* Smaller text sizes for better readability */
-.industries-section .industry-title,
-.industries-section ul li .industry-title,
-.industries-section .boxex .industry-title {
-  font-size: 1.2rem !important;
-  font-weight: 600 !important;
-  color: #333 !important;
-  margin-bottom: 0.5rem !important;
-  line-height: 1.4 !important;
+.industry-icon i {
+  color: var(--theme);
+  font-size: 22px;
 }
 
-.industries-section .industry-description,
-.industries-section ul li .industry-description,
-.industries-section .boxex .industry-description {
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
-  margin-top: 0.3rem !important;
-  color: #666 !important;
+.industry-body p {
+  color: var(--text);
+  opacity: 0.85;
 }
 
-/* Enhanced readability with better spacing */
-.industries-section ul li {
-  margin-bottom: 0.8rem !important;
-  padding: 0 !important;
-  color: #333 !important;
-}
-
-/* Ensure content stays within background image bounds and starts higher */
-.industries-section .boxex {
-  padding: 0 1rem !important;
-  max-height: 100% !important;
-  justify-content: flex-start !important;
-  align-items: flex-start !important;
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-/* Tighter spacing for content rows */
-.industries-section .row.g-4 {
-  margin-top: 0 !important;
-}
-
-/* Reset list styles */
-.industries-section ul {
-  padding-left: 0 !important;
-  margin-bottom: 0 !important;
-  list-style: none !important;
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-  .industries-section {
-    min-height: 500px !important;
-    padding: 20px 0 30px 0 !important;
+@media (max-width: 575px) {
+  .industry-card {
+    padding: 18px 16px;
+    gap: 12px;
   }
-  
-  .industries-section .section-title {
-    font-size: 1.8rem !important;
-    margin-bottom: 1rem !important;
-  }
-  
-  .industries-section .container {
-    padding: 0 15px !important;
-  }
-  
-  .industries-section .boxex {
-    padding: 0 0.5rem !important;
+  .industry-icon {
+    width: 26px;
+    height: 26px;
   }
 }
 
@@ -158,30 +111,12 @@
 }
 
 .choose-items.selected .choose-icon-wrapper {
-  background-color: var(--theme2);
+  /* Keep the same accent style as unselected items */
+  background-color: rgba(var(--theme2-rgb), 0.1);
 }
 
 .choose-items.selected .choose-icon-wrapper i {
-  color: #fff;
-}
-
-/* Navy & Amber Theme - Navy background with white text on ALL selected items */
-:root.theme-navy-amber .choose-items.selected {
-  background-color: var(--theme2) !important;
-  border-color: var(--theme2) !important;
-}
-
-:root.theme-navy-amber .choose-items.selected h4,
-:root.theme-navy-amber .choose-items.selected p {
-  color: #2d2d2d !important;
-}
-
-:root.theme-navy-amber .choose-items.selected .choose-icon-wrapper {
-  background-color: var(--theme);
-}
-
-:root.theme-navy-amber .choose-items.selected .choose-icon-wrapper i {
-  color: #fff;
+  color: var(--theme2);
 }
 
 /* ===================================================
@@ -256,77 +191,6 @@
 }
 
 /* ===================================================
-   ROYAL BLUE & GOLD THEME - WHITE TEXT ON HOVER/ACTIVE STATES
-   ================================================== */
-
-/* Team Items (Services, About, etc.) - Hover state */
-:root.theme-royal-blue .team-items:hover h3,
-:root.theme-royal-blue .team-items:hover h4,
-:root.theme-royal-blue .team-items:hover h5,
-:root.theme-royal-blue .team-items:hover p,
-:root.theme-royal-blue .team-items:hover span,
-:root.theme-royal-blue .team-items:hover a {
-  color: #fff !important;
-}
-
-/* Service Items 2 - Hover state */
-:root.theme-royal-blue .service-items2:hover h3,
-:root.theme-royal-blue .service-items2:hover h4,
-:root.theme-royal-blue .service-items2:hover h5,
-:root.theme-royal-blue .service-items2:hover p,
-:root.theme-royal-blue .service-items2:hover span {
-  color: #fff !important;
-}
-
-/* Service Items 3 - White text on hover */
-:root.theme-royal-blue .service-items3:hover h3,
-:root.theme-royal-blue .service-items3:hover h4,
-:root.theme-royal-blue .service-items3:hover h5,
-:root.theme-royal-blue .service-items3:hover p,
-:root.theme-royal-blue .service-items3:hover span,
-:root.theme-royal-blue .service-items3:hover a {
-  color: #fff !important;
-}
-
-/* Blog Items - Hover state */
-:root.theme-royal-blue .blog-items2:hover h3,
-:root.theme-royal-blue .blog-items2:hover h4,
-:root.theme-royal-blue .blog-items2:hover h5,
-:root.theme-royal-blue .blog-items2:hover p,
-:root.theme-royal-blue .blog-items2:hover span,
-:root.theme-royal-blue .blog-items2:hover a {
-  color: #fff !important;
-}
-
-/* Blog Hover Primary 3 */
-:root.theme-royal-blue .blog-hove-primary3:hover h3,
-:root.theme-royal-blue .blog-hove-primary3:hover h4,
-:root.theme-royal-blue .blog-hove-primary3:hover h5,
-:root.theme-royal-blue .blog-hove-primary3:hover p,
-:root.theme-royal-blue .blog-hove-primary3:hover span {
-  color: #fff !important;
-}
-
-/* Financial Items Subbox */
-:root.theme-royal-blue .financial-subbox h3,
-:root.theme-royal-blue .financial-subbox h4,
-:root.theme-royal-blue .financial-subbox h5,
-:root.theme-royal-blue .financial-subbox p,
-:root.theme-royal-blue .financial-subbox span,
-:root.theme-royal-blue .financial-subbox a {
-  color: #fff !important;
-}
-
-/* Approch Items */
-:root.theme-royal-blue .approch-items:hover h3,
-:root.theme-royal-blue .approch-items:hover h4,
-:root.theme-royal-blue .approch-items:hover h5,
-:root.theme-royal-blue .approch-items:hover p,
-:root.theme-royal-blue .approch-items:hover span {
-  color: #fff !important;
-}
-
-/* ===================================================
    FINANCIAL/MISSION CARDS - ICON BACKGROUND IN DEFAULT STATE
    ================================================== */
 
@@ -340,14 +204,6 @@
 }
 
 /* Ensure icon background is visible in all themes - DEFAULT STATE */
-:root.theme-royal-blue .financial-items .icon.theme-bg {
-  background-color: #023EDA !important;
-}
-
-:root.theme-teal-coral .financial-items .icon.theme-bg {
-  background-color: #0D9488 !important;
-}
-
 :root.theme-navy-amber .financial-items .icon.theme-bg {
   background-color: #1E3A8A !important;
 }
@@ -362,14 +218,6 @@
 }
 
 /* Theme-specific hover icon colors */
-:root.theme-royal-blue .financial-items:hover .icon.theme-bg img {
-  filter: brightness(0) saturate(100%) invert(20%) sepia(90%) saturate(4000%) hue-rotate(215deg) brightness(95%) contrast(105%);
-}
-
-:root.theme-teal-coral .financial-items:hover .icon.theme-bg img {
-  filter: brightness(0) saturate(100%) invert(47%) sepia(61%) saturate(1234%) hue-rotate(138deg) brightness(91%) contrast(101%);
-}
-
 :root.theme-navy-amber .financial-items:hover .icon.theme-bg img {
   filter: brightness(0) saturate(100%) invert(16%) sepia(72%) saturate(2547%) hue-rotate(213deg) brightness(90%) contrast(108%);
 }
@@ -409,32 +257,12 @@
   transition: all 0.3s ease;
 }
 
-/* Royal Blue & Gold - Circle in Royal Blue, Icon White */
-:root.theme-royal-blue .choose-icon-circle {
-  background-color: #023EDA;
-}
-
-/* Teal & Slate Grey - Circle in Teal, Icon White */
-:root.theme-teal-coral .choose-icon-circle {
-  background-color: #0D9488;
-}
-
 /* Navy & Amber - Circle in Navy, Icon White */
 :root.theme-navy-amber .choose-icon-circle {
   background-color: #1E3A8A;
 }
 
 /* Hover state - Circle becomes secondary color, Icon stays white */
-:root.theme-royal-blue .choose-items4:hover .choose-icon-circle {
-  background-color: #ffc700;
-  transform: scale(1.15);
-}
-
-:root.theme-teal-coral .choose-items4:hover .choose-icon-circle {
-  background-color: #9333EA;
-  transform: scale(1.15);
-}
-
 :root.theme-navy-amber .choose-items4:hover .choose-icon-circle {
   background-color: #F59E0B;
   transform: scale(1.15);
@@ -490,16 +318,6 @@
   transform: scale(1.15);
 }
 
-/* Royal Blue & Gold - Icon circle in Gold */
-:root.theme-royal-blue .service-icon-circle {
-  background-color: #ffc700;
-}
-
-/* Teal & Slate Grey - Icon circle in Slate Grey */
-:root.theme-teal-coral .service-icon-circle {
-  background-color: #64748B;
-}
-
 /* Navy & Amber - Icon circle in Amber */
 :root.theme-navy-amber .service-icon-circle {
   background-color: #F59E0B;
@@ -517,16 +335,6 @@
 /* ===================================================
    SERVICES PAGE - CTA CONTACT INFO ICON CIRCLES
    ================================================== */
-
-/* Royal Blue & Gold - Icon circles in Royal Blue */
-:root.theme-royal-blue .cta-icon-circle {
-  background-color: #023EDA !important;
-}
-
-/* Teal & Slate Grey - Icon circles in Teal */
-:root.theme-teal-coral .cta-icon-circle {
-  background-color: #0D9488 !important;
-}
 
 /* Navy & Amber - Icon circles in Navy */
 :root.theme-navy-amber .cta-icon-circle {
@@ -595,6 +403,222 @@
 .header-phone-icon {
   background-color: var(--theme) !important;
   color: #ffffff !important;
+}
+
+/* ===================================================
+   HEADER - SUPPORT (WHATSAPP / KAKAOTALK)
+   ================================================== */
+
+.header-support-icon {
+  background-color: transparent !important;
+  color: var(--theme) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.header-support-icon--kakao {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.header-support-icon--whatsapp {
+  font-size: 22px;
+}
+
+.header-support-text {
+  color: #333333 !important;
+}
+
+.header-support-subtext {
+  color: var(--theme) !important;
+}
+
+/* ===================================================
+   HEADER - STICKY CONTACT BUTTON (NAVY)
+   ================================================== */
+
+.header-section.sticky .header-hamburger-inner .theme-btn.header-contact-btn.style-white {
+  background-color: var(--theme) !important;
+  color: #ffffff !important;
+}
+
+.header-section.sticky .header-hamburger-inner .theme-btn.header-contact-btn.style-white i {
+  background-color: #ffffff !important;
+  color: var(--theme) !important;
+}
+
+/* Inner pages header Contact button */
+.header-section.inner-header.sticky .contact-us-btn {
+  background-color: var(--theme) !important;
+  border-color: var(--theme) !important;
+  color: #ffffff !important;
+}
+
+.header-section.inner-header.sticky .contact-us-btn .arrow-icon {
+  background-color: #ffffff !important;
+  color: var(--theme) !important;
+}
+
+.header-section.inner-header.sticky .contact-us-btn .arrow-icon i {
+  color: var(--theme) !important;
+}
+
+.header-section.inner-header.sticky .header-action-btn {
+  border-color: var(--border) !important;
+}
+
+.header-section.inner-header .header-action-btn.phone-btn .header-support-icon {
+  width: auto;
+  height: auto;
+}
+
+/* ===================================================
+   GLOBAL TYPOGRAPHY + SECTION SPACING (CONSISTENT)
+   ================================================== */
+
+/* Base text: slightly smaller and consistent */
+body {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+p,
+li {
+  line-height: 1.6 !important;
+}
+
+/* Headings: reduce oversized defaults from template */
+h1 {
+  font-size: 96px !important;
+  line-height: 1.08 !important;
+}
+
+h2 {
+  font-size: 40px !important;
+  line-height: 1.12 !important;
+}
+
+h3 {
+  font-size: 22px !important;
+  line-height: 1.18 !important;
+}
+
+h4 {
+  font-size: 18px !important;
+  line-height: 1.25 !important;
+}
+
+h5 {
+  font-size: 16px !important;
+  line-height: 1.25 !important;
+}
+
+h6 {
+  font-size: 15px !important;
+  line-height: 1.25 !important;
+}
+
+@media (max-width: 1199px) {
+  h2 {
+    font-size: 34px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  h2 {
+    font-size: 30px !important;
+  }
+  h3 {
+    font-size: 21px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  h2 {
+    font-size: 26px !important;
+  }
+  h3 {
+    font-size: 20px !important;
+  }
+  h4 {
+    font-size: 16px !important;
+  }
+}
+
+/* Section headings used in multiple components */
+.section-header h2,
+.section-title h2 {
+  font-size: 32px !important;
+  line-height: 1.15 !important;
+}
+
+@media (max-width: 1199px) {
+  .section-header h2,
+  .section-title h2 {
+    font-size: 28px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .section-header h2,
+  .section-title h2 {
+    font-size: 24px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .section-header h2,
+  .section-title h2 {
+    font-size: 20px !important;
+  }
+}
+
+.section-header h2 span {
+  font-size: inherit !important;
+}
+
+/* Reduce utility font sizes for consistency across the template */
+.fz-10 { font-size: 10px !important; }
+.fz-11 { font-size: 11px !important; }
+.fz-12 { font-size: 12px !important; }
+.fz-13 { font-size: 13px !important; }
+.fz-14 { font-size: 13px !important; }
+.fz-15 { font-size: 14px !important; }
+.fz-16 { font-size: 15px !important; }
+.fz-17 { font-size: 16px !important; }
+.fz-18 { font-size: 17px !important; }
+.fz-19 { font-size: 18px !important; }
+.fz-20 { font-size: 18px !important; }
+.fz-21 { font-size: 19px !important; }
+.fz-22 { font-size: 20px !important; }
+.fz-23 { font-size: 21px !important; }
+.fz-24 { font-size: 22px !important; }
+.fz-25 { font-size: 23px !important; }
+.fz-26 { font-size: 24px !important; }
+.fz-27 { font-size: 25px !important; }
+.fz-28 { font-size: 26px !important; }
+.fz-36 { font-size: 32px !important; }
+
+/* Tighten section spacing globally via template spacing utilities */
+.pt-100 { padding-top: 72px !important; }
+.pb-100 { padding-bottom: 72px !important; }
+
+@media (max-width: 1199px) {
+  .pt-100 { padding-top: 56px !important; }
+  .pb-100 { padding-bottom: 56px !important; }
+}
+
+/* Tighten common section title spacing */
+.section-title {
+  margin-bottom: 20px !important;
+}
+
+@media (max-width: 767px) {
+  .section-title {
+    margin-bottom: 16px !important;
+  }
 }
 
 /* Header Contact button hover - change to primary color */
