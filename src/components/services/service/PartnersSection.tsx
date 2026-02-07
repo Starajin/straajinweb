@@ -1,25 +1,17 @@
 import { useTranslation } from "react-i18next";
 
+interface Partner {
+   name: string;
+   abbr: string;
+}
+
 const PartnersSection = () => {
    const { t } = useTranslation();
 
-   const koreaPartners = [
-      { name: "Korea Foundation for International Cultural Exchange", abbr: "KOFICE" },
-      { name: "Korea SMEs and Startups Agency", abbr: "KOSME" },
-      { name: "Korea Tourism Organization", abbr: "KTO" },
-      { name: "Korea Importers Association", abbr: "KOIMA" },
-      { name: "Consulate General of Korea Mumbai", abbr: "CGK" },
-   ];
-
-   const indiaPartners = [
-      { name: "Indian Chamber of Commerce in Korea", abbr: "ICCK" },
-      { name: "Maharashtra Industrial Development Corporation", abbr: "MIDC" },
-      { name: "Pimpri Chinchwad Education Trust", abbr: "PCET" },
-      { name: "Pimpri Chinchwad University", abbr: "PCU" },
-      { name: "ICICI Bank", abbr: "ICICI" },
-      { name: "IIT Roorkee", abbr: "IITR" },
-      { name: "Gradiant Asset Management", abbr: "GAM" },
-   ];
+   const rawKorea = t('services.partners.koreaPartners', { returnObjects: true });
+   const rawIndia = t('services.partners.indiaPartners', { returnObjects: true });
+   const koreaPartners: Partner[] = Array.isArray(rawKorea) ? rawKorea : [];
+   const indiaPartners: Partner[] = Array.isArray(rawIndia) ? rawIndia : [];
 
    return (
       <section className="partners-list-section pt-100 pb-100">

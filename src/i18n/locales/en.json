@@ -189,10 +189,48 @@
       "participants": "participants",
       "status": {
         "completed": "Completed",
-        "ongoing": "Ongoing", 
+        "ongoing": "Ongoing",
         "upcoming": "Upcoming"
       }
-    }
+    },
+    "categories": {
+      "mou": "MOU",
+      "cultural": "CULTURAL",
+      "publication": "PUBLICATION",
+      "tour": "TOUR"
+    },
+    "items": [
+      {
+        "title": "G2B MoU: Softberry with Rajasthan Government",
+        "description": "Strategic G2B MoU between Softberry and Rajasthan Government for facilitating Korean business investments and technology transfer.",
+        "location": "Jaipur, India"
+      },
+      {
+        "title": "KOFICE Local Culture Exchange Project",
+        "description": "KOFICE-supported local culture exchange project promoting Korean cultural content and fostering cross-cultural understanding.",
+        "location": "Multiple Cities"
+      },
+      {
+        "title": "Launch of Super 30 (Korean Translation)",
+        "description": "Successful launch of the Korean translation of the Indian bestseller 'Super 30', making this inspiring story accessible to Korean readers.",
+        "location": "Mumbai, India"
+      },
+      {
+        "title": "Korea Edu Tour 2025 – Pune",
+        "description": "Comprehensive educational tour program connecting Pune-based students and professionals with Korean educational institutions and corporate culture.",
+        "location": "Pune to Korea"
+      },
+      {
+        "title": "India-Korea Artist Camp by Namisland",
+        "description": "Intensive artist exchange program at Nami Island bringing together Korean and Indian artists for collaborative creative projects.",
+        "location": "Nami Island, Korea"
+      },
+      {
+        "title": "B2B MoUs Portfolio",
+        "description": "Series of strategic B2B MoUs facilitating business partnerships and collaborations between Korean and Indian companies.",
+        "location": "Multiple Locations"
+      }
+    ]
   },
   "contact": {
     "hero": {
@@ -601,7 +639,23 @@
       "description": "Our trusted network of institutional partners ensures seamless support on both sides of the corridor.",
       "koreaSide": "Korea-Side Partners",
       "indiaSide": "India-Side Partners",
-      "viewAll": "View All Partners"
+      "viewAll": "View All Partners",
+      "koreaPartners": [
+        { "name": "Korea Foundation for International Cultural Exchange", "abbr": "KOFICE" },
+        { "name": "Korea SMEs and Startups Agency", "abbr": "KOSME" },
+        { "name": "Korea Tourism Organization", "abbr": "KTO" },
+        { "name": "Korea Importers Association", "abbr": "KOIMA" },
+        { "name": "Consulate General of Korea Mumbai", "abbr": "CGK" }
+      ],
+      "indiaPartners": [
+        { "name": "Indian Chamber of Commerce in Korea", "abbr": "ICCK" },
+        { "name": "Maharashtra Industrial Development Corporation", "abbr": "MIDC" },
+        { "name": "Pimpri Chinchwad Education Trust", "abbr": "PCET" },
+        { "name": "Pimpri Chinchwad University", "abbr": "PCU" },
+        { "name": "ICICI Bank", "abbr": "ICICI" },
+        { "name": "IIT Roorkee", "abbr": "IITR" },
+        { "name": "Gradiant Asset Management", "abbr": "GAM" }
+      ]
     }
   },
   "solutions": {

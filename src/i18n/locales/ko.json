@@ -16,6 +16,12 @@
     "about us": "회사소개",
     "contact": "연락처",
     "blog": "블로그",
+    "projects": "프로젝트",
+    "case-studies": "사례 연구",
+    "team": "팀",
+    "testimonial": "고객 후기",
+    "pricing": "요금",
+    "faq": "자주 묻는 질문",
     "viewMore": "더보기"
   },
   "about": {
@@ -184,10 +190,48 @@
       "participants": "참가자",
       "status": {
         "completed": "완료",
-        "ongoing": "진행중", 
+        "ongoing": "진행중",
         "upcoming": "예정"
       }
-    }
+    },
+    "categories": {
+      "mou": "업무협약",
+      "cultural": "문화교류",
+      "publication": "출판",
+      "tour": "투어"
+    },
+    "items": [
+      {
+        "title": "G2B MoU: 소프트베리 – 라자스탄 주정부",
+        "description": "한국 기업의 투자 및 기술 이전을 촉진하기 위한 소프트베리와 라자스탄 주정부 간의 전략적 G2B 업무협약.",
+        "location": "자이푸르, 인도"
+      },
+      {
+        "title": "KOFICE 지역 문화 교류 프로젝트",
+        "description": "한국 문화 콘텐츠를 홍보하고 상호 문화 이해를 촉진하는 KOFICE 지원 지역 문화 교류 프로젝트.",
+        "location": "여러 도시"
+      },
+      {
+        "title": "슈퍼 30 한국어판 출간",
+        "description": "인도 베스트셀러 '슈퍼 30'의 한국어 번역판 출간 성공, 한국 독자들에게 영감을 주는 이야기를 전달.",
+        "location": "뭄바이, 인도"
+      },
+      {
+        "title": "2025 코리아 에듀 투어 – 푸네",
+        "description": "푸네 학생 및 전문가들을 한국 교육 기관 및 기업 문화와 연결하는 종합 교육 투어 프로그램.",
+        "location": "푸네 → 한국"
+      },
+      {
+        "title": "나미섬 인도-한국 아티스트 캠프",
+        "description": "나미섬에서 한국과 인도 아티스트가 함께하는 집중 예술 교류 및 협업 프로그램.",
+        "location": "나미섬, 한국"
+      },
+      {
+        "title": "B2B 업무협약 포트폴리오",
+        "description": "한국-인도 기업 간 비즈니스 파트너십 및 협력을 촉진하는 일련의 전략적 B2B 업무협약.",
+        "location": "여러 지역"
+      }
+    ]
   },
   "contact": {
     "hero": {
@@ -604,7 +648,23 @@
       "description": "신뢰할 수 있는 기관 파트너 네트워크가 양국 모두에서 원활한 지원을 보장합니다.",
       "koreaSide": "한국측 파트너",
       "indiaSide": "인도측 파트너",
-      "viewAll": "모든 파트너 보기"
+      "viewAll": "모든 파트너 보기",
+      "koreaPartners": [
+        { "name": "한국국제문화교류진흥원", "abbr": "KOFICE" },
+        { "name": "중소벤처기업진흥공단", "abbr": "KOSME" },
+        { "name": "한국관광공사", "abbr": "KTO" },
+        { "name": "한국수입업협회", "abbr": "KOIMA" },
+        { "name": "주뭄바이 대한민국 총영사관", "abbr": "CGK" }
+      ],
+      "indiaPartners": [
+        { "name": "주한인도상공회의소", "abbr": "ICCK" },
+        { "name": "마하라슈트라 산업개발공사", "abbr": "MIDC" },
+        { "name": "핌프리 친치와드 교육재단", "abbr": "PCET" },
+        { "name": "핌프리 친치와드 대학교", "abbr": "PCU" },
+        { "name": "ICICI 은행", "abbr": "ICICI" },
+        { "name": "IIT 루르키", "abbr": "IITR" },
+        { "name": "그래디언트 자산운용", "abbr": "GAM" }
+      ]
     }
   },
   "solutions": {

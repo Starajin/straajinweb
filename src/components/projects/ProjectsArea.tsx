@@ -2,85 +2,22 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 
-interface ProjectType {
+interface ProjectMeta {
    id: number;
    thumb: string;
    category: string;
-   title: string;
-   description: string;
    date: string;
-   location: string;
    participants: number;
    status: 'completed' | 'ongoing' | 'upcoming';
 }
 
-const projects_data: ProjectType[] = [
-   {
-      id: 1,
-      thumb: "/assets/img/blog/financial-thumb1.png",
-      category: "mou",
-      title: "G2B MoU: Softberry with Rajasthan Government",
-      description: "Strategic G2B MoU between Softberry and Rajasthan Government for facilitating Korean business investments and technology transfer.",
-      date: "2023-03-15",
-      location: "Jaipur, India",
-      participants: 50,
-      status: "completed"
-   },
-   {
-      id: 2,
-      thumb: "/assets/img/blog/financial-thumb2.png",
-      category: "cultural",
-      title: "KOFICE Local Culture Exchange Project",
-      description: "KOFICE-supported local culture exchange project promoting Korean cultural content and fostering cross-cultural understanding.",
-      date: "2023-05-20",
-      location: "Multiple Cities",
-      participants: 150,
-      status: "completed"
-   },
-   {
-      id: 3,
-      thumb: "/assets/img/blog/financial-thumb3.png",
-      category: "publication",
-      title: "Launch of Super 30 (Korean Translation)",
-      description: "Successful launch of the Korean translation of the Indian bestseller 'Super 30', making this inspiring story accessible to Korean readers.",
-      date: "2023-08-10",
-      location: "Mumbai, India",
-      participants: 15,
-      status: "completed"
-   },
-   {
-      id: 4,
-      thumb: "/assets/img/team/team1.png",
-      category: "tour",
-      title: "Korea Edu Tour 2025 – Pune",
-      description: "Comprehensive educational tour program connecting Pune-based students and professionals with Korean educational institutions and corporate culture.",
-      date: "2025-03-15",
-      location: "Pune to Korea",
-      participants: 30,
-      status: "upcoming"
-   },
-   {
-      id: 5,
-      thumb: "/assets/img/team/team2.png",
-      category: "cultural",
-      title: "India-Korea Artist Camp by Namisland",
-      description: "Intensive artist exchange program at Nami Island bringing together Korean and Indian artists for collaborative creative projects.",
-      date: "2024-06-20",
-      location: "Nami Island, Korea",
-      participants: 40,
-      status: "completed"
-   },
-   {
-      id: 6,
-      thumb: "/assets/img/team/team3.png",
-      category: "mou",
-      title: "B2B MoUs Portfolio",
-      description: "Series of strategic B2B MoUs facilitating business partnerships and collaborations between Korean and Indian companies.",
-      date: "2023-12-01",
-      location: "Multiple Locations",
-      participants: 100,
-      status: "ongoing"
-   }
+const projects_meta: ProjectMeta[] = [
+   { id: 1, thumb: "/assets/img/blog/financial-thumb1.png", category: "mou", date: "2023-03-15", participants: 50, status: "completed" },
+   { id: 2, thumb: "/assets/img/blog/financial-thumb2.png", category: "cultural", date: "2023-05-20", participants: 150, status: "completed" },
+   { id: 3, thumb: "/assets/img/blog/financial-thumb3.png", category: "publication", date: "2023-08-10", participants: 15, status: "completed" },
+   { id: 4, thumb: "/assets/img/team/team1.png", category: "tour", date: "2025-03-15", participants: 30, status: "upcoming" },
+   { id: 5, thumb: "/assets/img/team/team2.png", category: "cultural", date: "2024-06-20", participants: 40, status: "completed" },
+   { id: 6, thumb: "/assets/img/team/team3.png", category: "mou", date: "2023-12-01", participants: 100, status: "ongoing" },
 ];
 
 const categories = [
@@ -92,12 +29,12 @@ const categories = [
 ];
 
 const ProjectsArea = () => {
-   const { t } = useTranslation()
+   const { t, i18n } = useTranslation()
    const [activeFilter, setActiveFilter] = useState('all')
 
-   const filteredProjects = activeFilter === 'all' 
-      ? projects_data 
-      : projects_data.filter(project => project.category === activeFilter)
+   const filteredProjects = activeFilter === 'all'
+      ? projects_meta
+      : projects_meta.filter(project => project.category === activeFilter)
 
    const getStatusColor = (status: string) => {
       switch (status) {
@@ -109,7 +46,8 @@ const ProjectsArea = () => {
    }
 
    const formatDate = (dateString: string) => {
-      return new Date(dateString).toLocaleDateString('en-US', {
+      const locale = i18n.language === 'ko' ? 'ko-KR' : 'en-US';
+      return new Date(dateString).toLocaleDateString(locale, {
          year: 'numeric',
          month: 'short',
          day: 'numeric'
@@ -170,15 +108,17 @@ const ProjectsArea = () => {
          <section className="projects-section section-bg pt-50 pb-100">
             <div className="container">
                <div className="row g-4">
-                  {filteredProjects.map((item) => (
+                  {filteredProjects.map((item) => {
+                     const itemIndex = projects_meta.indexOf(item);
+                     return (
                      <div key={item.id} className="col-md-6 col-lg-4">
                         <div className="project-card bg-white rounded-4 overflow-hidden shadow-sm hover-translate8 h-100">
                            {/* Image */}
                            <div className="position-relative">
                               <div className="thumb w-100 overflow-hidden" style={{height: '200px'}}>
-                                 <img src={item.thumb} alt="img" className="w-100 h-100" style={{objectFit: 'cover'}} />
+                                 <img src={item.thumb} alt="img" className="w-100 h-100" style={{objectFit: 'cover'}} loading="lazy" />
                               </div>
-                              
+
                               {/* Status Badge */}
                               <div className="position-absolute top-3 end-3">
                                  <span className={`badge ${getStatusColor(item.status)} px-3 py-2 rounded-pill`}>
@@ -191,17 +131,17 @@ const ProjectsArea = () => {
                            <div className="p-4 d-flex flex-column h-100">
                               <div className="flex-grow-1">
                                  <span className="badge bg-light text-primary fw-600 mb-2 px-3 py-2 rounded-pill">
-                                    {item.category.toUpperCase()}
+                                    {t(`projects.categories.${item.category}`)}
                                  </span>
-                                 
+
                                  <h5 className="theme-clr4 fw-bold mb-3 lh-sm">
                                     <Link to="/project-details" className="text-decoration-none theme-clr4 hover-theme1">
-                                       {item.title}
+                                       {t(`projects.items.${itemIndex}.title`)}
                                     </Link>
                                  </h5>
-                                 
+
                                  <p className="theme-clr4 mb-4 small lh-relaxed">
-                                    {item.description}
+                                    {t(`projects.items.${itemIndex}.description`)}
                                  </p>
 
                                  {/* Meta Info */}
@@ -212,7 +152,7 @@ const ProjectsArea = () => {
                                     </div>
                                     <div className="d-flex align-items-center mb-2 small text-muted">
                                        <i className="fa-light fa-map-marker me-2"></i>
-                                       {item.location}
+                                       {t(`projects.items.${itemIndex}.location`)}
                                     </div>
                                     <div className="d-flex align-items-center small text-muted">
                                        <i className="fa-light fa-users me-2"></i>
@@ -232,7 +172,8 @@ const ProjectsArea = () => {
                            </div>
                         </div>
                      </div>
-                  ))}
+                     );
+                  })}
                </div>
             </div>
          </section>

@@ -11,8 +11,8 @@ const ContactInfo = () => {
                <div className="col-lg-7 col-md-7">
                   <div className="section-header text-center">
                      <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                        Let’s
-                        <span className="fw-300">Start <br /> the Conversation!</span>
+                        {t('contact.hero.title')}
+                        <span className="fw-300 d-block">{t('contact.hero.subtitle')}</span>
                      </h2>
                   </div>
                </div>
