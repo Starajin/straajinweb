@@ -33,6 +33,7 @@
     "about us": "About Us",
     "contact": "Contact",
     "blog": "Blog",
+    "blog details": "Blog Details",
     "projects": "Projects",
     "case-studies": "Case Studies",
     "team": "Team",
@@ -118,6 +119,10 @@
         "2025b": {
           "title": "DIDAC India & K-SS Day 2025",
           "desc": "Starajin participates in DIDAC India 2025 at the Korea Pavilion, showcasing its Industry–Academia collaboration model. Starajin supports the Proclamation Ceremony for 'Korea SMEs & Startups Day in India,' hosted by KOSME, where CEO Yujin Han contributes as Master of Ceremonies."
+        },
+        "ongoing": {
+          "title": "Strategic Forums, Government Diplomacy & Thought Leadership",
+          "desc": "Starajin continues active participation in high-level events such as the Korea-India Forum for Future Economy & Industry (KIF-FEI), engages with Indian state government leadership at Maharashtra Vidhan Bhavan, and fosters cross-border collaboration insights in semiconductor and advanced industries."
         }
       }
     },
@@ -163,22 +168,26 @@
         "yujin": {
           "name": "Yujin Han",
           "designation": "CEO",
-          "description": "Expert in Korea-India business relations with 10+ years experience in international consulting."
+          "description": "Expert in Korea-India business relations with 10+ years experience in international consulting.",
+          "linkedin": "https://www.linkedin.com/in/yujin-han"
         },
         "vijay": {
           "name": "Vijay Vyas",
           "designation": "COO",
-          "description": "Strategic operations leader driving business excellence and cross-border collaboration."
+          "description": "Strategic operations leader driving business excellence and cross-border collaboration.",
+          "linkedin": "https://www.linkedin.com/in/vijay-vyas"
         },
         "young": {
           "name": "Young Choi",
           "designation": "CTO",
-          "description": "Technology visionary leading digital transformation and innovation initiatives."
+          "description": "Technology visionary leading digital transformation and innovation initiatives.",
+          "linkedin": "https://www.linkedin.com/in/young-choi"
         },
         "james": {
           "name": "James Park",
           "designation": "CMO",
-          "description": "Marketing strategist with expertise in brand development and market expansion."
+          "description": "Marketing strategist with expertise in brand development and market expansion.",
+          "linkedin": "https://www.linkedin.com/in/james-park"
         }
       }
     }
@@ -485,12 +494,12 @@
     "buttonText": "Schedule Free Consultation",
     "supportInfo": {
       "phone": {
-        "title": "24/7 Support",
-        "number": "+82-2-123-4567"
+        "title": "Call Us",
+        "number": "+82-507-139-1995"
       },
       "email": {
         "title": "Email Us",
-        "address": "info@starajin.com"
+        "address": "contact@starajin.com"
       },
       "location": {
         "title": "Visit Us",
@@ -499,14 +508,14 @@
     },
     "koreaOffice": {
       "address": "Seoul, South Korea",
-      "phone": "+82-2-1234-5678",
-      "email": "info@starajin.com",
+      "phone": "+82-507-139-1995",
+      "email": "contact@starajin.com",
       "hours": "Mon-Fri, 09AM - 06PM KST"
     },
     "indiaOffice": {
-      "address": "Mumbai, India", 
-      "phone": "+91-22-1234-5678",
-      "email": "india@starajin.com",
+      "address": "Office No. 928, 9th Floor, The Summit Business Bay, Andheri\u2013Kurla Road, Andheri (East), Mumbai \u2013 400093",
+      "phone": "+91-897-624-1508",
+      "email": "contact@starajin.com",
       "hours": "Mon-Fri, 09AM - 06PM IST"
     },
     "contactInfo": "Contact Info"
@@ -759,7 +768,9 @@
       "title": "Building Bridges Between Korea and India",
       "description": "Our trusted network of institutional partners ensures seamless support on both sides of the corridor.",
       "koreaSide": "Korea-Side Partners",
+      "koreaSub": "Republic of Korea",
       "indiaSide": "India-Side Partners",
+      "indiaSub": "Republic of India",
       "viewAll": "View All Partners",
       "koreaPartners": [
         { "name": "Korea Foundation for International Cultural Exchange", "abbr": "KOFICE" },
@@ -853,7 +864,7 @@
       {
         "id": 1,
         "tag": "Trade",
-        "title": "Korea–India Trade Relations Reach New Heights in 2024"
+        "title": "Korea–India Trade Relations Reach New Heights in 2026"
       },
       {
         "id": 2,
@@ -876,13 +887,13 @@
     "services": "Services",
     "contactUs": "Contact Us",
     "koreaOffice": "Korea Office",
-    "indiaOffice": "India Office",
+    "indiaOffice": "STARAJIN India Pvt. Ltd.",
     "seoulLocation": "Seoul, South Korea",
-    "mumbaiLocation": "Mumbai, India",
-    "koreaEmail": "korea@starajin.com",
-    "indiaEmail": "india@starajin.com",
-    "koreaPhone": "+82-2-1234-5678",
-    "indiaPhone": "+91-22-9876-5432",
+    "mumbaiLocation": "Office No. 928, 9th Floor, The Summit Business Bay, Andheri\u2013Kurla Road, Andheri (East), Mumbai \u2013 400093",
+    "koreaEmail": "contact@starajin.com",
+    "indiaEmail": "contact@starajin.com",
+    "koreaPhone": "+82-507-139-1995",
+    "indiaPhone": "+91-897-624-1508",
     "rights": "© 2025 StaraJIN, Inc. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",

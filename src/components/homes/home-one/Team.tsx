@@ -32,7 +32,7 @@ const Team = () => {
                   <div key={item.id} className="col-sm-6 col-lg-4 col-xl-3">
                      <div className="team-items hover-translate8 px-xxl-6 px-xxl-4 px-sm-3 px-3 section-bg rounded-4">
                         <div className="thumb w-100 overflow-hidden">
-                           <img src={item.thumb} alt="img" className="w-100 rounded-bottom-3" />
+                           <img src={item.thumb} alt="img" className="w-100 rounded-bottom-3" loading="lazy" />
                         </div>
                         <div className="content d-flex align-items-end gap-3 justify-content-between">
                            <div>

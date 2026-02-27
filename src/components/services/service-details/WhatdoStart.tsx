@@ -27,7 +27,7 @@ const WhatdoStart = () => {
             </div>
             <div className="row g-xxl-5 g-lg-4 align-items-center g-md-3 g-3">
                <div className="col-lg-6">
-                  <img src="/assets/img/about/financial-corporate.png" alt="img" className="w-100 rounded-4" />
+                  <img src="/assets/img/about/financial-corporate.png" alt="img" className="w-100 rounded-4" loading="lazy" />
                </div>
                <div className="col-lg-6">
                   <div className="wow fadeInUp" data-wow-delay=".4s">

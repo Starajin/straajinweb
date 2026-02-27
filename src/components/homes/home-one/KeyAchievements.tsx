@@ -19,7 +19,7 @@ const KeyAchievements = () => {
     {
       icon: "fa-solid fa-handshake",
       gradient: "linear-gradient(135deg, var(--theme) 0%, var(--theme3) 100%)",
-      image: "/assets/img/service/service-thumb10.png"
+      image: "/assets/img/projects/verywords-starajin-mou.jpg"
     },
     {
       icon: "fa-solid fa-globe",
@@ -69,16 +69,19 @@ const KeyAchievements = () => {
               >
                 {/* Image Header */}
                 <div className="achievement-card-image position-relative" style={{ height: '180px', overflow: 'visible' }}>
-                  <div style={{ height: '180px', width: '100%', overflow: 'hidden' }}>
-                    <img 
-                      src={iconConfig[index].image} 
+                  <div style={{ height: '180px', width: '100%', overflow: 'hidden', borderRadius: 'inherit' }}>
+                    <img
+                      src={iconConfig[index].image}
                       alt={item.label}
                       style={{
                         width: '100%',
                         height: '100%',
                         display: 'block',
                         objectFit: 'cover',
-                        objectPosition: 'center'
+                        objectPosition: index === 0 ? 'center 75%' : 'center 30%',
+                        transform: index === 0 ? 'scale(1.15)' : 'none',
+                        imageRendering: 'auto',
+                        backfaceVisibility: 'hidden'
                       }}
                     />
                   </div>

@@ -13,7 +13,7 @@ const blog_data: DataType[] = [
       page: "home_1",
       thumb: "/assets/img/team/team1.png",
       tag: "Trade",
-      title: "Korea–India Trade Relations Reach New Heights in 2024",
+      title: "Korea–India Trade Relations Reach New Heights in 2026",
    },
    {
       id: 2,
@@ -126,7 +126,7 @@ const blog_data: DataType[] = [
       page: "inner_page",
       thumb: "/assets/img/team/team1.png",
       tag: "Trade",
-      title: "Korea–India Trade Relations Reach New Heights in 2024",
+      title: "Korea–India Trade Relations Reach New Heights in 2026",
    },
    {
       id: 2,

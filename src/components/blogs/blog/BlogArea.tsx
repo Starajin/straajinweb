@@ -31,18 +31,18 @@ const BlogArea = () => {
                   <div key={item.id} className="col-md-6 col-lg-4">
                      <div className="team-items hover-translate8 bg-white px-xxl-6 px-xl-4 px-3 section-bg rounded-4">
                         <div className="thumb w-100 overflow-hidden">
-                           <img src={item.thumb} alt="img" className="w-100 rounded-bottom-3" />
+                           <img src={item.thumb} alt="img" className="w-100 rounded-bottom-3" loading="lazy" />
                         </div>
                         <div className="content d-flex align-items-end gap-3 justify-content-between">
                            <div>
                               <span className="fz-14 theme-clr4 fw-500 mb-1">{item.tag}</span>
                               <h5 className="max-270 wow fadeInUp" data-wow-delay=".3s">
-                                 <Link to="/blog-details" className="theme-clr4 lh-110 fw-600">
+                                 <Link to={`/blog-details/${item.id}`} className="theme-clr4 lh-110 fw-600">
                                     {item.title}
                                  </Link>
                               </h5>
                            </div>
-                           <Link to="/blog-details"
+                           <Link to={`/blog-details/${item.id}`}
                               className="theme-clr4 border hover-theme1 min-w-48 w-48 h-48 white-bg rounded-circle d-center d-xl-block d-none fs-five">
                               <i className="fa-solid fa-arrow-right"></i>
                            </Link>

@@ -29,7 +29,7 @@ const CaseDetailsArea = () => {
             <div className="row g-4 align-items-lg-center">
                <div className="col-md-6">
                   <div className="case-studies-big-thumb pe-lg-5 w-100 rounded-4 wow fadeInDown" data-wow-delay=".5s">
-                     <img src="/assets/img/blog/studies-details-thumb.png" alt="img" className="w-100 rounded-4" />
+                     <img src="/assets/img/blog/studies-details-thumb.png" alt="img" className="w-100 rounded-4" loading="lazy" />
                   </div>
                </div>
                <div className="col-md-6">

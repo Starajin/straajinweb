@@ -10,7 +10,7 @@ const BreadCrumb = ({ title }: DataType) => {
    return (
       <div className="breadcrumb-banner section-bg position-relative">
          <div className="container">
-            <img src="/assets/img/banner/breadcrumb-banner.png" alt="img" className="w-100" />
+            <img src="/assets/img/banner/breadcrumb-banner.png" alt="img" className="w-100" loading="lazy" />
             <h1 className="breadcrumb-title">{t(`pages.${title.toLowerCase()}`)}</h1>
             <div className="boxes">
                <ul className="breadcrumb-cont d-flex flex-wrap align-items-center gap-md-3 gap-2">

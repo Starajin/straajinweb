@@ -25,6 +25,7 @@
     "about us": "회사소개",
     "contact": "연락처",
     "blog": "블로그",
+    "blog details": "블로그 상세",
     "projects": "프로젝트",
     "case-studies": "사례 연구",
     "team": "팀",
@@ -110,6 +111,10 @@
         "2025b": {
           "title": "DIDAC India & K-SS Day 2025",
           "desc": "Starajin이 DIDAC India 2025 Korea Pavilion에 참가하여 산학협력 모델 소개. KOSME 주최 '인도 내 한국 중소기업 및 스타트업의 날' 선포식 지원. CEO 한유진이 진행자로 기여 — 양국 중소기업 및 스타트업 지원 옹호에서 Starajin의 역할 상징."
+        },
+        "ongoing": {
+          "title": "전략 포럼, 정부 외교 & 사상적 리더십",
+          "desc": "Starajin은 한-인도 미래경제산업포럼(KIF-FEI) 등 고위급 행사에 지속적으로 참여하고, 마하라슈트라 비단 바반에서 인도 주 정부 리더십과 교류하며, 반도체 및 첨단 산업 분야에서 국경 간 협력 인사이트를 발전시키고 있습니다."
         }
       }
     },
@@ -155,22 +160,26 @@
         "yujin": {
           "name": "한유진",
           "designation": "CEO",
-          "description": "10년 이상의 국제 컨설팅 경험을 바탕으로 한국-인도 비즈니스 관계 전문가입니다."
+          "description": "10년 이상의 국제 컨설팅 경험을 바탕으로 한국-인도 비즈니스 관계 전문가입니다.",
+          "linkedin": "https://www.linkedin.com/in/yujin-han"
         },
         "vijay": {
           "name": "비제이 비야스",
           "designation": "COO",
-          "description": "비즈니스 우수성과 국경 간 협력을 주도하는 전략적 운영 리더입니다."
+          "description": "비즈니스 우수성과 국경 간 협력을 주도하는 전략적 운영 리더입니다.",
+          "linkedin": "https://www.linkedin.com/in/vijay-vyas"
         },
         "young": {
           "name": "최영",
           "designation": "CTO",
-          "description": "디지털 전환 및 혁신 이니셔티브를 이끄는 기술 비전가입니다."
+          "description": "디지털 전환 및 혁신 이니셔티브를 이끄는 기술 비전가입니다.",
+          "linkedin": "https://www.linkedin.com/in/young-choi"
         },
         "james": {
           "name": "제임스 박",
           "designation": "CMO",
-          "description": "브랜드 개발 및 시장 확장 전문 마케팅 전략가입니다."
+          "description": "브랜드 개발 및 시장 확장 전문 마케팅 전략가입니다.",
+          "linkedin": "https://www.linkedin.com/in/james-park"
         }
       }
     }
@@ -485,12 +494,12 @@
     "buttonText": "무료 컨설팅 예약",
     "supportInfo": {
       "phone": {
-        "title": "24시간 지원",
-        "number": "+82-2-123-4567"
+        "title": "전화 문의",
+        "number": "+82-507-139-1995"
       },
       "email": {
         "title": "이메일 문의",
-        "address": "info@starajin.com"
+        "address": "contact@starajin.com"
       },
       "location": {
         "title": "방문 상담",
@@ -499,14 +508,14 @@
     },
     "koreaOffice": {
       "address": "서울, 대한민국",
-      "phone": "+82-2-1234-5678",
-      "email": "info@starajin.com",
+      "phone": "+82-507-139-1995",
+      "email": "contact@starajin.com",
       "hours": "월-금, 오전 9시 - 오후 6시 (한국시간)"
     },
     "indiaOffice": {
-      "address": "뭄바이, 인도",
-      "phone": "+91-22-1234-5678", 
-      "email": "india@starajin.com",
+      "address": "Office No. 928, 9th Floor, The Summit Business Bay, Andheri\u2013Kurla Road, Andheri (East), Mumbai \u2013 400093",
+      "phone": "+91-897-624-1508",
+      "email": "contact@starajin.com",
       "hours": "월-금, 오전 9시 - 오후 6시 (인도시간)"
     },
     "contactInfo": "연락처 정보"
@@ -759,7 +768,9 @@
       "title": "한국과 인도를 잇는 가교",
       "description": "신뢰할 수 있는 기관 파트너 네트워크가 양국 모두에서 원활한 지원을 보장합니다.",
       "koreaSide": "한국측 파트너",
+      "koreaSub": "대한민국",
       "indiaSide": "인도측 파트너",
+      "indiaSub": "인도 공화국",
       "viewAll": "모든 파트너 보기",
       "koreaPartners": [
         { "name": "한국국제문화교류진흥원", "abbr": "KOFICE" },
@@ -853,7 +864,7 @@
       {
         "id": 1,
         "tag": "무역",
-        "title": "한국-인도 무역 관계, 2024년 새로운 정점에 도달"
+        "title": "한국-인도 무역 관계, 2026년 새로운 정점에 도달"
       },
       {
         "id": 2,
@@ -876,13 +887,13 @@
     "services": "서비스",
     "contactUs": "문의하기",
     "koreaOffice": "한국 사무소",
-    "indiaOffice": "인도 사무소",
+    "indiaOffice": "STARAJIN India Pvt. Ltd.",
     "seoulLocation": "서울, 대한민국",
-    "mumbaiLocation": "뭄바이, 인도",
-    "koreaEmail": "korea@starajin.com",
-    "indiaEmail": "india@starajin.com",
-    "koreaPhone": "+82-2-1234-5678",
-    "indiaPhone": "+91-22-9876-5432",
+    "mumbaiLocation": "Office No. 928, 9th Floor, The Summit Business Bay, Andheri\u2013Kurla Road, Andheri (East), Mumbai \u2013 400093",
+    "koreaEmail": "contact@starajin.com",
+    "indiaEmail": "contact@starajin.com",
+    "koreaPhone": "+82-507-139-1995",
+    "indiaPhone": "+91-897-624-1508",
     "rights": "© 2025 StaraJIN, Inc. 모든 권리 보유.",
     "privacyPolicy": "개인정보처리방침",
     "termsOfService": "서비스 약관",

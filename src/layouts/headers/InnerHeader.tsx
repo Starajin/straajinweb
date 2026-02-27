@@ -16,7 +16,7 @@ const InnerHeader = () => {
    const location = useLocation();
 
    const isKorean = (i18n.resolvedLanguage || i18n.language || "").toLowerCase().startsWith("ko");
-   const whatsappDigits = "59767809876";
+   const whatsappDigits = "918976241508";
 
    const support: { href: string; fallbackHref?: string; label: string } = isKorean
       ? {

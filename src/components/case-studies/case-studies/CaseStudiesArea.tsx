@@ -31,7 +31,7 @@ const CaseStudiesArea = () => {
                   <div key={item.id} className="col-md-6 col-lg-4">
                      <div className="team-items bg-white hover-translate8 px-xxl-6 px-xl-4 px-3 section-bg rounded-4">
                         <div className="thumb w-100 overflow-hidden">
-                           <img src={item.thumb} alt="img" className="w-100 rounded-bottom-3" />
+                           <img src={item.thumb} alt="img" className="w-100 rounded-bottom-3" loading="lazy" />
                         </div>
                         <div className="content d-flex align-items-end gap-3 justify-content-between">
                            <div>

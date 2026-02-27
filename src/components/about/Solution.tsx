@@ -59,6 +59,12 @@ const Solution = () => {
          title: t('about.solution.timeline.2025b.title'),
          desc: t('about.solution.timeline.2025b.desc'),
       },
+      {
+         id: 9,
+         date: "Ongoing",
+         title: t('about.solution.timeline.ongoing.title'),
+         desc: t('about.solution.timeline.ongoing.desc'),
+      },
    ]
 
    return (

@@ -50,13 +50,13 @@ const Financial = () => {
                            </Link>
                         </div>
                         <div className="thumb w-100 overflow-hidden position-relative">
-                           <img src={item.thumb} alt="img" className="w-100 rounded-bottom-3" />
+                           <img src={item.thumb} alt="img" className="w-100 rounded-bottom-3" loading="lazy" style={{ height: '220px', objectFit: 'cover', objectPosition: 'top' }} />
                         </div>
                         <div
                            className="team-items service-items1 financial-items financial-subbox px-xxl-6 px-xxl-4 px-sm-3 px-3 section-bg rounded-4">
                            <div className="thumb w-100 overflow-hidden position-relative">
                               <img src={item.thumb} alt="img"
-                                 className="w-100 rounded-bottom-3" />
+                                 className="w-100 rounded-bottom-3" loading="lazy" style={{ height: '220px', objectFit: 'cover', objectPosition: 'top' }} />
                            </div>
                            <div
                               className="content d-xl-flex d-grid align-items-start gap-xl-3 gap-2 justify-content-between">

@@ -123,9 +123,10 @@ const ProjectsArea = () => {
    const [activeFilter, setActiveFilter] = useState('all')
    const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null)
 
-   const filteredProjects = activeFilter === 'all'
-      ? projects_meta
+   const filteredProjects = (activeFilter === 'all'
+      ? [...projects_meta]
       : projects_meta.filter(project => project.category === activeFilter)
+   ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
    const formatDate = (dateString: string) => {
       const locale = i18n.language === 'ko' ? 'ko-KR' : 'en-US';

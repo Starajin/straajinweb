@@ -39,12 +39,12 @@ const HomeContactForm = () => {
                const notify = () => toast('Message sent successfully', { position: 'top-center' });
                notify();
                reset();
-               console.log(result.text);
-            }, (error) => {
-               console.log(error.text);
+               void result;
+            }, () => {
+               toast('Failed to send message', { position: 'top-center' });
             });
       } else {
-         console.error("Form reference is null");
+         // Form ref not available
       }
    };
 

@@ -76,7 +76,7 @@ const TestimonialCommon = () => {
                   </div>
                   <div className="d-flex align-items-center justify-content-between">
                      <div className="d-flex align-items-center gap-3">
-                        <img src={item.img} alt="img" className="rounded-circle" />
+                        <img src={item.img} alt="img" className="rounded-circle" loading="lazy" />
                         <div>
                            <h6 className="mb-1 black-clr">{item.name}</h6>
                            <span className="d-block black-clr fz-14">{item.designation}</span>

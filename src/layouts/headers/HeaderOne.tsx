@@ -14,7 +14,7 @@ const HeaderOne = () => {
    const location = useLocation();
 
    const isKorean = (i18n.resolvedLanguage || i18n.language || "").toLowerCase().startsWith("ko");
-   const whatsappDigits = "59767809876";
+   const whatsappDigits = "918976241508";
 
    const support: { href: string; fallbackHref?: string; label: string } = isKorean
       ? {
@@ -103,7 +103,6 @@ const HeaderOne = () => {
                               )}
                            </span>
                            <span className="header-support-chip__text d-none d-xxl-block">
-                              <span className="header-support-chip__label">{t('nav.support247', '24/7 Support')}</span>
                               <span className="header-support-chip__channel">{isKorean ? 'KakaoTalk' : 'WhatsApp'}</span>
                            </span>
                         </a>

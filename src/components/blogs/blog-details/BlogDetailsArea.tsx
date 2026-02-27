@@ -15,12 +15,12 @@ const BlogDetailsArea = () => {
    // Blog content data
    const blogContent = {
       1: {
-         title: "Korea–India Trade Relations Reach New Heights in 2024",
+         title: "Korea–India Trade Relations Reach New Heights in 2026",
          author: "Trade Analyst",
-         date: "15 October 2024",
+         date: "15 January 2026",
          subtitle: "A Milestone in Bilateral Economic Cooperation",
          content: [
-            "The year 2024 has marked a remarkable chapter in the growing partnership between Korea and India, as bilateral trade surpassed the $25 billion mark — a significant milestone that underscores the deepening economic ties between the two dynamic Asian economies.",
+            "The year 2026 has marked a remarkable chapter in the growing partnership between Korea and India, as bilateral trade surpassed the $25 billion mark — a significant milestone that underscores the deepening economic ties between the two dynamic Asian economies.",
             "This achievement reflects the mutual commitment of both nations to fostering stronger trade relations, technological collaboration, and sustainable growth. From automobiles and electronics to information technology, renewable energy, and cultural exchange, the Korea–India relationship continues to evolve beyond traditional trade boundaries."
          ],
          sections: [
@@ -47,7 +47,7 @@ const BlogDetailsArea = () => {
                title: "The Road Ahead: Collaboration Beyond Commerce",
                content: [
                   "Beyond economics, this partnership represents a bridge of cultural understanding and shared innovation. Initiatives in education, tourism, and the creative industries — such as art collaborations and student exchange programs — are enriching both societies.",
-                  "As Korea and India continue to expand their strategic cooperation, 2024 will be remembered not just as a year of trade achievement but as a turning point toward a future built on trust, innovation, and mutual growth."
+                  "As Korea and India continue to expand their strategic cooperation, 2026 will be remembered not just as a year of trade achievement but as a turning point toward a future built on trust, innovation, and mutual growth."
                ]
             }
          ],
@@ -59,7 +59,7 @@ const BlogDetailsArea = () => {
       2: {
          title: "Korean Startups Eye Indian Market Expansion",
          author: "Tech Reporter",
-         date: "20 October 2024",
+         date: "28 January 2026",
          subtitle: "A New Wave of Cross-Border Innovation",
          content: [
             "In a bold move signaling deepening collaboration between two of Asia's fastest-growing economies, major Korean tech companies have announced plans for significant investments in the Indian startup ecosystem. The focus areas — fintech and e-commerce — highlight sectors where India's digital transformation and Korea's technological expertise can create immense value together.",
@@ -113,10 +113,10 @@ const BlogDetailsArea = () => {
       3: {
          title: "Cultural Exchange Programs Show Promising Results",
          author: "Cultural Reporter",
-         date: "25 October 2024",
+         date: "10 February 2026",
          subtitle: "Korea–India Collaboration Enters a New Era of Cultural Synergy",
          content: [
-            "2024 has been a defining year for Korea–India cultural exchange initiatives, as both nations report record participation and meaningful outcomes across education, art, and creative collaborations. These programs, designed to strengthen mutual understanding and cultural appreciation, are now becoming an integral part of the broader bilateral relationship between the two countries.",
+            "2026 has been a defining year for Korea–India cultural exchange initiatives, as both nations report record participation and meaningful outcomes across education, art, and creative collaborations. These programs, designed to strengthen mutual understanding and cultural appreciation, are now becoming an integral part of the broader bilateral relationship between the two countries.",
             "Through shared experiences in education, art, music, and film, both Korea and India are discovering new avenues to deepen people-to-people connections while enhancing their soft power influence in Asia and beyond."
          ],
          sections: [
@@ -164,7 +164,7 @@ const BlogDetailsArea = () => {
                <div className="col-lg-9">
                   <div className="blog-details-thumb rounded-4 w-100 mb-40 position-relative wow fadeInUp"
                      data-wow-delay=".4s">
-                     <img src={currentBlogData?.thumb || "/assets/img/blog/blog-details-big1.png"} alt="Korea India Relations" className="w-100 rounded-4" style={{height: '400px', objectFit: 'cover'}} />
+                     <img src={currentBlogData?.thumb || "/assets/img/blog/blog-details-big1.png"} alt="Korea India Relations" className="w-100 rounded-4" loading="lazy" style={{height: '400px', objectFit: 'cover'}} />
                      <div className="social-icon blog-details-social d-flex align-items-center">
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                            <i className="fab fa-facebook-f"></i>

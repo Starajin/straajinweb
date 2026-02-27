@@ -81,7 +81,7 @@ const Choose = () => {
                            </h2>
                         </div>
                         <div className="nano-project-image position-relative w-100">
-                           <img src="/assets/img/service/Choose.jpg" alt="img" className="rounded-3 w-100" />
+                           <img src="/assets/img/service/choose-section.png" alt="img" className="rounded-3 w-100" />
                            <div className="video d-center rounded-circle position-absolute">
                               <a onClick={() => setIsVideoOpen(true)} style={{ cursor: "pointer" }} className="video-btn video-popup">
                                  <svg width="26" height="31" viewBox="0 0 26 31" fill="none"

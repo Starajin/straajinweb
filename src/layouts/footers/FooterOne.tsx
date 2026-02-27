@@ -15,10 +15,11 @@ const FooterOne = () => {
                         {/* Company Info */}
                         <div className="col-lg-4 col-md-6 mb-3 mb-lg-0">
                            <div className="mb-3">
-                              <img 
-                                 src="/assets/img/logo/Starajin - White.png" 
-                                 alt="Starajin Logo" 
-                                 className="img-fluid" 
+                              <img
+                                 src="/assets/img/logo/Starajin - White.png"
+                                 alt="Starajin Logo"
+                                 className="img-fluid"
+                                 loading="lazy"
                                  style={{ height: '60px', width: 'auto' }}
                               />
                            </div>

@@ -73,10 +73,11 @@ const AdvisoryBoard = () => {
                   <div key={member.id} className="col-lg-3 col-md-6">
                      <div className="team-items hover-translate8 px-4 py-4 section-bg rounded-4 h-100">
                         <div className="thumb w-100 overflow-hidden mb-4">
-                           <img 
-                              src={member.image} 
+                           <img
+                              src={member.image}
                               alt={t(member.nameKey)}
-                              className="w-100 rounded-3" 
+                              className="w-100 rounded-3"
+                              loading="lazy"
                               style={{height: '220px', objectFit: 'cover', objectPosition: 'top', ...member.imageStyle}}
                            />
                         </div>

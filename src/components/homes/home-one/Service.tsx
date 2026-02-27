@@ -101,7 +101,7 @@ const Service = () => {
                            </Link>
                         </div>
                         <div className="thumb w-100 overflow-hidden position-relative">
-                           <img src={item.thumb} className="w-100 rounded-bottom-3" alt={t(item.titleKey)} />
+                           <img src={item.thumb} className="w-100 rounded-bottom-3" alt={t(item.titleKey)} loading="lazy" />
                         </div>
                      </div>
                   </div>
