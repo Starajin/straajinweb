@@ -7,7 +7,24 @@
     "case-studies": "Case Studies",
     "blog": "Blog",
     "contact": "Contact",
-    "pages": "Pages"
+    "pages": "Pages",
+    "mainNavigation": "Main navigation",
+    "goHome": "STARAJIN — Go to homepage",
+    "primary": "Primary",
+    "support247": "24/7 Support",
+    "openMenu": "Open navigation menu",
+    "search": "Search"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content"
+  },
+  "menu": {
+    "projects": "Projects",
+    "case-studies": "Case Studies",
+    "team": "Team",
+    "testimonial": "Testimonial",
+    "pricing": "Pricing",
+    "faq": "FAQ"
   },
   "pages": {
     "home": "Home",
@@ -21,7 +38,8 @@
     "team": "Team",
     "testimonial": "Testimonial",
     "pricing": "Pricing",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "viewMore": "View More"
   },
   "about": {
     "financial": {
@@ -140,6 +158,7 @@
       "title": "Meet Our Expert Team",
       "subtitle": "Leading Korea-India Business Collaboration",
       "viewAll": "View All Team",
+      "viewProfile": "View Profile",
       "members": {
         "yujin": {
           "name": "Yujin Han",
@@ -171,10 +190,11 @@
     },
     "filters": {
       "all": "All Projects",
-      "mou": "MoUs",
-      "cultural": "Cultural Exchange", 
+      "mou": "MoUs & Partnerships",
+      "cultural": "Cultural Exchange",
       "publication": "Publications",
-      "tour": "Tours"
+      "tour": "Tours & Roadshows",
+      "b2b": "B2B & Events"
     },
     "stats": {
       "title": "Our Impact",
@@ -194,41 +214,72 @@
       }
     },
     "categories": {
-      "mou": "MOU",
+      "mou": "MOU / PARTNERSHIP",
       "cultural": "CULTURAL",
       "publication": "PUBLICATION",
-      "tour": "TOUR"
+      "tour": "TOUR / ROADSHOW",
+      "b2b": "B2B / EVENT"
     },
     "items": [
       {
-        "title": "G2B MoU: Softberry with Rajasthan Government",
-        "description": "Strategic G2B MoU between Softberry and Rajasthan Government for facilitating Korean business investments and technology transfer.",
+        "title": "Rising Rajasthan – G2B Partnership with Softberry",
+        "description": "Strategic G2B MoU between Softberry and Rajasthan Government at the Rising Rajasthan Global Investment Summit, facilitating Korean business investments and technology transfer into India's largest state.",
         "location": "Jaipur, India"
       },
       {
-        "title": "KOFICE Local Culture Exchange Project",
-        "description": "KOFICE-supported local culture exchange project promoting Korean cultural content and fostering cross-cultural understanding.",
-        "location": "Multiple Cities"
+        "title": "PCU-KOSME Korea Facilitation Centre",
+        "description": "Establishment of Korea Facilitation Centre at Pimpri Chinchwad University in partnership with KOSME, creating a dedicated hub for Korean SME entry into the Indian market.",
+        "location": "Pune, India"
       },
       {
-        "title": "Launch of Super 30 (Korean Translation)",
-        "description": "Successful launch of the Korean translation of the Indian bestseller 'Super 30', making this inspiring story accessible to Korean readers.",
-        "location": "Mumbai, India"
+        "title": "Sogang University – India Innovation Hub Partnerships",
+        "description": "Multi-institutional MoU partnerships connecting Sogang University with India's T-Hub Hyderabad and PCU, fostering academic exchange and startup ecosystem collaboration.",
+        "location": "Seoul & Hyderabad"
       },
       {
-        "title": "Korea Edu Tour 2025 – Pune",
-        "description": "Comprehensive educational tour program connecting Pune-based students and professionals with Korean educational institutions and corporate culture.",
-        "location": "Pune to Korea"
+        "title": "B2B MoU & Strategic Partnerships",
+        "description": "Portfolio of strategic B2B MoUs including ISCMA-Starajin, Verywords-Starajin, and Medical Cosmetics partnerships facilitating cross-border business collaborations.",
+        "location": "Korea & India"
       },
       {
-        "title": "India-Korea Artist Camp by Namisland",
-        "description": "Intensive artist exchange program at Nami Island bringing together Korean and Indian artists for collaborative creative projects.",
+        "title": "KOFICE Cultural Exchange Program",
+        "description": "KOFICE-supported cultural exchange project promoting Korean cultural content across Indian cities, fostering cross-cultural understanding and K-culture appreciation.",
+        "location": "Multiple Cities, India"
+      },
+      {
+        "title": "Nami Island India-Korea Artist Camp",
+        "description": "Collaborative artist exchange program at Nami Island bringing together Korean and Indian artists for creative workshops, exhibitions, and cultural dialogue.",
         "location": "Nami Island, Korea"
       },
       {
-        "title": "B2B MoUs Portfolio",
-        "description": "Series of strategic B2B MoUs facilitating business partnerships and collaborations between Korean and Indian companies.",
-        "location": "Multiple Locations"
+        "title": "Super 30 Korean Publication & Book Concert",
+        "description": "Korean translation and publication of the Indian bestseller 'Super 30' by Anand Kumar, launched with book concerts at ICCK Diwali Ball and multiple Korean venues.",
+        "location": "Seoul, Korea"
+      },
+      {
+        "title": "KTO Edu Tour Roadshow 2025",
+        "description": "Korea Tourism Organization Educational Tour Roadshow conducted across Pune and Hyderabad, connecting Indian travel industry professionals with Korean tourism opportunities.",
+        "location": "Pune & Hyderabad, India"
+      },
+      {
+        "title": "OKTA World Business Expo – B2B Meetings",
+        "description": "Starajin-facilitated B2B matchmaking sessions at OKTA World Business Expo in Incheon, connecting Korean overseas business network with Indian enterprises.",
+        "location": "Incheon, Korea"
+      },
+      {
+        "title": "Korea SMEs & Startups Day 2025",
+        "description": "Proclamation ceremony and KOSME-STARAJIN DIDAC 2025 event celebrating Korea's SME ecosystem and facilitating partnerships with Indian startups and enterprises.",
+        "location": "Seoul, Korea"
+      },
+      {
+        "title": "India-Korea Industry B2B Meetings",
+        "description": "Ongoing series of industry-specific B2B meetings including OFKOS, GS-Patanjali, KRAFTON, Rossari, and Jagruti partnerships across chemicals, gaming, biotech, and manufacturing sectors.",
+        "location": "Korea & India"
+      },
+      {
+        "title": "India-Korea Government & Industry Forums",
+        "description": "High-level government and industry engagements including India Forum 2026, KOIMA Sub-Committee, MIDC-KOSME meetings, and bilateral ministerial consultations driving institutional cooperation.",
+        "location": "Korea & India"
       }
     ]
   },
@@ -241,7 +292,7 @@
       "phone": "Phone Number",
       "email": "Email address", 
       "hours": "Working hours",
-      "hoursValue": "09AM - 05PM"
+      "hoursValue": "09AM - 06PM"
     },
     "offices": {
       "korea": {
@@ -273,13 +324,24 @@
   },
   "banner": {
     "slide1": {
-      "title": "Supporting Your India Journey",
-      "subtitle": "-Stage by Stage ",
+      "brand": "STARAJIN",
+      "eyebrow": "Korea–India Business Strategy",
+      "title_line1": "Your India Journey,",
+      "title_line2": "Designed for Success",
+      "subtitle": "Stage by Stage",
+      "cta": "Book a Strategy Session",
+      "cta2": "Explore Our Services",
+      "trustItems": [
+        "50+ Strategic MoUs",
+        "18+ Years in India",
+        "Trusted by KOSME & KOFICE"
+      ],
+      "title": "Supporting Your India Journey —",
+      "h2": "Your Trusted Partner for Structured India Market Entry, Local Execution & Long-Term Growth Between India & Korean Companies",
       "description": "Your Trusted Partner for Korea–India business strategy and facilitation firm trusted by Korean companies, institutions, and government partners.",
-      "cta": "Get Started",
       "features": [
         "Comprehensive Market Analysis",
-        "Regulatory Compliance Support", 
+        "Regulatory Compliance Support",
         "Local Partnership Development",
         "Cultural Integration Guidance"
       ]
@@ -315,7 +377,7 @@
     "items": [
       {
         "title": "18+ Years of Hands-On India Market Experience",
-        "description": "We don’t rely on second-hand knowledge.Our insights come from years of living, working, and solving real business challenges in India."
+        "description": "We don’t rely on second-hand knowledge. Our insights come from years of living, working, and solving real business challenges in India."
       },
       {
         "title": "Deep Korea–India cultural, regulatory, and industry insight",
@@ -330,6 +392,65 @@
         "description": "From manufacturing and energy to IT, startups, and public-sector collaboration, STARAJIN has supported organizations at different stages of India expansion — from first entry to long-term stabilization."
       }
     ]
+  },
+  "integration": {
+    "eyebrow": "How We Integrate Strategy and Execution",
+    "title": "Integrated Strategy. Coordinated Execution. One Seamless System.",
+    "lead": "Many companies entering India face the same challenge: a well-defined strategy that becomes difficult to implement in a complex and unfamiliar environment.",
+    "leadBold": "At STARAJIN, strategy is never separated from execution.",
+    "leadDetail": "From the beginning, we design market entry and expansion plans with implementation in mind — ensuring that decisions made at headquarters translate effectively into on-the-ground operations in India.",
+    "processLabel": "How Our Integration Works",
+    "steps": [
+      {
+        "title": "Designing the Right Structure",
+        "intro": "Before execution begins, we focus on clarity.",
+        "desc": "We work with you to define:",
+        "bullets": [
+          "The most suitable market entry model",
+          "Legal, financial, and governance frameworks",
+          "Risk factors and operational feasibility"
+        ],
+        "closing": "Strategy is not just an idea — it is a structure ready to be implemented."
+      },
+      {
+        "title": "Connecting Strategy to the Right Expertise",
+        "intro": "Execution in India requires multiple areas of specialization — legal, tax, compliance, operations, and local market integration.",
+        "desc": "Instead of leaving you to manage these separately, STARAJIN brings them together through our alliance network of trusted partners.",
+        "bullets": [],
+        "closing": "You don't just receive advice — you receive coordinated expertise aligned to your strategy."
+      },
+      {
+        "title": "Coordinating Across Borders and Stakeholders",
+        "intro": "As your project moves forward, STARAJIN acts as a single-window control tower.",
+        "desc": null,
+        "bullets": [
+          "Align headquarters decisions with local realities",
+          "Facilitate communication between Korean and Indian stakeholders",
+          "Monitor progress and adjust direction when needed"
+        ],
+        "closing": "Strategy stays alive — and adaptable — throughout execution."
+      },
+      {
+        "title": "Supporting Stabilization and Growth",
+        "intro": "Our role doesn't end once operations begin.",
+        "desc": null,
+        "bullets": [
+          "Governance and compliance stabilization",
+          "Operational optimization",
+          "Expansion and long-term localization planning"
+        ],
+        "closing": "Because successful execution is not a moment — it is a process."
+      }
+    ],
+    "highlightsTitle": "Key Highlights",
+    "highlights": [
+      "Structure-First Thinking – Strategy designed for real-world execution",
+      "Alliance-Driven Expertise – Legal, financial, and operational support integrated",
+      "Single-Window Coordination – One control tower, multiple capabilities",
+      "Bilateral Alignment – Bridging headquarters and India operations",
+      "Long-Term Partnership – From entry to stabilization and growth"
+    ],
+    "cta": "See How We Support Each Stage of Your India Journey"
   },
   "howWeWork": {
     "title": "How We Work",
@@ -359,8 +480,8 @@
     ]
   },
   "cta": {
-    "title": "Ready to Expand Your Business to Korea?",
-    "description": "Let our expert team guide you through the Korean market entry process. Get personalized strategies and proven solutions for your business success.",
+    "title": "Ready to Expand Your Business to India?",
+    "description": "Let our expert team guide you through the Indian market entry process. Get personalized strategies and proven solutions for your business success.",
     "buttonText": "Schedule Free Consultation",
     "supportInfo": {
       "phone": {
@@ -408,7 +529,7 @@
       },
       {
         "number": "₹500Cr+",
-        "label": "Culture Exchange Projects",
+        "label": "Cultural Exchange Projects",
         "description": "",
         "items": [
           "KOFICE Local Culture international Exchange project",
@@ -423,7 +544,7 @@
         "description": "",
         "items": [
           "Incorporation 10+ / Partner matching 100+ / Strategy planning 15+",
-          "JV Partner Due Dilligence : 2+ / New Business plan consultation : 10+",
+          "JV Partner Due Diligence : 2+ / New Business plan consultation : 10+",
           "Opinion Lead(Seminar / Speaker / Column report / Market report) : 100+"
         ]
       }
@@ -660,9 +781,9 @@
   },
   "solutions": {
     "title": "Core Business Solutions",
-    "subtitle": "Strategic consulting that transforms your vision into Korean market success",
-    "description1": "At StaraJIN, we believe that successful market entry starts with deep understanding and strategic action. Our consulting services are designed to provide comprehensive market insights, tailored strategies, and proven methodologies to help you establish a strong presence in the Korean market.",
-    "description2": "Whether you're looking to expand your business operations, establish partnerships, or navigate regulatory requirements, we're here to guide you through every step of your Korean market journey.",
+    "subtitle": "Strategic consulting that transforms your vision into Indian market success",
+    "description1": "At STARAJIN, we believe that successful market entry starts with deep understanding and strategic action. Our consulting services are designed to provide comprehensive market insights, tailored strategies, and proven methodologies to help you establish a strong presence in the Indian market.",
+    "description2": "Whether you're looking to expand your business operations, establish partnerships, or navigate regulatory requirements, we're here to guide you through every step of your Indian market journey.",
     "keyAreasTitle": "Key Areas We Focus On",
     "focusAreas": [
       "Enabling your business to penetrate the Indian market successfully",
@@ -676,7 +797,7 @@
       },
       "trust": {
         "title": "Built on Trust. Backed by Experience",
-        "description": "Our proven track record and deep local expertise ensure reliable guidance through every step of your Korean market journey."
+        "description": "Our proven track record and deep local expertise ensure reliable guidance through every step of your India market journey."
       },
       "principles": {
         "title": "The Principles That Guide Every Step We Take",

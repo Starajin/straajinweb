@@ -88,7 +88,7 @@ const Team = () => {
                            <Link to="/team-details"
                               className="theme-btn style2 pe-3 mt-3">
                               <i className="fa-solid fa-arrow-right w-32 h-32 bg-white rounded-circle d-center fz-12 theme-clr4 me-2"></i>
-                              View Profile
+                              {t('about.team.viewProfile')}
                            </Link>
                         </div>
                      </div>

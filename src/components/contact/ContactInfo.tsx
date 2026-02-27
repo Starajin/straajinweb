@@ -29,7 +29,7 @@ const ContactInfo = () => {
                      </div>
                      <span className="theme-clr4 d-block mb-00">{t('contact.info.phone')}</span>
                      <h5>
-                        <Link to="tel:+8202123456780" className="fw-bold theme-clr4">+82-2-1234-5678</Link>
+                        <Link to="tel:+82212345678" className="fw-bold theme-clr4">+82-2-1234-5678</Link>
                      </h5>
                   </div>
                </div>

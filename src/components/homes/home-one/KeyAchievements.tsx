@@ -34,7 +34,7 @@ const KeyAchievements = () => {
   ];
 
   return (
-    <section className="section-bg py-100">
+    <section className="section-bg pt-100" style={{ paddingBottom: '140px' }}>
       <div className="container">
         {/* Header */}
         <div className="row g-lg-4 g-md-3 g-2 align-items-end mb-60">

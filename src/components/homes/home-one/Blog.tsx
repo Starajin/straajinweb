@@ -6,7 +6,7 @@ const Blog = () => {
    const blogPosts = t('insights.posts', { returnObjects: true }) as any[];
    
    return (
-      <section className="blog-section pt-100 pb-100">
+      <section className="blog-section section-bg pt-100 pb-100">
          <div className="container">
             <div className="row g-sm-4 g-3 align-items-end mb-40">
                <div className="col-lg-6 col-md-7">

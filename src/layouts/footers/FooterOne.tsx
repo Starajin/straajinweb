@@ -29,19 +29,7 @@ const FooterOne = () => {
                            
                            {/* Social Links */}
                            <div className="d-flex gap-2">
-                              <a href="#" className="d-flex align-items-center justify-content-center social-link" 
-                                 style={{ width: '34px', height: '34px', backgroundColor: 'var(--footer-social-bg)', borderRadius: '50%', transition: 'all 0.3s ease' }}>
-                                 <i className="fa-brands fa-linkedin-in text-white" style={{ fontSize: '14px' }}></i>
-                              </a>
-                              <a href="#" className="d-flex align-items-center justify-content-center social-link" 
-                                 style={{ width: '34px', height: '34px', backgroundColor: 'var(--footer-social-bg)', borderRadius: '50%', transition: 'all 0.3s ease' }}>
-                                 <i className="fa-brands fa-twitter text-white" style={{ fontSize: '14px' }}></i>
-                              </a>
-                              <a href="#" className="d-flex align-items-center justify-content-center social-link" 
-                                 style={{ width: '34px', height: '34px', backgroundColor: 'var(--footer-social-bg)', borderRadius: '50%', transition: 'all 0.3s ease' }}>
-                                 <i className="fa-brands fa-instagram text-white" style={{ fontSize: '14px' }}></i>
-                              </a>
-                              <a href="#" className="d-flex align-items-center justify-content-center social-link" 
+                              <a href="mailto:korea@starajin.com" className="d-flex align-items-center justify-content-center social-link"
                                  style={{ width: '34px', height: '34px', backgroundColor: 'var(--footer-social-bg)', borderRadius: '50%', transition: 'all 0.3s ease' }}>
                                  <i className="fa-light fa-envelope text-white" style={{ fontSize: '14px' }}></i>
                               </a>
@@ -80,24 +68,24 @@ const FooterOne = () => {
                            <h5 className="fw-semibold mb-3" style={{ color: '#ffc700', fontSize: '1rem' }}>{t('footer.services')}</h5>
                            <ul className="list-unstyled mb-0">
                               <li className="mb-2">
-                                 <a href="#" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
+                                 <Link to="/services" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
                                     {t('services.businessDev')}
-                                 </a>
+                                 </Link>
                               </li>
                               <li className="mb-2">
-                                 <a href="#" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
+                                 <Link to="/services" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
                                     {t('services.consulting')}
-                                 </a>
+                                 </Link>
                               </li>
                               <li className="mb-2">
-                                 <a href="#" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
+                                 <Link to="/services" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
                                     {t('services.partnerMatching')}
-                                 </a>
+                                 </Link>
                               </li>
                               <li>
-                                 <a href="#" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
+                                 <Link to="/services" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
                                     {t('services.cultural')}
-                                 </a>
+                                 </Link>
                               </li>
                            </ul>
                         </div>
@@ -159,9 +147,9 @@ const FooterOne = () => {
                         </div>
                         
                         <div className="d-flex align-items-center gap-4 small">
-                           <a href="#" className="text-white text-decoration-none footer-legal-link" style={{ opacity: 0.8 }}>{t('footer.privacyPolicy')}</a>
-                           <a href="#" className="text-white text-decoration-none footer-legal-link" style={{ opacity: 0.8 }}>{t('footer.termsOfService')}</a>
-                           <a href="#" className="text-white text-decoration-none footer-legal-link" style={{ opacity: 0.8 }}>{t('footer.cookiePolicy')}</a>
+                           <span className="text-white text-decoration-none footer-legal-link" style={{ opacity: 0.8, cursor: 'default' }}>{t('footer.privacyPolicy')}</span>
+                           <span className="text-white text-decoration-none footer-legal-link" style={{ opacity: 0.8, cursor: 'default' }}>{t('footer.termsOfService')}</span>
+                           <span className="text-white text-decoration-none footer-legal-link" style={{ opacity: 0.8, cursor: 'default' }}>{t('footer.cookiePolicy')}</span>
                         </div>
                      </div>
                   </div>

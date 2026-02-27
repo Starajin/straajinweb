@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import menu_data, { getMenuData } from "../../../data/MenuData";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -7,10 +7,10 @@ import { useTranslation } from "react-i18next";
 const NavMenu = () => {
 
     const [navClick, setNavClick] = useState<boolean>(false);
-    const [menuItems, setMenuItems] = useState(menu_data); // Start with static data
+    const [menuItems, setMenuItems] = useState(menu_data);
     const { t } = useTranslation();
+    const location = useLocation();
 
-    // Load dynamic menu data from CMS
     useEffect(() => {
         const loadMenuData = async () => {
             try {
@@ -18,24 +18,26 @@ const NavMenu = () => {
                 setMenuItems(cmsMenuData);
             } catch (error) {
                 console.error('Failed to load CMS menu data:', error);
-                // Keep using static menu_data as fallback
             }
         };
-        
         loadMenuData();
     }, []);
 
-    // Translation key mapping for menu items
     const getMenuTranslationKey = (title: string): string => {
         const keyMap: { [key: string]: string } = {
             'Home': 'nav.home',
-            'About us': 'nav.about', 
+            'About us': 'nav.about',
             'Services': 'nav.services',
             'Projects': 'nav.projects',
             'Contact': 'nav.contact',
-            'Blog': 'nav.blog' // Add blog translation
+            'Blog': 'nav.blog'
         };
         return keyMap[title] || title;
+    };
+
+    const isActive = (link: string) => {
+        if (link === '/') return location.pathname === '/';
+        return location.pathname.startsWith(link);
     };
 
     useEffect(() => {
@@ -78,7 +80,11 @@ const NavMenu = () => {
                 ) : (
 
                     <li key={menu.id}>
-                        <Link to={menu.link} onClick={() => setNavClick(!navClick)}>
+                        <Link
+                            to={menu.link}
+                            onClick={() => setNavClick(!navClick)}
+                            aria-current={isActive(menu.link) ? 'page' : undefined}
+                        >
                             {t(getMenuTranslationKey(menu.title))}
                         </Link>
 

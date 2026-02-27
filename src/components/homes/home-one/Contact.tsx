@@ -2,7 +2,7 @@ import HomeContactForm from "../../forms/HomeContactForm"
 
 const Contact = () => {
    return (
-      <section className="contact-section section-bg pt-100 pb-40">
+      <section className="contact-section section-bg pt-100 pb-100">
          <div className="container">
             <div className="row g-0">
                <div className="col-lg-6">

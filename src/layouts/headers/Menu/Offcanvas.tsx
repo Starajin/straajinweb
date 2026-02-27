@@ -57,14 +57,14 @@ const Offcanvas = ({ offCanvas, setOffCanvas }: MobileSidebarProps) => {
                         </div>
                      </div>
                      <div className="offcanvas__contact">
-                        <h4 className="n900-clr">{t('contact.contactInfo', 'Contact Info')}</h4>
+                        <h4 className="n900-clr">{t('cta.contactInfo', 'Contact Info')}</h4>
                         <ul className="d-grid gap-2 mb-5">
                            <li className="d-flex align-items-center">
                               <div className="offcanvas__contact-icon">
                                  <i className="fal fa-map-marker-alt"></i>
                               </div>
                               <div className="offcanvas__contact-text">
-                                 <Link target="_blank" to="/">Seoul, South Korea</Link>
+                                 <span>{t('footer.seoulLocation')}</span>
                               </div>
                            </li>
                            <li className="d-flex align-items-center">
@@ -82,7 +82,7 @@ const Offcanvas = ({ offCanvas, setOffCanvas }: MobileSidebarProps) => {
                                  <i className="fal fa-clock"></i>
                               </div>
                               <div className="offcanvas__contact-text">
-                                 <Link target="_blank" to="/">Mon-Fri, 09AM - 06PM KST</Link>
+                                 <span>{t('cta.koreaOffice.hours')}</span>
                               </div>
                            </li>
                            <li className="d-flex align-items-center">

@@ -43,10 +43,7 @@ const Choose = () => {
       <section className="choose-section z-1 position-relative section-bg pt-100 pb-100">
          <div className="container">
             <div className="row g-4">
-               <div className="col-lg-6 pt-lg-5 mt-5">
-                  <p className="mb-lg-4 mb-4 pb-lg-1">
-                     {t('choose.subtitle')}
-                  </p>
+               <div className="col-lg-6 pt-lg-5 mt-5 order-2 order-lg-1">
                   <div className="choose-content-wrap d-flex flex-column gap-xxl-4 gap-lg-3 gap-2">
                      {choose_data.map((item) => (
                         <div key={item.id} 
@@ -65,7 +62,7 @@ const Choose = () => {
                      ))}
                   </div>
                </div>
-               <div className="col-lg-6">
+               <div className="col-lg-6 order-1 order-lg-2">
                   <div className="choose-thumb-wrap">
                      <div className="boxes">
                         <div className="section-header mb-4">

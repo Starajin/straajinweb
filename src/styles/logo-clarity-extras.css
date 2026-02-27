@@ -1,42 +1,8 @@
-/* Additional Logo Clarity CSS - Add this if needed */
-
-/* Force high-quality rendering on all browsers */
+/* Logo clarity — minimal, SVG-friendly */
 .header-logo img {
-  /* WebKit specific for sharp images */
-  -webkit-optimize-contrast: auto !important;
-  
-  /* Firefox specific */
-  -moz-force-broken-image-icon: 0 !important;
-  
-  /* Edge/IE specific */
-  -ms-interpolation-mode: nearest-neighbor !important;
-  
-  /* Ensure crisp edges on scaling */
-  image-rendering: -webkit-crisp-edges !important;
-  image-rendering: -moz-crisp-edges !important;
-  image-rendering: crisp-edges !important;
-  
-  /* Prevent subpixel blurring */
-  transform: translateZ(0) scale(1.0) !important;
-  
-  /* High contrast for clarity */
-  filter: 
-    contrast(1.15) 
-    brightness(1.02) 
-    saturate(1.05) 
-    unsharp-mask(amount=100% radius=1px threshold=0) !important;
-}
-
-/* For retina/high-DPI displays */
-@media 
-  (-webkit-min-device-pixel-ratio: 2), 
-  (min-resolution: 192dpi), 
-  (min-resolution: 2dppx) {
-  .header-logo img {
-    /* Even sharper rendering for high-DPI */
-    image-rendering: -webkit-optimize-contrast !important;
-    transform: scale(1) translateZ(0) !important;
-  }
+  display: block;
+  height: auto;
+  image-rendering: auto;
 }
 
 /* 

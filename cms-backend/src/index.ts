@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
 
@@ -24,6 +25,7 @@ app.use(cors({
 
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+app.use(cookieParser());
 
 // Serve uploaded files
 app.use('/uploads', express.static('uploads'));
@@ -58,13 +60,23 @@ app.get('/health', async (req, res) => {
   }
 });
 
-// API Routes (to be added)
-// app.use('/api/auth', authRoutes);
-// app.use('/api/projects', projectRoutes);
-// app.use('/api/blog', blogRoutes);
-// app.use('/api/team', teamRoutes);
-// app.use('/api/media', mediaRoutes);
-// app.use('/api/settings', settingsRoutes);
+// Import routes
+import projectRoutes from './routes/projectRoutes';
+import blogRoutes from './routes/blogRoutes';
+import teamRoutes from './routes/teamRoutes';
+import mediaRoutes from './routes/mediaRoutes';
+import settingsRoutes from './routes/settingsRoutes';
+import authRoutes from './routes/authRoutes';
+import layoutRoutes from './routes/layout';
+
+// API Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/projects', projectRoutes);
+app.use('/api/blog', blogRoutes);
+app.use('/api/team', teamRoutes);
+app.use('/api/media', mediaRoutes);
+app.use('/api/settings', settingsRoutes);
+app.use('/api/layout', layoutRoutes);
 
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

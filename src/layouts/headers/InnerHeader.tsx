@@ -1,17 +1,19 @@
 import NavMenu from "./Menu/NavMenu"
-import { useState, type MouseEvent } from "react";
+import { useState, useCallback, type MouseEvent } from "react";
 import Offcanvas from "./Menu/Offcanvas";
 import HeaderSearch from "./Menu/HeaderSearch";
 import UseSticky from "../../hooks/UseSticky";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import LanguageSwitcher from "../../components/common/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 
 const InnerHeader = () => {
 
    const { sticky } = UseSticky();
-   const { i18n } = useTranslation();
+   const { t, i18n } = useTranslation();
    const [offCanvas, setOffCanvas] = useState<boolean>(false);
    const [isSearch, setIsSearch] = useState<boolean>(false);
+   const location = useLocation();
 
    const isKorean = (i18n.resolvedLanguage || i18n.language || "").toLowerCase().startsWith("ko");
    const whatsappDigits = "59767809876";
@@ -36,82 +38,98 @@ const InnerHeader = () => {
       }, 700);
    };
 
+   const toggleOffCanvas = useCallback(() => setOffCanvas(prev => !prev), []);
+   const isActive = (path: string) => location.pathname === path;
+
    return (
       <>
-         <header id="header-sticky" className={`header-section inner-header style1 w-100 ${sticky ? "sticky" : ""}`}>
+         <a href="#main-content" className="skip-to-content">
+            {t('accessibility.skipToContent', 'Skip to main content')}
+         </a>
+         <header
+            id="header-sticky"
+            role="banner"
+            className={`header-section inner-header style1 w-100 ${sticky ? "sticky" : ""}`}
+         >
             <div className="container">
                <div className="mega-menu-wrapper">
                   <div className="header-main d-flex align-items-center justify-content-between">
-                     {/* Logo Section */}
+                     {/* Logo */}
                      <div className="header-left">
-                        <div className="logo">
-                           <Link to="/" className="header-logo">
-                              <img 
-                                 src="/assets/img/logo/Starajin - Header  3x svg.svg" 
-                                 alt="StaraJIN Logo" 
-                              />
-                           </Link>
-                        </div>
+                        <Link to="/" className="header-logo" aria-label={t('nav.goHome', 'StaraJIN — Go to homepage')}>
+                           <img
+                              src="/assets/img/logo/Starajin - Header  3x svg.svg"
+                              alt=""
+                              role="presentation"
+                              width="110"
+                              height="40"
+                           />
+                        </Link>
                      </div>
 
-                     {/* Navigation Menu - Center */}
-                     <div className="header-center d-none d-xl-block">
+                     {/* Desktop Nav */}
+                     <nav className="header-center d-none d-xl-flex align-items-center" aria-label={t('nav.primary', 'Primary')}>
                         <div className="main-menu">
-                           <nav id="mobile-menu">
-                              <NavMenu />
-                           </nav>
+                           <NavMenu />
                         </div>
+                     </nav>
+
+                     {/* Actions */}
+                     <div className="header-actions-bar d-none d-xl-flex align-items-center">
+                        <LanguageSwitcher />
+
+                        <Link
+                           to="/contact"
+                           className={`header-cta-btn ${isActive('/contact') ? 'header-cta-btn--active' : ''}`}
+                           aria-current={isActive('/contact') ? 'page' : undefined}
+                        >
+                           <span className="header-cta-btn__icon" aria-hidden="true">
+                              <i className="fa-solid fa-arrow-right"></i>
+                           </span>
+                           <span className="header-cta-btn__label">{t('nav.contact')}</span>
+                        </Link>
+
+                        {/* Search */}
+                        <button
+                           onClick={() => setIsSearch(true)}
+                           className="header-icon-btn"
+                           title={t('nav.search', 'Search')}
+                           aria-label={t('nav.search', 'Search')}
+                           type="button"
+                        >
+                           <i className="fa-solid fa-magnifying-glass"></i>
+                        </button>
+
+                        {/* WhatsApp / KakaoTalk */}
+                        <a
+                           href={support.href}
+                           onClick={onSupportClick}
+                           className="header-icon-btn header-support-link"
+                           title={support.label}
+                           aria-label={`${t('nav.support247', '24/7 Support')} — ${support.label}`}
+                           rel="noreferrer"
+                        >
+                           {isKorean ? (
+                              <span className="header-support-icon--kakao" aria-hidden="true">K</span>
+                           ) : (
+                              <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                           )}
+                        </a>
                      </div>
 
-                     {/* Action Buttons - Right */}
-                     <div className="header-right d-flex align-items-center gap-3">
-                        {/* Desktop Action Buttons */}
-                        <div className="header-actions d-none d-xl-flex align-items-center gap-3">
-                           {/* Contact Us Button */}
-                           <Link to="/contact" className="contact-us-btn d-flex align-items-center gap-2 px-4 py-3 rounded-pill border">
-                              <div className="arrow-icon d-flex align-items-center justify-content-center">
-                                 <i className="fa-solid fa-arrow-right"></i>
-                              </div>
-                              <span>Contact Us</span>
-                           </Link>
-                           
-                           {/* Search Icon */}
-                           <button 
-                              onClick={() => setIsSearch(true)}
-                              className="header-action-btn search-btn d-flex align-items-center justify-content-center"
-                              title="Search"
-                           >
-                              <i className="fa-solid fa-magnifying-glass"></i>
-                           </button>
-                           
-                           {/* WhatsApp / KakaoTalk */}
-                           <a
-                              href={support.href}
-                              onClick={onSupportClick}
-                              className="header-action-btn phone-btn d-flex align-items-center justify-content-center header-support-link"
-                              title={support.label}
-                              aria-label={support.label}
-                              rel="noreferrer"
-                           >
-                              {isKorean ? (
-                                 <span className="header-support-icon header-support-icon--kakao" aria-hidden="true">
-                                    K
-                                 </span>
-                              ) : (
-                                 <i className="fa-brands fa-whatsapp header-support-icon header-support-icon--whatsapp" aria-hidden="true"></i>
-                              )}
-                           </a>
-                        </div>
-
-                        {/* Mobile Elements */}
-                        <div className="mobile-elements d-xl-none d-flex align-items-center gap-3">
-                           <div className="header__hamburger">
-                              <div className="sidebar__toggle" onClick={() => setOffCanvas(true)} style={{ cursor: "pointer" }}>
-                                 <img src="/assets/img/icon/bars.png" alt="icon" />
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                     {/* Mobile hamburger */}
+                     <button
+                        className="header-burger d-xl-none"
+                        onClick={toggleOffCanvas}
+                        aria-label={t('nav.openMenu', 'Open navigation menu')}
+                        aria-expanded={offCanvas}
+                        aria-controls="offcanvas-menu"
+                        type="button"
+                     >
+                        <span className="header-burger__line" />
+                        <span className="header-burger__line" />
+                        <span className="header-burger__line" />
+                     </button>
                   </div>
                </div>
             </div>

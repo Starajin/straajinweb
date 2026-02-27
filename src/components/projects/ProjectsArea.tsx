@@ -1,23 +1,112 @@
-import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 
 interface ProjectMeta {
    id: number;
    thumb: string;
+   gallery: string[];
    category: string;
    date: string;
    participants: number;
-   status: 'completed' | 'ongoing' | 'upcoming';
 }
 
 const projects_meta: ProjectMeta[] = [
-   { id: 1, thumb: "/assets/img/blog/financial-thumb1.png", category: "mou", date: "2023-03-15", participants: 50, status: "completed" },
-   { id: 2, thumb: "/assets/img/blog/financial-thumb2.png", category: "cultural", date: "2023-05-20", participants: 150, status: "completed" },
-   { id: 3, thumb: "/assets/img/blog/financial-thumb3.png", category: "publication", date: "2023-08-10", participants: 15, status: "completed" },
-   { id: 4, thumb: "/assets/img/team/team1.png", category: "tour", date: "2025-03-15", participants: 30, status: "upcoming" },
-   { id: 5, thumb: "/assets/img/team/team2.png", category: "cultural", date: "2024-06-20", participants: 40, status: "completed" },
-   { id: 6, thumb: "/assets/img/team/team3.png", category: "mou", date: "2023-12-01", participants: 100, status: "ongoing" },
+   {
+      id: 1,
+      thumb: "/assets/img/projects/rising-rajasthan-event.jpg",
+      gallery: ["/assets/img/projects/rajasthan-softberry-mou.jpg", "/assets/img/projects/rajasthan-cm-korea-visit.jpg", "/assets/img/projects/rajasthan-cm-news.jpg"],
+      category: "mou",
+      date: "2024-09-15",
+      participants: 200,
+   },
+   {
+      id: 2,
+      thumb: "/assets/img/projects/pcu-kosme-mou-signing.jpg",
+      gallery: ["/assets/img/projects/pcu-inauguration-facilitation.jpg", "/assets/img/projects/kosme-facilitation-pcu.jpg", "/assets/img/projects/pcet-gbc-ceremony.jpg"],
+      category: "mou",
+      date: "2024-06-20",
+      participants: 120,
+   },
+   {
+      id: 3,
+      thumb: "/assets/img/projects/sogang-pcu-mou-signing.jpg",
+      gallery: ["/assets/img/projects/sogang-ihub-mou-2024.jpg"],
+      category: "mou",
+      date: "2024-11-10",
+      participants: 80,
+   },
+   {
+      id: 4,
+      thumb: "/assets/img/projects/iscma-starajin-mou.jpg",
+      gallery: [],
+      category: "mou",
+      date: "2025-03-15",
+      participants: 60,
+   },
+   {
+      id: 5,
+      thumb: "/assets/img/projects/kofice-culture-project-1.jpg",
+      gallery: ["/assets/img/projects/kofice-culture-project-2.jpg"],
+      category: "cultural",
+      date: "2020-08-20",
+      participants: 150,
+   },
+   {
+      id: 6,
+      thumb: "/assets/img/projects/nami-island-artist-camp.jpg",
+      gallery: [],
+      category: "cultural",
+      date: "2022-10-05",
+      participants: 40,
+   },
+   {
+      id: 7,
+      thumb: "/assets/img/projects/super-30-publication-icck.jpg",
+      gallery: ["/assets/img/projects/super-30-book-concert.jpg", "/assets/img/projects/super-30-anand-kumar.jpg", "/assets/img/projects/super-30-book-concert-1.jpg", "/assets/img/projects/super-30-original-book.jpg"],
+      category: "publication",
+      date: "2025-01-20",
+      participants: 300,
+   },
+   {
+      id: 8,
+      thumb: "/assets/img/projects/kto-edutour-pune.jpg",
+      gallery: ["/assets/img/projects/kto-edutour-hyd.jpg", "/assets/img/projects/kto-roadshow-hyd.jpg"],
+      category: "tour",
+      date: "2025-04-15",
+      participants: 250,
+   },
+   {
+      id: 9,
+      thumb: "/assets/img/projects/okta-world-b2b-meeting.jpg",
+      gallery: ["/assets/img/projects/okta-incheon-b2b.jpg", "/assets/img/projects/okta-incheon-team.jpg"],
+      category: "b2b",
+      date: "2024-10-20",
+      participants: 180,
+   },
+   {
+      id: 10,
+      thumb: "/assets/img/projects/korea-smes-startups-day.jpg",
+      gallery: ["/assets/img/projects/proclamation-ceremony-smes.jpg"],
+      category: "b2b",
+      date: "2025-05-15",
+      participants: 350,
+   },
+   {
+      id: 11,
+      thumb: "/assets/img/projects/ofkos-b2b-meeting-1.jpg",
+      gallery: ["/assets/img/projects/ofkos-b2b-meeting-2.jpg"],
+      category: "b2b",
+      date: "2024-08-10",
+      participants: 90,
+   },
+   {
+      id: 12,
+      thumb: "/assets/img/projects/india-forum-2026.jpg",
+      gallery: [],
+      category: "b2b",
+      date: "2026-01-20",
+      participants: 400,
+   },
 ];
 
 const categories = [
@@ -25,151 +114,367 @@ const categories = [
    { key: 'mou', label: 'projects.filters.mou' },
    { key: 'cultural', label: 'projects.filters.cultural' },
    { key: 'publication', label: 'projects.filters.publication' },
-   { key: 'tour', label: 'projects.filters.tour' }
+   { key: 'tour', label: 'projects.filters.tour' },
+   { key: 'b2b', label: 'projects.filters.b2b' },
 ];
 
 const ProjectsArea = () => {
    const { t, i18n } = useTranslation()
    const [activeFilter, setActiveFilter] = useState('all')
+   const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null)
 
    const filteredProjects = activeFilter === 'all'
       ? projects_meta
       : projects_meta.filter(project => project.category === activeFilter)
-
-   const getStatusColor = (status: string) => {
-      switch (status) {
-         case 'completed': return 'bg-success text-white';
-         case 'ongoing': return 'bg-primary text-white';
-         case 'upcoming': return 'bg-warning text-dark';
-         default: return 'bg-secondary text-white';
-      }
-   }
 
    const formatDate = (dateString: string) => {
       const locale = i18n.language === 'ko' ? 'ko-KR' : 'en-US';
       return new Date(dateString).toLocaleDateString(locale, {
          year: 'numeric',
          month: 'short',
-         day: 'numeric'
       })
+   }
+
+   const openLightbox = (images: string[], index: number) => {
+      setLightbox({ images, index });
+      document.body.style.overflow = 'hidden';
+   }
+
+   const closeLightbox = () => {
+      setLightbox(null);
+      document.body.style.overflow = '';
    }
 
    return (
       <>
-         {/* Hero Section */}
-         <section className="hero-section pt-100 pb-50">
+         <style>{`
+            /* ── Filter buttons ── */
+            .prj-filter-btn {
+               background: #fff;
+               border: 1.5px solid #e5e7eb;
+               color: #374151;
+               font-size: 13px;
+               padding: 8px 20px;
+               border-radius: 100px;
+               cursor: pointer;
+               transition: all 0.25s ease;
+               font-weight: 600;
+            }
+            .prj-filter-btn:hover {
+               border-color: var(--theme);
+               color: var(--theme);
+            }
+            .prj-filter-btn.active {
+               background: var(--theme);
+               border-color: var(--theme);
+               color: #fff;
+            }
+
+            /* ── Project card ── */
+            .prj-card {
+               background: #fff;
+               border-radius: 16px;
+               overflow: hidden;
+               border: 1px solid rgba(0,0,0,0.06);
+               transition: all 0.35s ease;
+               height: 100%;
+               display: flex;
+               flex-direction: column;
+            }
+            .prj-card:hover {
+               transform: translateY(-6px);
+               box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+            }
+
+            .prj-card__thumb {
+               position: relative;
+               height: 220px;
+               overflow: hidden;
+               cursor: pointer;
+            }
+            .prj-card__thumb img {
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+               transition: transform 0.5s ease;
+            }
+            .prj-card:hover .prj-card__thumb img {
+               transform: scale(1.05);
+            }
+
+            .prj-card__overlay {
+               position: absolute;
+               inset: 0;
+               background: rgba(0,0,0,0.35);
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               opacity: 0;
+               transition: opacity 0.3s ease;
+            }
+            .prj-card:hover .prj-card__overlay {
+               opacity: 1;
+            }
+            .prj-card__overlay i {
+               color: #fff;
+               font-size: 24px;
+               background: rgba(255,255,255,0.2);
+               width: 48px;
+               height: 48px;
+               border-radius: 50%;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               backdrop-filter: blur(4px);
+            }
+
+            .prj-card__body {
+               padding: 20px 24px 24px;
+               flex: 1;
+               display: flex;
+               flex-direction: column;
+            }
+
+            .prj-card__cat {
+               font-size: 11px;
+               font-weight: 700;
+               text-transform: uppercase;
+               letter-spacing: 1px;
+               color: var(--theme);
+               margin-bottom: 8px;
+            }
+
+            .prj-card__title {
+               font-size: 16px;
+               font-weight: 700;
+               color: #1a1a2e;
+               line-height: 1.4;
+               margin-bottom: 10px;
+            }
+
+            .prj-card__desc {
+               font-size: 13px;
+               color: rgba(0,0,0,0.55);
+               line-height: 1.65;
+               margin-bottom: 16px;
+               flex: 1;
+            }
+
+            .prj-card__meta {
+               display: flex;
+               align-items: center;
+               gap: 16px;
+               font-size: 12px;
+               color: rgba(0,0,0,0.4);
+               padding-top: 14px;
+               border-top: 1px solid rgba(0,0,0,0.06);
+            }
+            .prj-card__meta i {
+               margin-right: 5px;
+               font-size: 11px;
+            }
+
+            /* ── Gallery strip ── */
+            .prj-card__gallery {
+               display: flex;
+               gap: 4px;
+               padding: 0 24px 20px;
+            }
+            .prj-card__gallery-thumb {
+               width: 48px;
+               height: 36px;
+               border-radius: 6px;
+               overflow: hidden;
+               cursor: pointer;
+               opacity: 0.7;
+               transition: opacity 0.2s ease;
+               border: 1px solid rgba(0,0,0,0.08);
+            }
+            .prj-card__gallery-thumb:hover {
+               opacity: 1;
+            }
+            .prj-card__gallery-thumb img {
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+            }
+            .prj-card__gallery-more {
+               width: 48px;
+               height: 36px;
+               border-radius: 6px;
+               background: rgba(0,0,0,0.05);
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               font-size: 11px;
+               font-weight: 700;
+               color: rgba(0,0,0,0.4);
+               cursor: pointer;
+            }
+
+            /* ── Lightbox ── */
+            .prj-lightbox {
+               position: fixed;
+               inset: 0;
+               z-index: 9999;
+               background: rgba(0,0,0,0.92);
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               animation: prjFadeIn 0.25s ease;
+            }
+            @keyframes prjFadeIn {
+               from { opacity: 0; }
+               to { opacity: 1; }
+            }
+            .prj-lightbox__close {
+               position: absolute;
+               top: 20px;
+               right: 24px;
+               color: #fff;
+               font-size: 28px;
+               cursor: pointer;
+               z-index: 10;
+               opacity: 0.7;
+               transition: opacity 0.2s ease;
+               background: none;
+               border: none;
+            }
+            .prj-lightbox__close:hover { opacity: 1; }
+            .prj-lightbox__img {
+               max-width: 90vw;
+               max-height: 85vh;
+               object-fit: contain;
+               border-radius: 8px;
+            }
+            .prj-lightbox__nav {
+               position: absolute;
+               top: 50%;
+               transform: translateY(-50%);
+               color: #fff;
+               font-size: 32px;
+               cursor: pointer;
+               opacity: 0.6;
+               transition: opacity 0.2s ease;
+               background: rgba(255,255,255,0.1);
+               border: none;
+               width: 48px;
+               height: 48px;
+               border-radius: 50%;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+            }
+            .prj-lightbox__nav:hover { opacity: 1; }
+            .prj-lightbox__nav--prev { left: 20px; }
+            .prj-lightbox__nav--next { right: 20px; }
+            .prj-lightbox__counter {
+               position: absolute;
+               bottom: 20px;
+               left: 50%;
+               transform: translateX(-50%);
+               color: rgba(255,255,255,0.6);
+               font-size: 13px;
+            }
+
+            @media (max-width: 767px) {
+               .prj-card__thumb { height: 180px; }
+               .prj-card__body { padding: 16px 18px 18px; }
+               .prj-card__gallery { padding: 0 18px 16px; }
+            }
+         `}</style>
+
+         {/* Projects Section */}
+         <section className="section-bg" style={{ paddingTop: '50px', paddingBottom: '72px' }}>
             <div className="container">
-               <div className="row g-lg-4 g-md-3 g-2 align-items-end mb-40">
+               {/* Hero header */}
+               <div className="row g-lg-4 g-md-3 g-2 align-items-end mb-4">
                   <div className="col-lg-7 col-md-7">
-                     <div className="section-header">
-                        <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                           {t('projects.hero.title')}
-                        </h2>
-                     </div>
+                     <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
+                        {t('projects.hero.title')}
+                     </h2>
                   </div>
                   <div className="col-lg-5 col-md-5">
-                     <div className="wow fadeInUp" data-wow-delay=".4s">
-                        <p className="theme-clr4 mb-lg-4 mb-3">
-                           {t('projects.hero.subtitle')}
-                        </p>
-                     </div>
+                     <p className="wow fadeInUp" data-wow-delay=".4s" style={{ color: 'rgba(0,0,0,0.55)', lineHeight: 1.7 }}>
+                        {t('projects.hero.subtitle')}
+                     </p>
                   </div>
                </div>
-            </div>
-         </section>
 
-         {/* Filter Section */}
-         <section className="filter-section pb-50">
-            <div className="container">
-               <div className="row justify-content-center">
-                  <div className="col-lg-10">
-                     <div className="d-flex flex-wrap justify-content-center gap-3 mb-5">
-                        {categories.map((category) => (
-                           <button
-                              key={category.key}
-                              onClick={() => setActiveFilter(category.key)}
-                              className={`btn fw-600 px-4 py-2 rounded-pill transition-all project-filter-btn ${
-                                 activeFilter === category.key
-                                    ? 'active'
-                                    : ''
-                              }`}
-                           >
-                              <i className="fa-light fa-filter me-2"></i>
-                              {t(category.label)}
-                           </button>
-                        ))}
-                     </div>
-                  </div>
+               {/* Filters */}
+               <div className="d-flex flex-wrap justify-content-center gap-2 mb-5">
+                  {categories.map((category) => (
+                     <button
+                        key={category.key}
+                        onClick={() => setActiveFilter(category.key)}
+                        className={`prj-filter-btn ${activeFilter === category.key ? 'active' : ''}`}
+                     >
+                        {t(category.label)}
+                     </button>
+                  ))}
                </div>
-            </div>
-         </section>
 
-         {/* Projects Grid */}
-         <section className="projects-section section-bg pt-50 pb-100">
-            <div className="container">
+               {/* Grid */}
                <div className="row g-4">
                   {filteredProjects.map((item) => {
                      const itemIndex = projects_meta.indexOf(item);
+                     const allImages = [item.thumb, ...item.gallery];
                      return (
                      <div key={item.id} className="col-md-6 col-lg-4">
-                        <div className="project-card bg-white rounded-4 overflow-hidden shadow-sm hover-translate8 h-100">
-                           {/* Image */}
-                           <div className="position-relative">
-                              <div className="thumb w-100 overflow-hidden" style={{height: '200px'}}>
-                                 <img src={item.thumb} alt="img" className="w-100 h-100" style={{objectFit: 'cover'}} loading="lazy" />
+                        <div className="prj-card">
+                           {/* Thumbnail */}
+                           <div className="prj-card__thumb" onClick={() => openLightbox(allImages, 0)}>
+                              <img src={item.thumb} alt={t(`projects.items.${itemIndex}.title`)} loading="lazy" />
+                              <div className="prj-card__overlay">
+                                 <i className="fa-solid fa-expand" />
                               </div>
+                           </div>
 
-                              {/* Status Badge */}
-                              <div className="position-absolute top-3 end-3">
-                                 <span className={`badge ${getStatusColor(item.status)} px-3 py-2 rounded-pill`}>
-                                    {t(`projects.project.status.${item.status}`)}
+                           {/* Body */}
+                           <div className="prj-card__body">
+                              <div className="prj-card__cat">
+                                 {t(`projects.categories.${item.category}`)}
+                              </div>
+                              <h5 className="prj-card__title">
+                                 {t(`projects.items.${itemIndex}.title`)}
+                              </h5>
+                              <p className="prj-card__desc">
+                                 {t(`projects.items.${itemIndex}.description`)}
+                              </p>
+                              <div className="prj-card__meta">
+                                 <span>
+                                    <i className="fa-solid fa-calendar" />
+                                    {formatDate(item.date)}
+                                 </span>
+                                 <span>
+                                    <i className="fa-solid fa-location-dot" />
+                                    {t(`projects.items.${itemIndex}.location`)}
                                  </span>
                               </div>
                            </div>
 
-                           {/* Content */}
-                           <div className="p-4 d-flex flex-column h-100">
-                              <div className="flex-grow-1">
-                                 <span className="badge bg-light text-primary fw-600 mb-2 px-3 py-2 rounded-pill">
-                                    {t(`projects.categories.${item.category}`)}
-                                 </span>
-
-                                 <h5 className="theme-clr4 fw-bold mb-3 lh-sm">
-                                    <Link to="/project-details" className="text-decoration-none theme-clr4 hover-theme1">
-                                       {t(`projects.items.${itemIndex}.title`)}
-                                    </Link>
-                                 </h5>
-
-                                 <p className="theme-clr4 mb-4 small lh-relaxed">
-                                    {t(`projects.items.${itemIndex}.description`)}
-                                 </p>
-
-                                 {/* Meta Info */}
-                                 <div className="meta-info mb-4">
-                                    <div className="d-flex align-items-center mb-2 small text-muted">
-                                       <i className="fa-light fa-calendar me-2"></i>
-                                       {formatDate(item.date)}
+                           {/* Gallery strip */}
+                           {item.gallery.length > 0 && (
+                              <div className="prj-card__gallery">
+                                 {item.gallery.slice(0, 4).map((img, idx) => (
+                                    <div
+                                       key={idx}
+                                       className="prj-card__gallery-thumb"
+                                       onClick={() => openLightbox(allImages, idx + 1)}
+                                    >
+                                       <img src={img} alt="" loading="lazy" />
                                     </div>
-                                    <div className="d-flex align-items-center mb-2 small text-muted">
-                                       <i className="fa-light fa-map-marker me-2"></i>
-                                       {t(`projects.items.${itemIndex}.location`)}
+                                 ))}
+                                 {item.gallery.length > 4 && (
+                                    <div
+                                       className="prj-card__gallery-more"
+                                       onClick={() => openLightbox(allImages, 5)}
+                                    >
+                                       +{item.gallery.length - 4}
                                     </div>
-                                    <div className="d-flex align-items-center small text-muted">
-                                       <i className="fa-light fa-users me-2"></i>
-                                       {item.participants} {t('projects.project.participants')}
-                                    </div>
-                                 </div>
+                                 )}
                               </div>
-
-                              {/* CTA */}
-                              <div className="mt-auto">
-                                 <Link to="/project-details" 
-                                    className="btn btn-outline-primary btn-sm w-100 d-flex align-items-center justify-content-center">
-                                    <span>{t('projects.project.viewDetails')}</span>
-                                    <i className="fa-light fa-arrow-right ms-2"></i>
-                                 </Link>
-                              </div>
-                           </div>
+                           )}
                         </div>
                      </div>
                      );
@@ -177,6 +482,52 @@ const ProjectsArea = () => {
                </div>
             </div>
          </section>
+
+         {/* Lightbox */}
+         {lightbox && (
+            <div className="prj-lightbox" onClick={closeLightbox}>
+               <button className="prj-lightbox__close" onClick={closeLightbox}>
+                  <i className="fa-solid fa-xmark" />
+               </button>
+               {lightbox.images.length > 1 && (
+                  <>
+                     <button
+                        className="prj-lightbox__nav prj-lightbox__nav--prev"
+                        onClick={(e) => {
+                           e.stopPropagation();
+                           setLightbox(prev => prev ? {
+                              ...prev,
+                              index: (prev.index - 1 + prev.images.length) % prev.images.length
+                           } : null);
+                        }}
+                     >
+                        <i className="fa-solid fa-chevron-left" />
+                     </button>
+                     <button
+                        className="prj-lightbox__nav prj-lightbox__nav--next"
+                        onClick={(e) => {
+                           e.stopPropagation();
+                           setLightbox(prev => prev ? {
+                              ...prev,
+                              index: (prev.index + 1) % prev.images.length
+                           } : null);
+                        }}
+                     >
+                        <i className="fa-solid fa-chevron-right" />
+                     </button>
+                  </>
+               )}
+               <img
+                  className="prj-lightbox__img"
+                  src={lightbox.images[lightbox.index]}
+                  alt=""
+                  onClick={(e) => e.stopPropagation()}
+               />
+               <div className="prj-lightbox__counter">
+                  {lightbox.index + 1} / {lightbox.images.length}
+               </div>
+            </div>
+         )}
       </>
    )
 }

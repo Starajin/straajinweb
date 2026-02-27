@@ -2,11 +2,11 @@
     Template Default Fonts & Fonts Styles
  ---------------------------------------------- */
 
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+/* Pretendard font is loaded via /assets/css/pretendard.css */
+/* Previous fonts: Plus Jakarta Sans + Noto Sans KR (Google Fonts) */
 
-$heading-font: "Plus Jakarta Sans", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
-$body-font: "Plus Jakarta Sans", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+$heading-font: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, "Malgun Gothic", "맑은 고딕", sans-serif;
+$body-font: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, "Malgun Gothic", "맑은 고딕", sans-serif;
 
 //font-family: "Font Awesome 6 Free";
 $fa: "Font Awesome 6 Pro";
@@ -15,7 +15,7 @@ body {
 	font-family: $body-font;
 	font-size: 15px;
 	font-weight: 400;
-	line-height: 32px;
+	line-height: 1.6;
 	color: var(--text);
 	background-color: var(--white);
 	padding: 0;
@@ -59,39 +59,28 @@ h6 {
 }
 
 h1 {
-	font-size: 140px;
+	font-size: 44px;
 	font-weight: 600;
-	line-height: 108%;
+	line-height: 1.1;
 }
 
 h2 {
-	font-size: 48px;
-	line-height: 110%;
+	font-size: 30px;
+	line-height: 1.15;
 	@include breakpoint(max-xl) {
-		font-size: 38px;
+		font-size: 26px;
 	}
 	@include breakpoint(max-lg) {
-		font-size: 32px;
+		font-size: 24px;
 	}
 	@include breakpoint(max-sm) {
-		font-size: 29px;
+		font-size: 22px;
 	}
 }
 
 h3 {
-	font-size: 24px;
-	line-height: 115%;
-	@include breakpoint(max-lg) {
-		font-size: 22px;
-	}
-	@include breakpoint(max-sm) {
-		font-size: 21px;
-	}
-}
-
-h4 {
 	font-size: 20px;
-	line-height: 125%;
+	line-height: 1.2;
 	@include breakpoint(max-lg) {
 		font-size: 19px;
 	}
@@ -100,14 +89,25 @@ h4 {
 	}
 }
 
+h4 {
+	font-size: 17px;
+	line-height: 1.3;
+	@include breakpoint(max-lg) {
+		font-size: 16px;
+	}
+	@include breakpoint(max-sm) {
+		font-size: 15px;
+	}
+}
+
 h5 {
-	font-size: 18px;
-	line-height: 120%;
+	font-size: 15px;
+	line-height: 1.3;
 }
 
 h6 {
-	font-size: 16px;
-	line-height: 120%;
+	font-size: 14px;
+	line-height: 1.3;
 }
 
 a {

@@ -58,7 +58,7 @@ const Service = () => {
    const { t } = useTranslation();
    
    return (
-      <section className="service-section section-bg pt-100 pb-100">
+      <section className="service-section section-bg pt-100 pb-100" style={{ marginTop: '-60px', borderRadius: '24px 24px 0 0', position: 'relative', zIndex: 2 }}>
          <div className="container">
             <div className="row g-sm-4 g-3 align-items-end mb-40">
                <div className="col-lg-6 col-md-7">
