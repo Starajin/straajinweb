@@ -13,7 +13,7 @@ const FooterOne = () => {
                   <div className="py-4">
                      <div className="row">
                         {/* Company Info */}
-                        <div className="col-lg-4 col-md-6 mb-3 mb-lg-0">
+                        <div className="col-lg-3 col-md-6 mb-3 mb-lg-0">
                            <div className="mb-3">
                               <img
                                  src="/assets/img/logo/Starajin - White.png"
@@ -30,7 +30,7 @@ const FooterOne = () => {
                            
                            {/* Social Links */}
                            <div className="d-flex gap-2">
-                              <a href="mailto:korea@starajin.com" className="d-flex align-items-center justify-content-center social-link"
+                              <a href="mailto:contact@starajin.com" className="d-flex align-items-center justify-content-center social-link"
                                  style={{ width: '34px', height: '34px', backgroundColor: 'var(--footer-social-bg)', borderRadius: '50%', transition: 'all 0.3s ease' }}>
                                  <i className="fa-light fa-envelope text-white" style={{ fontSize: '14px' }}></i>
                               </a>
@@ -65,7 +65,7 @@ const FooterOne = () => {
                         </div>
 
                         {/* Services */}
-                        <div className="col-lg-3 col-md-6 col-6 mb-3 mb-lg-0">
+                        <div className="col-lg-2 col-md-6 col-6 mb-3 mb-lg-0">
                            <h5 className="fw-semibold mb-3" style={{ color: '#ffc700', fontSize: '1rem' }}>{t('footer.services')}</h5>
                            <ul className="list-unstyled mb-0">
                               <li className="mb-2">
@@ -92,52 +92,56 @@ const FooterOne = () => {
                         </div>
 
                         {/* Contact Info */}
-                        <div className="col-lg-3 col-md-6">
+                        <div className="col-lg-5 col-md-12">
                            <h5 className="fw-semibold mb-3" style={{ color: '#ffc700', fontSize: '1rem' }}>{t('footer.contactUs')}</h5>
-                           
-                           {/* Korea Office */}
-                           <div className="mb-3">
-                              <h6 className="fw-semibold text-white mb-1" style={{ fontSize: '0.9rem' }}>
-                                 {t('footer.koreaOffice')}
-                              </h6>
-                              <ul className="list-unstyled text-white mb-0" style={{ fontSize: '0.85rem' }}>
-                                 <li className="d-flex align-items-center gap-2 mb-1">
-                                    <i className="fa-light fa-location-dot" style={{ width: '14px' }}></i>
-                                    <span>{t('footer.seoulLocation')}</span>
-                                 </li>
-                                 <li className="d-flex align-items-center gap-2 mb-1">
-                                    <i className="fa-light fa-phone" style={{ width: '14px' }}></i>
-                                    <span>{t('footer.koreaPhone')}</span>
-                                 </li>
-                                 <li className="d-flex align-items-center gap-2">
-                                    <i className="fa-light fa-envelope" style={{ width: '14px' }}></i>
-                                    <span>{t('footer.koreaEmail')}</span>
-                                 </li>
-                              </ul>
-                           </div>
+                           <div className="row">
+                              {/* Korea Office */}
+                              <div className="col-md-6 mb-3 mb-md-0">
+                                 <h6 className="fw-semibold text-white mb-1" style={{ fontSize: '0.9rem' }}>
+                                    {t('footer.koreaOffice')}
+                                 </h6>
+                                 <p className="text-white fw-semibold mb-1" style={{ fontSize: '0.85rem' }}>
+                                    {t('footer.koreaCompany')}
+                                 </p>
+                                 <ul className="list-unstyled text-white mb-0" style={{ fontSize: '0.85rem' }}>
+                                    <li className="d-flex align-items-start gap-2 mb-1">
+                                       <i className="fa-light fa-location-dot" style={{ width: '14px', marginTop: '3px' }}></i>
+                                       <span>{t('footer.seoulLocation')}</span>
+                                    </li>
+                                    <li className="d-flex align-items-center gap-2 mb-1">
+                                       <i className="fa-light fa-phone" style={{ width: '14px' }}></i>
+                                       <span>{t('footer.koreaPhone')}</span>
+                                    </li>
+                                    <li className="d-flex align-items-center gap-2">
+                                       <i className="fa-light fa-envelope" style={{ width: '14px' }}></i>
+                                       <span>{t('footer.koreaEmail')}</span>
+                                    </li>
+                                 </ul>
+                              </div>
 
-                           {/* India Office */}
-                           <div>
-                              <h6 className="fw-semibold text-white mb-1" style={{ fontSize: '0.9rem' }}>
-                                 {t('footer.indiaOffice')}
-                              </h6>
-                              <p className="text-white fw-semibold mb-1" style={{ fontSize: '0.85rem' }}>
-                                 {t('footer.indiaCompany')}
-                              </p>
-                              <ul className="list-unstyled text-white mb-0" style={{ fontSize: '0.85rem' }}>
-                                 <li className="d-flex align-items-center gap-2 mb-1">
-                                    <i className="fa-light fa-location-dot" style={{ width: '14px' }}></i>
-                                    <span>{t('footer.mumbaiLocation')}</span>
-                                 </li>
-                                 <li className="d-flex align-items-center gap-2 mb-1">
-                                    <i className="fa-light fa-phone" style={{ width: '14px' }}></i>
-                                    <span>{t('footer.indiaPhone')}</span>
-                                 </li>
-                                 <li className="d-flex align-items-center gap-2">
-                                    <i className="fa-light fa-envelope" style={{ width: '14px' }}></i>
-                                    <span>{t('footer.indiaEmail')}</span>
-                                 </li>
-                              </ul>
+                              {/* India Office */}
+                              <div className="col-md-6">
+                                 <h6 className="fw-semibold text-white mb-1" style={{ fontSize: '0.9rem' }}>
+                                    {t('footer.indiaOffice')}
+                                 </h6>
+                                 <p className="text-white fw-semibold mb-1" style={{ fontSize: '0.85rem' }}>
+                                    {t('footer.indiaCompany')}
+                                 </p>
+                                 <ul className="list-unstyled text-white mb-0" style={{ fontSize: '0.85rem' }}>
+                                    <li className="d-flex align-items-start gap-2 mb-1">
+                                       <i className="fa-light fa-location-dot" style={{ width: '14px', marginTop: '3px' }}></i>
+                                       <span>{t('footer.mumbaiLocation')}</span>
+                                    </li>
+                                    <li className="d-flex align-items-center gap-2 mb-1">
+                                       <i className="fa-light fa-phone" style={{ width: '14px' }}></i>
+                                       <span>{t('footer.indiaPhone')}</span>
+                                    </li>
+                                    <li className="d-flex align-items-center gap-2">
+                                       <i className="fa-light fa-envelope" style={{ width: '14px' }}></i>
+                                       <span>{t('footer.indiaEmail')}</span>
+                                    </li>
+                                 </ul>
+                              </div>
                            </div>
                         </div>
                      </div>

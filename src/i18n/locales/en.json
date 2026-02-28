@@ -230,6 +230,11 @@
     },
     "items": [
       {
+        "title": "KOSME-MIDC Strategic Partnership",
+        "description": "Strategic collaboration between Korea SMEs and Startups Agency (KOSME) and Maharashtra Industrial Development Corporation (MIDC), facilitating Korean SME market entry and industrial collaboration in Maharashtra.",
+        "location": "Pune, India"
+      },
+      {
         "title": "Rising Rajasthan – G2B Partnership with Softberry",
         "description": "Strategic G2B MoU between Softberry and Rajasthan Government at the Rising Rajasthan Global Investment Summit, facilitating Korean business investments and technology transfer into India's largest state.",
         "location": "Jaipur, India"
@@ -240,34 +245,44 @@
         "location": "Pune, India"
       },
       {
-        "title": "Sogang University – India Innovation Hub Partnerships",
-        "description": "Multi-institutional MoU partnerships connecting Sogang University with India's T-Hub Hyderabad and PCU, fostering academic exchange and startup ecosystem collaboration.",
-        "location": "Seoul & Hyderabad"
+        "title": "Sogang University – iHub Divyasampark MoU",
+        "description": "MoU between Sogang University and IIT Roorkee's iHub Divyasampark, fostering academic-industry collaboration, startup incubation, and technology exchange between Korea and India.",
+        "location": "Seoul, Korea"
       },
       {
-        "title": "B2B MoU & Strategic Partnerships",
-        "description": "Portfolio of strategic B2B MoUs including ISCMA-Starajin, Verywords-Starajin, and Medical Cosmetics partnerships facilitating cross-border business collaborations.",
-        "location": "Korea & India"
+        "title": "PCU – Sogang University MoU",
+        "description": "Academic partnership MoU between Pimpri Chinchwad University and Sogang University, enabling student exchange programs, joint research initiatives, and cross-border academic collaboration.",
+        "location": "Pune & Seoul"
       },
       {
-        "title": "KOFICE Cultural Exchange Program",
+        "title": "Starajin – Verywords MoU",
+        "description": "Strategic partnership MoU between Starajin and Verywords, establishing collaboration for Korea-India content localization, translation services, and cross-cultural marketing initiatives.",
+        "location": "Seoul, Korea"
+      },
+      {
+        "title": "KOFICE Cultural Exchange Project (Planning & Operation)",
         "description": "KOFICE-supported cultural exchange project promoting Korean cultural content across Indian cities, fostering cross-cultural understanding and K-culture appreciation.",
         "location": "Multiple Cities, India"
       },
       {
-        "title": "Nami Island India-Korea Artist Camp",
-        "description": "Collaborative artist exchange program at Nami Island bringing together Korean and Indian artists for creative workshops, exhibitions, and cultural dialogue.",
-        "location": "Nami Island, Korea"
-      },
-      {
-        "title": "Super 30 Korean Publication & Book Concert",
+        "title": "Super 30 Translation & Marketing",
         "description": "Korean translation and publication of the Indian bestseller 'Super 30' by Anand Kumar, launched with book concerts at ICCK Diwali Ball and multiple Korean venues.",
         "location": "Seoul, Korea"
       },
       {
-        "title": "KTO Edu Tour Roadshow 2025",
-        "description": "Korea Tourism Organization Educational Tour Roadshow conducted across Pune and Hyderabad, connecting Indian travel industry professionals with Korean tourism opportunities.",
-        "location": "Pune & Hyderabad, India"
+        "title": "Nami Island Artist Camp: Advisory & Promotion",
+        "description": "Collaborative artist exchange program at Nami Island bringing together Korean and Indian artists for creative workshops, exhibitions, and cultural dialogue.",
+        "location": "Nami Island, Korea"
+      },
+      {
+        "title": "ICCK Exhibition & Networking",
+        "description": "Indian Chamber of Commerce in Korea (ICCK) events including Diwali Ball, networking sessions, and annual meetings, fostering India-Korea business community engagement and cultural celebration.",
+        "location": "Seoul, Korea"
+      },
+      {
+        "title": "KOIMA B2B Meeting Forum",
+        "description": "Korea Importers Association (KOIMA) Sub-Committee B2B forum facilitating bilateral trade discussions, business matchmaking, and institutional cooperation between Korean and Indian enterprises.",
+        "location": "Seoul, Korea"
       },
       {
         "title": "OKTA World Business Expo – B2B Meetings",
@@ -275,18 +290,23 @@
         "location": "Incheon, Korea"
       },
       {
-        "title": "Korea SMEs & Startups Day 2025",
-        "description": "Proclamation ceremony and KOSME-STARAJIN DIDAC 2025 event celebrating Korea's SME ecosystem and facilitating partnerships with Indian startups and enterprises.",
-        "location": "Seoul, Korea"
+        "title": "Edu Expo – KOSME & EDUCON",
+        "description": "Education exhibition showcasing Korea-India academic collaboration, featuring KOSME booth at Delhi Edu Expo 2025 and EDUCON 2024 South Korea conference on the future of education.",
+        "location": "Delhi & Seoul"
       },
       {
-        "title": "India-Korea Industry B2B Meetings",
-        "description": "Ongoing series of industry-specific B2B meetings including OFKOS, GS-Patanjali, KRAFTON, Rossari, and Jagruti partnerships across chemicals, gaming, biotech, and manufacturing sectors.",
+        "title": "KTO Edu Tour Roadshow 2025",
+        "description": "Korea Tourism Organization Educational Tour Roadshow conducted across Pune and Hyderabad, connecting Indian travel industry professionals with Korean tourism opportunities.",
+        "location": "Pune & Hyderabad, India"
+      },
+      {
+        "title": "B2B Events & Institutional Visits",
+        "description": "Strategic institutional visits and events including Sogang University T-Hub Hyderabad visit, Korea SMEs & Startups Day, India Forum annual meetings, and Global Entrepreneurs Conclave.",
         "location": "Korea & India"
       },
       {
-        "title": "India-Korea Government & Industry Forums",
-        "description": "High-level government and industry engagements including India Forum 2026, KOIMA Sub-Committee, MIDC-KOSME meetings, and bilateral ministerial consultations driving institutional cooperation.",
+        "title": "B2B Meetings & Exhibition Visits",
+        "description": "Industry-specific B2B meetings and exhibition visits including GS-Patanjali factory visits, Rossari Bio Tech Korea exhibition, OFKOS meetings, and cross-sector business matchmaking sessions.",
         "location": "Korea & India"
       }
     ]
@@ -305,11 +325,11 @@
     "offices": {
       "korea": {
         "title": "Korea Office",
-        "location": "Seoul, South Korea"
+        "location": "#835, 80 Dolma-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, Korea"
       },
       "india": {
-        "title": "India Office", 
-        "location": "Mumbai, India"
+        "title": "India Office",
+        "location": "Unit No. 914, City Avenue, Next to Jaguar Showroom, Wakad, Mulashi, Pune, Maharashtra, 411057"
       }
     },
     "quickConsultation": "Quick Consultation",
@@ -887,13 +907,14 @@
     "contactUs": "Contact Us",
     "koreaOffice": "Korea Office",
     "indiaOffice": "India Office",
+    "koreaCompany": "StaraJIN, Inc.",
     "indiaCompany": "STARAJIN India Pvt. Ltd.",
-    "seoulLocation": "Seoul, South Korea",
-    "mumbaiLocation": "Office No. 928, 9th Floor, The Summit Business Bay, Andheri\u2013Kurla Road, Andheri (East), Mumbai \u2013 400093",
+    "seoulLocation": "#835, 80 Dolma-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, Korea",
+    "mumbaiLocation": "Unit No. 914, City Avenue, Next to Jaguar Showroom, Wakad, Mulashi, Pune, Maharashtra, 411057",
     "koreaEmail": "contact@starajin.com",
     "indiaEmail": "contact@starajin.com",
-    "koreaPhone": "+82-507-139-1995",
-    "indiaPhone": "+91-897-624-1508",
+    "koreaPhone": "+82-507-1391-9951",
+    "indiaPhone": "+91-8976241508 / +91-9820201865",
     "rights": "© 2025 StaraJIN, Inc. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
