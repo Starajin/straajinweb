@@ -34,7 +34,14 @@ const Blog = () => {
                   <div key={item.id} className="col-md-6 col-lg-4">
                      <div className="team-items hover-translate8 px-xxl-6 px-xl-4 px-3 section-bg rounded-4">
                         <div className="thumb w-100 overflow-hidden">
-                           <img src={`/assets/img/team/team${index + 1}.png`} alt="img" className="w-100 rounded-bottom-3" loading="lazy" />
+                           {(() => {
+                              const blogImages = [
+                                 "/assets/img/blog/Korea–India Trade Relations Reach New Heights in 2026.png",
+                                 "/assets/img/blog/Korean startups exploring Indian market.png",
+                                 "/assets/img/blog/Cultural Exchange Programs Show Promising Results.png"
+                              ];
+                              return <img src={blogImages[index] || blogImages[0]} alt="img" className="w-100 rounded-bottom-3" loading="lazy" style={{height: '200px', objectFit: 'cover'}} />;
+                           })()}
                         </div>
                         <div className="content d-flex align-items-end gap-3 justify-content-between">
                            <div>

@@ -43,7 +43,7 @@ const projects_meta: ProjectMeta[] = [
       category: "mou",
       date: "2025-03-15",
       participants: 60,
-      thumbStyle: { objectPosition: 'top' },
+      thumbStyle: { objectPosition: 'center 30%' },
    },
    {
       id: 5,
@@ -79,12 +79,11 @@ const projects_meta: ProjectMeta[] = [
    },
    {
       id: 9,
-      thumb: "/assets/img/projects/okta-world-b2b-meeting.jpg",
-      gallery: ["/assets/img/projects/okta-incheon-b2b.jpg", "/assets/img/projects/okta-incheon-team.jpg"],
+      thumb: "/assets/img/projects/okta-incheon-b2b.jpg",
+      gallery: ["/assets/img/projects/okta-world-b2b-meeting.jpg", "/assets/img/projects/okta-incheon-team.jpg"],
       category: "b2b",
       date: "2024-10-20",
       participants: 180,
-      thumbStyle: { imageOrientation: 'from-image' },
    },
    {
       id: 10,
