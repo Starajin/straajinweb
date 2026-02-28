@@ -545,8 +545,8 @@
 .header-main .header-logo {
   display: flex !important;
   align-items: center;
-  width: 110px !important;
-  max-width: 110px !important;
+  width: 140px !important;
+  max-width: 140px !important;
   flex-shrink: 0;
   transition: opacity 0.2s ease;
 }
@@ -560,7 +560,7 @@
 }
 .header-main .header-logo img {
   width: 100% !important;
-  max-width: 110px !important;
+  max-width: 140px !important;
   height: auto !important;
   display: block;
   filter: brightness(0.7) contrast(1.2);
@@ -805,11 +805,11 @@
   min-height: 50px;
 }
 .sticky .header-main .header-logo {
-  width: 95px !important;
-  max-width: 95px !important;
+  width: 115px !important;
+  max-width: 115px !important;
 }
 .sticky .header-main .header-logo img {
-  max-width: 95px !important;
+  max-width: 115px !important;
 }
 
 /* ── Breadcrumb banner — flush against header, zero gap ── */
@@ -868,11 +868,11 @@
     gap: 16px;
   }
   .header-main .header-logo {
-    width: 90px !important;
-    max-width: 90px !important;
+    width: 110px !important;
+    max-width: 110px !important;
   }
   .header-main .header-logo img {
-    max-width: 90px !important;
+    max-width: 110px !important;
   }
 }
 
@@ -881,11 +881,11 @@
     min-height: 48px;
   }
   .header-main .header-logo {
-    width: 80px !important;
-    max-width: 80px !important;
+    width: 100px !important;
+    max-width: 100px !important;
   }
   .header-main .header-logo img {
-    max-width: 80px !important;
+    max-width: 100px !important;
   }
   .breadcrumb-banner img {
     height: 280px !important;

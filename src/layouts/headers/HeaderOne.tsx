@@ -59,8 +59,8 @@ const HeaderOne = () => {
                               src="/assets/img/logo/Starajin - Header  3x svg.svg"
                               alt=""
                               role="presentation"
-                              width="110"
-                              height="40"
+                              width="140"
+                              height="51"
                            />
                         </Link>
                      </div>
