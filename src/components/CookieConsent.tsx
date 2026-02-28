@@ -42,9 +42,9 @@ const CookieConsent = () => {
         left: 0,
         right: 0,
         zIndex: 9999,
-        backgroundColor: "rgba(35, 67, 69, 0.97)",
+        backgroundColor: "rgba(26, 26, 46, 0.97)",
         backdropFilter: "blur(8px)",
-        borderTop: "1px solid rgba(255, 199, 0, 0.3)",
+        borderTop: "2px solid #023EDA",
         padding: "16px 0",
         animation: "slideUp 0.4s ease-out",
       }}
@@ -58,7 +58,7 @@ const CookieConsent = () => {
             {t("cookie.message")}{" "}
             <Link
               to="/cookie-policy"
-              style={{ color: "#ffc700", textDecoration: "underline" }}
+              style={{ color: "#4d8aff", textDecoration: "underline" }}
             >
               {t("cookie.learnMore")}
             </Link>
@@ -68,10 +68,10 @@ const CookieConsent = () => {
               onClick={decline}
               className="btn btn-sm"
               style={{
-                border: "1px solid rgba(255,255,255,0.4)",
+                border: "1px solid rgba(255,255,255,0.3)",
                 color: "#fff",
                 padding: "6px 20px",
-                borderRadius: "4px",
+                borderRadius: "6px",
                 fontSize: "0.85rem",
               }}
             >
@@ -81,11 +81,11 @@ const CookieConsent = () => {
               onClick={accept}
               className="btn btn-sm"
               style={{
-                backgroundColor: "#ffc700",
-                color: "#234345",
+                backgroundColor: "#023EDA",
+                color: "#fff",
                 fontWeight: 600,
                 padding: "6px 20px",
-                borderRadius: "4px",
+                borderRadius: "6px",
                 fontSize: "0.85rem",
                 border: "none",
               }}

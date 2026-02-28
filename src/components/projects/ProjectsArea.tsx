@@ -113,7 +113,7 @@ const projects_meta: ProjectMeta[] = [
       thumb: "/assets/img/projects/EDUCON 2024_2 (1).jpg",
       gallery: ["/assets/img/projects/EDUCON 2024_2.jpg", "/assets/img/projects/EDUCON 2024_1.jpg", "/assets/img/projects/DIDAC Edu Exhibition 2025_1.jpg", "/assets/img/projects/DIDAC Edu Exhibition 2025_2.jpg", "/assets/img/projects/DIDAC Edu Exhibition 2025_4.jpg"],
       category: "b2b",
-      date: "2024-11-15",
+      date: "2025-05-15",
       participants: 350,
    },
    {
