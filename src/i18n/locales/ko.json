@@ -541,7 +541,7 @@
     "mainSubtitle": "비즈니스 협력",
     "stats": [
       {
-        "number": "20+",
+        "number": "10+",
         "label": "G2B 및 B2B MoU 체결 주도",
         "description": "비즈니스 진출 및 네트워크 구축",
         "items": [
@@ -561,7 +561,7 @@
         ]
       },
       {
-        "number": "₹500억+",
+        "number": "₹3Cr+",
         "label": "문화 및 교육 교류 프로젝트",
         "description": "",
         "items": [
@@ -573,7 +573,7 @@
       }
     ],
     "bottomStats": {
-      "mous": { "number": "20+", "label": "전략적 MoU 체결" },
+      "mous": { "number": "10+", "label": "전략적 MoU 체결" },
       "consulting": { "number": "50+", "label": "컨설팅 프로젝트" },
       "partners": { "number": "100+", "label": "파트너 매칭" }
     }

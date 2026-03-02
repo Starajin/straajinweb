@@ -546,7 +546,7 @@
     "mainSubtitle": "Business Collaboration",
     "stats": [
       {
-        "number": "20+",
+        "number": "10+",
         "label": "Led G2B & B2B MoU signing",
         "description": "Business Entry & network creation",
         "items": [
@@ -566,7 +566,7 @@
         ]
       },
       {
-        "number": "₹500Cr+",
+        "number": "₹3Cr+",
         "label": "Cultural & Training Exchange Projects",
         "description": "",
         "items": [
@@ -578,7 +578,7 @@
       }
     ],
     "bottomStats": {
-      "mous": { "number": "20+", "label": "Strategic MoUs Signed" },
+      "mous": { "number": "10+", "label": "Strategic MoUs Signed" },
       "consulting": { "number": "50+", "label": "Consulting Projects" },
       "partners": { "number": "100+", "label": "Partner Matches" }
     }
