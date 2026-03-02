@@ -18,7 +18,7 @@ const stepIcons = [
 
 const highlightIcons = [
    "fa-solid fa-layer-group",
-   "fa-solid fa-people-group",
+   "fa-solid fa-users",
    "fa-solid fa-bullseye",
    "fa-solid fa-scale-balanced",
    "fa-solid fa-handshake-angle",
