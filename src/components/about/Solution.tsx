@@ -118,7 +118,8 @@ const Solution = () => {
                            </h4>
                            <p className="timeline-desc mb-0" style={{
                               color: '#666',
-                              lineHeight: '1.6'
+                              lineHeight: '1.6',
+                              wordBreak: 'keep-all'
                            }}>
                               {item.desc}
                            </p>
