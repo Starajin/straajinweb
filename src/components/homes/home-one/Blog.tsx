@@ -31,14 +31,15 @@ const Blog = () => {
             </div>
             <div className="row g-4">
                {blogPosts.map((item, index) => (
-                  <div key={item.id} className="col-md-6 col-lg-4">
+                  <div key={item.id} className="col-md-6 col-lg-3">
                      <div className="team-items hover-translate8 px-xxl-6 px-xl-4 px-3 section-bg rounded-4">
                         <div className="thumb w-100 overflow-hidden">
                            {(() => {
                               const blogImages = [
                                  "/assets/img/blog/Korea–India Trade Relations Reach New Heights in 2026.png",
                                  "/assets/img/blog/Korean startups exploring Indian market.png",
-                                 "/assets/img/blog/Cultural Exchange Programs Show Promising Results.png"
+                                 "/assets/img/blog/Cultural Exchange Programs Show Promising Results.png",
+                                 "/assets/img/blog/AI Mission-1.png"
                               ];
                               return <img src={blogImages[index] || blogImages[0]} alt="img" className="w-100 rounded-bottom-3" loading="lazy" style={{height: '220px', objectFit: 'contain'}} />;
                            })()}

@@ -900,6 +900,11 @@
         "id": 3,
         "tag": "Culture",
         "title": "Cultural Exchange Programs Show Promising Results"
+      },
+      {
+        "id": 4,
+        "tag": "Technology",
+        "title": "India AI Mission and AIKosh Signal the Next Phase of India's AI Policy"
       }
     ]
   },
@@ -1088,6 +1093,56 @@
         "quoteText": "Cultural diplomacy is as vital as economic partnership in building lasting international relationships",
         "quoteAuthor": "KOFICE Director",
         "prevPost": "Korean Startups in India",
+        "nextPost": "India AI Mission and AIKosh"
+      },
+      "4": {
+        "title": "India AI Mission and AIKosh Signal the Next Phase of India's AI Policy",
+        "author": "Policy Analyst",
+        "date": "9 March 2026",
+        "subtitle": "From Technology Adoption to Platform Design: India's Shift Toward Data-Centered AI Infrastructure",
+        "content": [
+          "The Government of India has unveiled AIKosh, a national data platform positioned as a core infrastructure of the India AI Mission. The launch carries broader implications than the introduction of a simple data portal. AIKosh represents an attempt to integrate datasets, models, and computing resources within a single framework, suggesting that India has set a clear direction toward treating AI not merely as a field of competition among private companies, but as a matter of national infrastructure.",
+          "Over the past several years, India has been reshaping its technology policy around digital public infrastructure. Initiatives such as Aadhaar, UPI, and ONDC established a model in which platforms and data are designed at the national level. AIKosh appears to extend this approach into the AI sector, signaling that the government is beginning to address AI as part of the same structural framework."
+        ],
+        "sections": [
+          {
+            "title": "India AI Mission: A Long-Term National Strategy",
+            "content": [
+              "The India AI Mission reflects a transition from narrow research programs to a comprehensive national strategy. Rather than focusing on a single dimension, it combines multiple pillars within a single policy architecture:",
+              "By advancing data, computing, regulation, and industrial application simultaneously, India is adopting an approach similar to the national AI strategies seen in the United States and China. In India's case, however, the emphasis on digital public infrastructure gives the strategy a distinctly platform-centered character."
+            ],
+            "list": [
+              "Development of AI compute infrastructure to address the shortage of high-performance computing resources.",
+              "Creation of AIKosh as a national data platform providing datasets, development environments, and shared resources for AI training.",
+              "Pursuit of domestic foundation models and expansion of the startup ecosystem.",
+              "Training of AI talent and establishment of trusted AI standards and governance frameworks."
+            ]
+          },
+          {
+            "title": "AIKosh: The Data Hub at the Center",
+            "content": [
+              "Within this framework, AIKosh functions as the data hub. The platform is designed to provide datasets, development environments, and shared resources for AI training, while enabling structured access to public-sector data. The decision to make government-held data available under defined rules is particularly notable.",
+              "It reflects the view that competitiveness in AI depends less on algorithms alone and more on the ability to secure, manage, and utilize large-scale data. India's linguistic diversity, fragmented data ownership, limited access to public datasets, and dependence on global platforms have all been cited as barriers that AIKosh aims to address."
+            ]
+          },
+          {
+            "title": "AI Sovereignty and Market Implications",
+            "content": [
+              "One of the key ideas emphasized in the India AI Mission is AI sovereignty — the ability to manage data and platforms independently, without excessive reliance on foreign systems. Data is no longer treated as a byproduct of industry, but as a strategic asset.",
+              "This shift is likely to reshape how the market operates. India's AI industry has so far grown largely through IT services and startups, but the creation of national platforms tends to increase the role of public projects and large-scale infrastructure programs. Access to data and participation in government-led initiatives may become critical factors in determining competitiveness, particularly in sectors such as smart cities, healthcare, manufacturing, finance, education, and public administration."
+            ]
+          },
+          {
+            "title": "Opportunities for Korea–India Cooperation",
+            "content": [
+              "From the perspective of Korea–India cooperation, these developments deserve close attention. Both countries are pursuing government-led AI infrastructure strategies, and the overall policy structures show notable similarities. Korea's strengths lie in public IT systems, cloud infrastructure, semiconductors, and manufacturing automation, while India brings large-scale user data, advanced digital public infrastructure, and a vast talent pool.",
+              "Under these conditions, collaboration based on jointly designed projects may prove more realistic than simple technology transfer. The central issue, however, remains data — as countries strengthen data protection frameworks, the scope of what can be shared, the sectors in which joint models can be developed, and the mechanisms required to build trust will become decisive factors."
+            ]
+          }
+        ],
+        "quoteText": "India's AI industry is entering a new phase — from adopting technology to designing platforms, and from a service-driven structure to one built around data",
+        "quoteAuthor": "India AI Mission",
+        "prevPost": "Cultural Exchange Programs",
         "nextPost": "Future Collaborations"
       }
     }

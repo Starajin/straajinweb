@@ -34,6 +34,7 @@ const MobileMenu = () => {
 
    // Function to get translated menu title
    const getMenuTitle = (title: string) => {
+      if (!title) return '';
       switch (title.toLowerCase()) {
          case 'home':
             return t('nav.home');

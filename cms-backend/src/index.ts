@@ -18,7 +18,9 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: [
     process.env.FRONTEND_URL || 'http://localhost:3000',
-    process.env.CMS_FRONTEND_URL || 'http://localhost:3001'
+    process.env.CMS_FRONTEND_URL || 'http://localhost:3001',
+    'http://localhost:5173',
+    'http://localhost:5174'
   ],
   credentials: true
 }));
@@ -68,6 +70,10 @@ import mediaRoutes from './routes/mediaRoutes';
 import settingsRoutes from './routes/settingsRoutes';
 import authRoutes from './routes/authRoutes';
 import layoutRoutes from './routes/layout';
+import faqRoutes from './routes/faqRoutes';
+import serviceRoutes from './routes/serviceRoutes';
+import pricingRoutes from './routes/pricingRoutes';
+import contentRoutes from './routes/contentRoutes';
 
 // API Routes
 app.use('/api/auth', authRoutes);
@@ -77,6 +83,10 @@ app.use('/api/team', teamRoutes);
 app.use('/api/media', mediaRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/layout', layoutRoutes);
+app.use('/api/faq', faqRoutes);
+app.use('/api/services', serviceRoutes);
+app.use('/api/pricing', pricingRoutes);
+app.use('/api/content', contentRoutes);
 
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

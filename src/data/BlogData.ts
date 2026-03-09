@@ -29,6 +29,13 @@ const blog_data: DataType[] = [
       tag: "Culture",
       title: "Cultural Exchange Programs Show Promising Results",
    },
+   {
+      id: 4,
+      page: "home_1",
+      thumb: "/assets/img/blog/AI Mission-1.png",
+      tag: "Technology",
+      title: "India AI Mission and AIKosh Signal the Next Phase of India's AI Policy",
+   },
 
    // home_2
    {
@@ -145,19 +152,26 @@ const blog_data: DataType[] = [
    {
       id: 4,
       page: "inner_page",
+      thumb: "/assets/img/blog/AI Mission-1.png",
+      tag: "Technology",
+      title: "India AI Mission and AIKosh Signal the Next Phase of India's AI Policy",
+   },
+   {
+      id: 5,
+      page: "inner_page",
       thumb: "/assets/img/blog/blog-ex1.png",
       tag: "Financial",
       title: "The ROI of hiring a financial consultant: Is It worth It investment nowadays?",
    },
    {
-      id: 5,
+      id: 6,
       page: "inner_page",
       thumb: "/assets/img/blog/blog-ex2.png",
       tag: "Trading",
       title: "6 financial planning mistakes small business owners must to avoid",
    },
    {
-      id: 6,
+      id: 7,
       page: "inner_page",
       thumb: "/assets/img/blog/blog-ex3.png",
       tag: "Business Strategy",
