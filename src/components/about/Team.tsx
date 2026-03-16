@@ -21,7 +21,7 @@ const Team = () => {
    const about_team_data: TeamMember[] = cmsTeam.length > 0
       ? cmsTeam.map((m: any) => ({
          id: m.id,
-         thumb: m.imageUrl || '/assets/img/team/placeholder.jpg',
+         thumb: m.profileImageUrl || '/assets/img/team/placeholder.jpg',
          name: pick(m, 'name'),
          designation: pick(m, 'designation'),
          description: pick(m, 'description'),
