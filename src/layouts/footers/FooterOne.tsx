@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { api } from "../../services/api";
 import { useCmsData } from "../../hooks/useCmsData";
 import { useLang } from "../../hooks/useLang";
-import { resolveImageUrl } from "../../utils/resolveImageUrl";
 
 const FooterOne = () => {
    const { t } = useTranslation();
@@ -12,7 +11,6 @@ const FooterOne = () => {
    const { data: settings } = useCmsData(() => api.getSettings(), {} as Record<string, string>);
    const { data: offices } = useCmsData(() => api.getOffices(), [] as any[]);
    const { data: cmsNav } = useCmsData(() => api.getNavigation(), [] as any[]);
-   const { data: cmsServices } = useCmsData(() => api.getServices(), [] as any[]);
 
    const footerLogo = settings.footerLogoUrl || '/assets/img/logo/Starajin - White.png';
    const footerDesc = lang === 'ko'
@@ -106,20 +104,14 @@ const FooterOne = () => {
                         <div className="col-lg-2 col-md-6 col-6 mb-3 mb-lg-0">
                            <h5 className="fw-semibold mb-3" style={{ color: '#ffc700', fontSize: '1rem' }}>{t('footer.services')}</h5>
                            <ul className="list-unstyled mb-0">
-                              {(cmsServices.length > 0
-                                 ? cmsServices.map((s: any) => ({
-                                    label: pick(s, 'name'),
-                                    icon: s.iconUrl ? resolveImageUrl(s.iconUrl) : null,
-                                 }))
-                                 : [
-                                    { label: t('services.businessDev'), icon: null },
-                                    { label: t('services.consulting'), icon: null },
-                                    { label: t('services.partnerMatching'), icon: null },
-                                    { label: t('services.cultural'), icon: null },
-                                 ]
-                              ).map((item: any, idx: number) => (
+                              {[
+                                 { label: t('services.businessDev'), url: '/services' },
+                                 { label: t('services.consulting'), url: '/services' },
+                                 { label: t('services.partnerMatching'), url: '/services' },
+                                 { label: t('services.cultural'), url: '/services' },
+                              ].map((item, idx) => (
                                  <li key={idx} className="mb-2">
-                                    <Link to="/services" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
+                                    <Link to={item.url} className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
                                        {item.label}
                                     </Link>
                                  </li>
