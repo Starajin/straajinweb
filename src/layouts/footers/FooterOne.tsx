@@ -108,7 +108,7 @@ const FooterOne = () => {
                            <ul className="list-unstyled mb-0">
                               {(cmsServices.length > 0
                                  ? cmsServices.map((s: any) => ({
-                                    label: pick(s, 'title'),
+                                    label: pick(s, 'name'),
                                     icon: s.iconUrl ? resolveImageUrl(s.iconUrl) : null,
                                  }))
                                  : [
