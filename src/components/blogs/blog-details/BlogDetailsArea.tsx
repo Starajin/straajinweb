@@ -1,21 +1,80 @@
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { api } from '../../../services/api';
+import { useCmsData } from '../../../hooks/useCmsData';
+import { useLang } from '../../../hooks/useLang';
+import { resolveImageUrl } from '../../../utils/resolveImageUrl';
 import blog_data from '../../../data/BlogData';
 
 const BlogDetailsArea = () => {
    const { id } = useParams();
    const { t } = useTranslation();
+   const { pick } = useLang();
+
+   // Try CMS first — id param could be a slug or numeric id
+   const { data: cmsPost } = useCmsData(
+      () => id ? api.getBlogPost(id) : Promise.resolve(null),
+      null as any
+   );
+
+   // If CMS post found, render from CMS
+   if (cmsPost) {
+      const title = pick(cmsPost, 'title');
+      const content = pick(cmsPost, 'content'); // HTML string
+      const excerpt = pick(cmsPost, 'excerpt');
+      const image = resolveImageUrl(cmsPost.featuredImageUrl || '');
+      const author = cmsPost.author || 'StaraJIN';
+      const date = cmsPost.publishedAt
+         ? new Date(cmsPost.publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
+         : '';
+      const category = cmsPost.category || '';
+      const readTime = cmsPost.readTime ? `${cmsPost.readTime} min read` : '';
+
+      return (
+         <section className="blog-details-section section-bg pt-100 pb-100">
+            <div className="container">
+               <div className="row g-sm-4 g-3 justify-content-center align-items-end">
+                  <div className="col-lg-9">
+                     {image && (
+                        <div className="blog-details-thumb rounded-4 w-100 mb-40 position-relative wow fadeInUp"
+                           data-wow-delay=".4s">
+                           <img src={image} alt={title} className="w-100 rounded-4" loading="lazy" style={{ height: '400px', objectFit: 'cover' }} />
+                        </div>
+                     )}
+                     <h3 className="theme-clr4 mb-3 fz-36 wow fadeInUp" data-wow-delay=".2s">{title}</h3>
+                     <div className="d-flex align-items-center gap-3 fz-14 mb-40 wow fadeInUp" data-wow-delay=".4s">
+                        <span className="fw-600 theme-clr4">{author}</span>
+                        {date && <> / {date}</>}
+                        {category && <> / {category}</>}
+                        {readTime && <> / {readTime}</>}
+                     </div>
+                     {excerpt && (
+                        <p className="theme-clr4 mb-xl-3 mb-2 wow fadeInUp" data-wow-delay=".6s">
+                           <strong>{excerpt}</strong>
+                        </p>
+                     )}
+                     <div
+                        className="blog-cms-content theme-clr4 wow fadeInUp"
+                        data-wow-delay=".5s"
+                        dangerouslySetInnerHTML={{ __html: content }}
+                     />
+                  </div>
+               </div>
+            </div>
+         </section>
+      );
+   }
+
+   // Fallback: i18n-based rendering for old numeric IDs
    const blogId = id ? parseInt(id) : 1;
    const blogKey = String(blogId);
-
-   // Get blog thumbnail from BlogData
    const currentBlogData = blog_data.find(blog => blog.id === blogId && blog.page === "home_1");
 
    const title = t(`blogDetails.posts.${blogKey}.title`);
    const author = t(`blogDetails.posts.${blogKey}.author`);
    const date = t(`blogDetails.posts.${blogKey}.date`);
    const subtitle = t(`blogDetails.posts.${blogKey}.subtitle`);
-   const content = t(`blogDetails.posts.${blogKey}.content`, { returnObjects: true }) as string[];
+   const contentArr = t(`blogDetails.posts.${blogKey}.content`, { returnObjects: true }) as string[];
    const sections = t(`blogDetails.posts.${blogKey}.sections`, { returnObjects: true }) as any[];
    const quoteText = t(`blogDetails.posts.${blogKey}.quoteText`);
    const quoteAuthor = t(`blogDetails.posts.${blogKey}.quoteAuthor`);
@@ -30,20 +89,6 @@ const BlogDetailsArea = () => {
                   <div className="blog-details-thumb rounded-4 w-100 mb-40 position-relative wow fadeInUp"
                      data-wow-delay=".4s">
                      <img src={currentBlogData?.thumb || "/assets/img/blog/Korea–India Trade Relations Reach New Heights in 2026.png"} alt={title} className="w-100 rounded-4" loading="lazy" style={{height: '400px', objectFit: 'cover'}} />
-                     <div className="social-icon blog-details-social d-flex align-items-center">
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                           <i className="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                           <i className="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                           <i className="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">
-                           <i className="fa-brands fa-pinterest-p"></i>
-                        </a>
-                     </div>
                   </div>
                   <h3 className="theme-clr4 mb-3 fz-36 wow fadeInUp" data-wow-delay=".2s">{title}</h3>
                   <div className="d-flex align-items-center gap-3 fz-14 mb-40 wow fadeInUp" data-wow-delay=".4s">
@@ -52,7 +97,7 @@ const BlogDetailsArea = () => {
                   <p className="theme-clr4 mb-xl-3 mb-2 wow fadeInUp" data-wow-delay=".6s">
                      <strong>{subtitle}</strong>
                   </p>
-                  {Array.isArray(content) && content.map((paragraph: string, index: number) => (
+                  {Array.isArray(contentArr) && contentArr.map((paragraph: string, index: number) => (
                      <p key={index} className="theme-clr4 mb-40 wow fadeInUp" data-wow-delay=".5s">
                         {paragraph}
                      </p>

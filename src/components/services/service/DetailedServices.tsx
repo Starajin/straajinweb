@@ -1,10 +1,22 @@
 import { useTranslation } from "react-i18next";
 import { getTranslatedArray } from "../../../utils/i18n";
+import { api } from "../../../services/api";
+import { useCmsData } from "../../../hooks/useCmsData";
+import { useLang } from "../../../hooks/useLang";
 
 const DetailedServices = () => {
    const { t } = useTranslation();
+   const { lang, pick } = useLang();
 
-   const sections = [
+   const { data: cmsSections } = useCmsData(() => api.getPageContent('services'), [] as any[]);
+   const consultingSection = cmsSections.find((s: any) => s.section === 'consulting');
+   const researchSection = cmsSections.find((s: any) => s.section === 'research');
+   const executionSection = cmsSections.find((s: any) => s.section === 'execution');
+
+   const consultingMeta = consultingSection?.metadata || {};
+
+   // Hardcoded fallback sections
+   const fallbackSections = [
       {
          num: "01",
          titleKey: "services.detailed.consulting.title",
@@ -34,6 +46,44 @@ const DetailedServices = () => {
       },
    ];
 
+   // Build sections from CMS or fall back
+   const cmsServiceSections = [consultingSection, researchSection, executionSection];
+   const hasCmsData = cmsServiceSections.some((s) => s != null);
+
+   const sections = hasCmsData
+      ? cmsServiceSections.filter(Boolean).map((section: any) => {
+         const meta = section.metadata || {};
+         const cmsCards = Array.isArray(meta.cards)
+            ? meta.cards.map((card: any) => ({
+               icon: card.icon,
+               title: pick(card, 'title'),
+               desc: pick(card, 'desc'),
+               items: card[`items_${lang}`] || card.items_en || [],
+            }))
+            : [];
+         return {
+            num: meta.num || '',
+            title: pick(section, 'title'),
+            subtitle: pick(section, 'subtitle'),
+            cards: cmsCards,
+         };
+      })
+      : fallbackSections.map((section) => ({
+         num: section.num,
+         title: t(section.titleKey),
+         subtitle: t(section.subtitleKey),
+         cards: section.cards.map((card) => ({
+            icon: card.icon,
+            title: t(card.titleKey),
+            desc: t(card.descKey),
+            items: getTranslatedArray(t, card.itemsKey),
+         })),
+      }));
+
+   // Header text from consulting section metadata or fallback
+   const headerTag = consultingMeta ? pick(consultingMeta, 'tag') || t('services.detailed.tag') : t('services.detailed.tag');
+   const headerTitle = consultingMeta ? pick(consultingMeta, 'header') || t('services.detailed.title') : t('services.detailed.title');
+
    return (
       <section className="detailed-services-section pt-100 pb-100 section-bg">
          <div className="container">
@@ -42,10 +92,10 @@ const DetailedServices = () => {
                <div className="col-lg-6">
                   <div className="section-header">
                      <div className="d-flex align-items-center gap-2 theme-clr fw-600 mb-lg-3 mb-2">
-                        <img src="/assets/img/icon/section-step1.png" alt="img" /> {t('services.detailed.tag')}
+                        <img src="/assets/img/icon/section-step1.png" alt="img" /> {headerTag}
                      </div>
                      <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".2s">
-                        {t('services.detailed.title')}
+                        {headerTitle}
                      </h2>
                   </div>
                </div>
@@ -60,26 +110,26 @@ const DetailedServices = () => {
                         <div className="col-lg-4">
                            <div className="ds-block-header">
                               <span className="ds-num">{section.num}</span>
-                              <h3 className="theme-clr4 fw-700 mb-1">{t(section.titleKey)}</h3>
-                              <span className="ds-subtitle">{t(section.subtitleKey)}</span>
+                              <h3 className="theme-clr4 fw-700 mb-1">{section.title}</h3>
+                              <span className="ds-subtitle">{section.subtitle}</span>
                            </div>
                         </div>
 
                         {/* Right: Two sub-service columns */}
                         <div className="col-lg-8">
                            <div className="row g-4">
-                              {section.cards.map((card, cIdx) => (
+                              {section.cards.map((card: any, cIdx: number) => (
                                  <div key={cIdx} className="col-md-6">
                                     <div className="ds-sub-card">
                                        <div className="d-flex align-items-center gap-2 mb-3">
                                           <div className="ds-sub-icon">
                                              <i className={`fa-solid ${card.icon}`}></i>
                                           </div>
-                                          <h5 className="theme-clr4 fw-700 mb-0">{t(card.titleKey)}</h5>
+                                          <h5 className="theme-clr4 fw-700 mb-0">{card.title}</h5>
                                        </div>
-                                       <p className="ds-sub-desc">{t(card.descKey)}</p>
+                                       <p className="ds-sub-desc">{card.desc}</p>
                                        <ul className="ds-check-list list-unstyled mb-0">
-                                          {getTranslatedArray(t, card.itemsKey).map((item, i) => (
+                                          {card.items.map((item: string, i: number) => (
                                              <li key={i}>
                                                 <svg width="13" height="13" viewBox="0 0 20 20" fill="none" className="ds-check-icon">
                                                    <path d="M0.683 9.801C3.47 12.816 6.172 15.531 8.77 18.965C11.594 13.348 14.485 7.711 19.254 1.607L17.969 1.018C13.942 5.289 10.813 9.332 8.094 14.137C6.203 12.434 3.148 10.023 1.282 8.785L0.683 9.801Z" fill="var(--theme)"/>

@@ -1,148 +1,11 @@
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { useTranslation } from "react-i18next"
+import { api } from "../../services/api";
+import { useCmsData } from "../../hooks/useCmsData";
+import { useLang } from "../../hooks/useLang";
+import { resolveImageUrl } from "../../utils/resolveImageUrl";
 
-interface ProjectMeta {
-   id: number;
-   thumb: string;
-   gallery: string[];
-   category: string;
-   date: string;
-   participants: number;
-   thumbStyle?: React.CSSProperties;
-}
-
-const projects_meta: ProjectMeta[] = [
-   {
-      id: 1,
-      thumb: "/assets/img/projects/MIDC_KOSME_Meeting_2026.jpg",
-      gallery: [],
-      category: "mou",
-      date: "2026-01-15",
-      participants: 50,
-   },
-   {
-      id: 2,
-      thumb: "/assets/img/projects/rajasthan-softberry-mou-4person.jpg",
-      gallery: ["/assets/img/projects/rising-rajasthan-event.jpg", "/assets/img/projects/rajasthan-softberry-mou.jpg", "/assets/img/projects/rajasthan-cm-korea-visit.jpg"],
-      category: "mou",
-      date: "2024-12-15",
-      participants: 200,
-   },
-   {
-      id: 3,
-      thumb: "/assets/img/projects/pcu-kosme-mou-signing.jpg",
-      gallery: ["/assets/img/projects/PCU - Korean Facilitation Centre MOU Ceremony.jpg", "/assets/img/projects/PCU - KOSME MOU Signing Ceremony2.jpg", "/assets/img/projects/pcu-inauguration-facilitation.jpg", "/assets/img/projects/kosme-facilitation-pcu.jpg", "/assets/img/projects/pcet-gbc-ceremony.jpg"],
-      category: "mou",
-      date: "2024-09-20",
-      participants: 120,
-   },
-   {
-      id: 4,
-      thumb: "/assets/img/projects/sogang-ihub-mou-2024.jpg",
-      gallery: ["/assets/img/projects/i-Hub Embassy Visit_2024.jpg"],
-      category: "mou",
-      date: "2024-07-10",
-      participants: 60,
-   },
-   {
-      id: 5,
-      thumb: "/assets/img/projects/sogang-pcu-mou-signing.jpg",
-      gallery: [],
-      category: "mou",
-      date: "2024-05-15",
-      participants: 80,
-   },
-   {
-      id: 6,
-      thumb: "/assets/img/projects/verywords-starajin-mou.jpg",
-      gallery: ["/assets/img/projects/verywords-starajin-mou-signing.jpg"],
-      category: "mou",
-      date: "2024-03-20",
-      participants: 40,
-   },
-   {
-      id: 7,
-      thumb: "/assets/img/projects/kofice-culture-project-1.jpg",
-      gallery: ["/assets/img/projects/kofice-culture-project-2.jpg", "/assets/img/projects/KOFICE Cultural Project 2021_Promotion Poster_1.jpg", "/assets/img/projects/KOFICE Cultural Project 2021_Main Poster.jpg", "/assets/img/projects/NBT_National Book Trust Visit_2023.jpg"],
-      category: "cultural",
-      date: "2025-01-20",
-      participants: 150,
-   },
-   {
-      id: 8,
-      thumb: "/assets/img/projects/super-30-publication-icck.jpg",
-      gallery: ["/assets/img/projects/super-30-book-concert.jpg", "/assets/img/projects/super-30-anand-kumar.jpg", "/assets/img/projects/super-30-book-concert-1.jpg", "/assets/img/projects/super-30-original-book.jpg", "/assets/img/projects/Anand Kumar_Embassy Visit_1.jpg"],
-      category: "cultural",
-      date: "2024-06-15",
-      participants: 300,
-   },
-   {
-      id: 9,
-      thumb: "/assets/img/projects/nami-island-artist-camp.jpg",
-      gallery: [],
-      category: "cultural",
-      date: "2022-10-05",
-      participants: 40,
-   },
-   {
-      id: 10,
-      thumb: "/assets/img/projects/icck-diwali-ball-2024-cropped.jpg",
-      gallery: ["/assets/img/projects/icck-networking-2025-rotated.jpg", "/assets/img/projects/icck-annual-meeting-2023.jpg", "/assets/img/projects/1747997143162.jpg", "/assets/img/projects/1747997142979.jpg"],
-      category: "cultural",
-      date: "2020-08-20",
-      participants: 100,
-   },
-   {
-      id: 11,
-      thumb: "/assets/img/projects/KOIMA_B2B matching Forum_2023.jpg",
-      gallery: ["/assets/img/projects/KOIMA_B2B Meeting Forum_2023_3.jpg", "/assets/img/projects/Rossari in Korea_1.jpg"],
-      category: "b2b",
-      date: "2023-09-01",
-      participants: 200,
-   },
-   {
-      id: 12,
-      thumb: "/assets/img/projects/OKTA 2025_2.jpg",
-      gallery: ["/assets/img/projects/OKTA World Incheon_B2B meeting 1.jpg", "/assets/img/projects/OKTA 2025_1.jpg", "/assets/img/projects/OKTA 2025_3.jpg", "/assets/img/projects/OKTA World Business Expo_B2B meeting 2.jpg"],
-      category: "b2b",
-      date: "2025-06-20",
-      participants: 180,
-   },
-   {
-      id: 13,
-      thumb: "/assets/img/projects/EDUCON 2024_2 (1).jpg",
-      gallery: ["/assets/img/projects/EDUCON 2024_2.jpg", "/assets/img/projects/EDUCON 2024_1.jpg", "/assets/img/projects/DIDAC Edu Exhibition 2025_1.jpg", "/assets/img/projects/DIDAC Edu Exhibition 2025_2.jpg", "/assets/img/projects/DIDAC Edu Exhibition 2025_4.jpg"],
-      category: "b2b",
-      date: "2025-05-15",
-      participants: 350,
-   },
-   {
-      id: 14,
-      thumb: "/assets/img/projects/kto-edutour-pune.jpg",
-      gallery: ["/assets/img/projects/kto-edutour-hyd.jpg", "/assets/img/projects/kto-edutour-roadshow-hyd-2025.jpg", "/assets/img/projects/edu-tour-hyd-2025.jpg", "/assets/img/projects/kto-edutour-pune-2025-2.jpg", "/assets/img/projects/kto-edutour-pune-2025-3.jpg"],
-      category: "b2b",
-      date: "2025-04-15",
-      participants: 250,
-   },
-   {
-      id: 15,
-      thumb: "/assets/img/projects/sogang-thub-hyd-visit-2025.jpg",
-      gallery: ["/assets/img/projects/korea-smes-startups-day.jpg", "/assets/img/projects/india-forum-2026.jpg", "/assets/img/projects/gec-2025.jpg", "/assets/img/projects/proclamation-ceremony-smes.jpg", "/assets/img/projects/K-SS Day_2025_2.jpg", "/assets/img/projects/Proclamation Ceremony – Korea SMEs & Startups Day 2025.jpg", "/assets/img/projects/Sogang_T-Hub Visit 2.jpg"],
-      category: "b2b",
-      date: "2025-03-10",
-      participants: 400,
-   },
-   {
-      id: 16,
-      thumb: "/assets/img/projects/gs-patanjali-b2b.jpg",
-      gallery: ["/assets/img/projects/rossari-b2b-exhibition.jpg", "/assets/img/projects/b2b-meeting-2024.jpg", "/assets/img/projects/b2b-meeting-2024-2.jpg", "/assets/img/projects/b2b-beautysum-2025.jpg", "/assets/img/projects/ofkos-b2b-meeting-1.jpg", "/assets/img/projects/KRAFTON Meeting_Anil Sinha_2024.jpg", "/assets/img/projects/OFKOS_B2B Meeting 2.jpg", "/assets/img/projects/Rossari in Korea_1.jpg", "/assets/img/projects/Medical Cosmetic_B2B Meeting_MoU_2025_1.jpg", "/assets/img/projects/Jagruti Technical_ Meeting.jpg", "/assets/img/projects/20250529_165357.jpg", "/assets/img/projects/20250530_113143.jpg", "/assets/img/projects/1748511114771.jpg", "/assets/img/projects/1748511114268.jpg", "/assets/img/projects/MNU_Mokpo National University Meeting.jpg", "/assets/img/projects/Resized_20240221_204432_1708580028330.jpeg"],
-      category: "b2b",
-      date: "2024-08-10",
-      participants: 150,
-   },
-];
-
-const categories = [
+const fallbackCategories = [
    { key: 'all', label: 'projects.filters.all' },
    { key: 'mou', label: 'projects.filters.mou' },
    { key: 'b2b', label: 'projects.filters.b2b' },
@@ -151,13 +14,46 @@ const categories = [
 
 const ProjectsArea = () => {
    const { t } = useTranslation()
+   const { pick } = useLang();
    const [activeFilter, setActiveFilter] = useState('all')
    const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null)
 
-   const filteredProjects = (activeFilter === 'all'
-      ? [...projects_meta]
-      : projects_meta.filter(project => project.category === activeFilter)
-   ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+   const { data: sections } = useCmsData(() => api.getPageContent('projects'), [] as any[]);
+   const heroSection = sections.find((s: any) => s.section === 'hero');
+   const heroMeta = heroSection?.metadata || {};
+   const cmsCategories = Array.isArray(heroMeta.categories) ? heroMeta.categories : null;
+
+   const displayCategories = useMemo(() => {
+      if (cmsCategories) {
+         return cmsCategories.map((c: any) => ({ key: c.key, label: pick(c, 'label') }));
+      }
+      return fallbackCategories.map((c) => ({ key: c.key, label: t(c.label) }));
+   }, [cmsCategories, pick, t]);
+
+   const { data: cmsProjects } = useCmsData(() => api.getProjects(), [] as any[]);
+   const useCms = cmsProjects.length > 0;
+
+   const projects = useMemo(() => {
+      if (!useCms) return [];
+      return cmsProjects.map((p: any) => ({
+         id: p.id,
+         thumb: resolveImageUrl(p.featuredImageUrl || ''),
+         gallery: Array.isArray(p.gallery) ? p.gallery.map((g: string) => resolveImageUrl(g)) : [],
+         category: p.category || '',
+         date: p.completionDate || p.createdAt || '',
+         participants: p.participants || 0,
+         title: pick(p, 'title'),
+         description: pick(p, 'description'),
+      }));
+   }, [cmsProjects, useCms, pick]);
+
+   const filteredProjects = useMemo(() => {
+      const source = projects;
+      const filtered = activeFilter === 'all'
+         ? [...source]
+         : source.filter((project: any) => project.category === activeFilter);
+      return filtered.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+   }, [projects, activeFilter]);
 
 
    const openLightbox = (images: string[], index: number) => {
@@ -222,6 +118,7 @@ const ProjectsArea = () => {
                height: 100%;
                object-fit: cover;
                transition: transform 0.5s ease;
+               image-orientation: from-image;
             }
             .prj-card:hover .prj-card__thumb img {
                transform: scale(1.05);
@@ -371,6 +268,7 @@ const ProjectsArea = () => {
                max-height: 85vh;
                object-fit: contain;
                border-radius: 8px;
+               image-orientation: from-image;
             }
             .prj-lightbox__nav {
                position: absolute;
@@ -416,40 +314,39 @@ const ProjectsArea = () => {
                <div className="row g-lg-4 g-md-3 g-2 align-items-end mb-4">
                   <div className="col-lg-7 col-md-7">
                      <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                        {t('projects.hero.title')}
+                        {heroSection ? pick(heroSection, 'title') : t('projects.hero.title')}
                      </h2>
                   </div>
                   <div className="col-lg-5 col-md-5">
                      <p className="wow fadeInUp" data-wow-delay=".4s" style={{ color: 'rgba(0,0,0,0.55)', lineHeight: 1.7 }}>
-                        {t('projects.hero.subtitle')}
+                        {heroSection ? pick(heroSection, 'subtitle') : t('projects.hero.subtitle')}
                      </p>
                   </div>
                </div>
 
                {/* Filters */}
                <div className="d-flex flex-wrap justify-content-center gap-2 mb-5">
-                  {categories.map((category) => (
+                  {displayCategories.map((category: any) => (
                      <button
                         key={category.key}
                         onClick={() => setActiveFilter(category.key)}
                         className={`prj-filter-btn ${activeFilter === category.key ? 'active' : ''}`}
                      >
-                        {t(category.label)}
+                        {category.label}
                      </button>
                   ))}
                </div>
 
                {/* Grid */}
                <div className="row g-4">
-                  {filteredProjects.map((item) => {
-                     const itemIndex = projects_meta.indexOf(item);
+                  {filteredProjects.map((item: any) => {
                      const allImages = [item.thumb, ...item.gallery];
                      return (
                      <div key={item.id} className="col-md-6 col-lg-4">
                         <div className="prj-card">
                            {/* Thumbnail */}
                            <div className="prj-card__thumb" onClick={() => openLightbox(allImages, 0)}>
-                              <img src={item.thumb} alt={t(`projects.items.${itemIndex}.title`)} loading="lazy" style={item.thumbStyle} />
+                              <img src={item.thumb} alt={item.title} loading="lazy" />
                               <div className="prj-card__overlay">
                                  <i className="fa-solid fa-expand" />
                               </div>
@@ -458,20 +355,20 @@ const ProjectsArea = () => {
                            {/* Body */}
                            <div className="prj-card__body">
                               <div className="prj-card__cat">
-                                 {t(`projects.categories.${item.category}`)}
+                                 {displayCategories.find((c: any) => c.key === item.category)?.label || t(`projects.categories.${item.category}`)}
                               </div>
                               <h5 className="prj-card__title">
-                                 {t(`projects.items.${itemIndex}.title`)}
+                                 {item.title}
                               </h5>
                               <p className="prj-card__desc">
-                                 {t(`projects.items.${itemIndex}.description`)}
+                                 {item.description}
                               </p>
                            </div>
 
                            {/* Gallery strip */}
                            {item.gallery.length > 0 && (
                               <div className="prj-card__gallery">
-                                 {item.gallery.slice(0, 4).map((img, idx) => (
+                                 {item.gallery.slice(0, 4).map((img: string, idx: number) => (
                                     <div
                                        key={idx}
                                        className="prj-card__gallery-thumb"

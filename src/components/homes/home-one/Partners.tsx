@@ -1,4 +1,17 @@
 import { useTranslation } from "react-i18next";
+import { api } from "../../../services/api";
+import { useCmsData } from "../../../hooks/useCmsData";
+import { useLang } from "../../../hooks/useLang";
+
+const CMS_API = import.meta.env.VITE_CMS_API_URL || '';
+
+/** Resolve /uploads/ paths to CMS backend, keep /assets/ as-is */
+const resolveLogoUrl = (url: string) => {
+   if (!url) return '';
+   if (url.startsWith('http')) return url;
+   if (url.startsWith('/uploads/')) return `${CMS_API}${url}`;
+   return url;
+};
 
 interface BrandType {
    id: number;
@@ -6,7 +19,7 @@ interface BrandType {
    name: string;
 }
 
-const brand_data: BrandType[] = [
+const fallback_data: BrandType[] = [
    { id: 1, logo: "/assets/img/clients/gs-caltex.jpg", name: "GS Caltex" },
    { id: 2, logo: "/assets/img/clients/kofice.png", name: "KOFICE" },
    { id: 3, logo: "/assets/img/clients/koima.jpg", name: "KOIMA" },
@@ -50,6 +63,20 @@ const brand_data: BrandType[] = [
 
 const Partners = () => {
    const { t } = useTranslation();
+
+   const { data: cmsPartners } = useCmsData(() => api.getPartners(), [] as any[]);
+   const { data: sections } = useCmsData(() => api.getPageContent('home'), [] as any[]);
+   const partnerSection = sections.find((s: any) => s.section === 'partners');
+   const { pick } = useLang();
+
+   // Use CMS data if available, otherwise fallback
+   const brand_data: BrandType[] = cmsPartners.length > 0
+      ? cmsPartners.map((p: any) => ({
+         id: p.id,
+         logo: resolveLogoUrl(p.logoUrl || ''),
+         name: p.name,
+      }))
+      : fallback_data;
 
    // Split logos into two rows for dual-track marquee
    const midpoint = Math.ceil(brand_data.length / 2);
@@ -143,9 +170,9 @@ const Partners = () => {
          <section className="partners-section partners-with-bg" style={{ paddingTop: '60px', paddingBottom: '40px' }}>
             <div className="container">
                <div className="d-flex align-items-center gap-2 theme-clr fw-600 mb-1" style={{ fontSize: '13px' }}>
-                  <img src="/assets/img/icon/section-step1.png" alt="img" style={{ width: '16px', height: '16px' }} /> {t('partners.title')}
+                  <img src="/assets/img/icon/section-step1.png" alt="img" style={{ width: '16px', height: '16px' }} /> {partnerSection ? pick(partnerSection, 'subtitle') : t('partners.title')}
                </div>
-               <h4 className="theme-clr4 fw-bold mb-3">{t('partners.subtitle')}</h4>
+               <h4 className="theme-clr4 fw-bold mb-3">{partnerSection ? pick(partnerSection, 'title') : t('partners.subtitle')}</h4>
                <div className="row">
                   <div className="col-12">
                      <div className="partners-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -154,12 +181,16 @@ const Partners = () => {
                            <div className="partners-track partners-track--left">
                               {track1.map((brand, index) => (
                                  <div key={`r1-${brand.id}-${index}`} className="partner-logo-item">
-                                    <img
-                                       src={brand.logo}
-                                       alt={brand.name}
-                                       className="partner-logo-sharp"
-                                       loading="lazy"
-                                    />
+                                    {brand.logo ? (
+                                       <img
+                                          src={brand.logo}
+                                          alt={brand.name}
+                                          className="partner-logo-sharp"
+                                          loading="lazy"
+                                       />
+                                    ) : (
+                                       <span style={{ fontSize: '12px', fontWeight: 600, color: '#6B7280', textAlign: 'center', lineHeight: 1.2 }}>{brand.name}</span>
+                                    )}
                                  </div>
                               ))}
                            </div>
@@ -169,12 +200,16 @@ const Partners = () => {
                            <div className="partners-track partners-track--right">
                               {track2.map((brand, index) => (
                                  <div key={`r2-${brand.id}-${index}`} className="partner-logo-item">
-                                    <img
-                                       src={brand.logo}
-                                       alt={brand.name}
-                                       className="partner-logo-sharp"
-                                       loading="lazy"
-                                    />
+                                    {brand.logo ? (
+                                       <img
+                                          src={brand.logo}
+                                          alt={brand.name}
+                                          className="partner-logo-sharp"
+                                          loading="lazy"
+                                       />
+                                    ) : (
+                                       <span style={{ fontSize: '12px', fontWeight: 600, color: '#6B7280', textAlign: 'center', lineHeight: 1.2 }}>{brand.name}</span>
+                                    )}
                                  </div>
                               ))}
                            </div>

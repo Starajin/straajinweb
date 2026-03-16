@@ -1,39 +1,32 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link, useLocation } from "react-router-dom";
-import menu_data, { getMenuData } from "../../../data/MenuData";
+import menu_data from "../../../data/MenuData";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { api } from "../../../services/api";
+import { useCmsData } from "../../../hooks/useCmsData";
+import { useLang } from "../../../hooks/useLang";
 
 const NavMenu = () => {
 
     const [navClick, setNavClick] = useState<boolean>(false);
-    const [menuItems, setMenuItems] = useState(menu_data);
     const { t } = useTranslation();
+    const { pick } = useLang();
     const location = useLocation();
 
-    useEffect(() => {
-        const loadMenuData = async () => {
-            try {
-                const cmsMenuData = await getMenuData();
-                setMenuItems(cmsMenuData);
-            } catch (error) {
-                console.error('Failed to load CMS menu data:', error);
-            }
-        };
-        loadMenuData();
-    }, []);
+    const { data: cmsNav } = useCmsData(() => api.getNavigation(), [] as any[]);
+    const useCms = cmsNav.length > 0;
 
-    const getMenuTranslationKey = (title: string): string => {
-        const keyMap: { [key: string]: string } = {
-            'Home': 'nav.home',
-            'About us': 'nav.about',
-            'Services': 'nav.services',
-            'Projects': 'nav.projects',
-            'Contact': 'nav.contact',
-            'Blog': 'nav.blog'
-        };
-        return keyMap[title] || title;
-    };
+    const navItems = useCms
+        ? cmsNav.map((n: any) => ({
+            id: n.id,
+            title: pick(n, 'label'),
+            link: n.url || '/',
+        }))
+        : menu_data.map((m) => ({
+            id: m.id,
+            title: t(getMenuTranslationKey(m.title)),
+            link: m.link,
+        }));
 
     const isActive = (link: string) => {
         if (link === '/') return location.pathname === '/';
@@ -46,68 +39,31 @@ const NavMenu = () => {
 
     return (
         <ul>
-            {menuItems.map((menu) => (
-                menu.mega_menus ? (
-                    <li key={menu.id} className="has-dropdown active menu-thumb">
-                        <Link to={menu.link} onClick={() => setNavClick(!navClick)}>
-                            {menu.title}
-                        </Link>
-                        <ul className="submenu has-homemenu">
-                            <li>
-                                <div className="homemenu-items">
-                                    {menu.mega_menus.map((item) => (
-                                        <div key={item.id} className="homemenu">
-                                            <div className="homemenu-thumb">
-                                                <img src={item.thumb} alt="img" />
-                                                <div className="demo-button">
-                                                    <Link to={item.link} onClick={() => setNavClick(!navClick)}
-                                                        className="theme-btn style4 d-center">
-                                                        <span>{item.title}</span>
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                            <div className="homemenu-content text-center">
-                                                <h4 className="homemenu-title">
-                                                    <Link to={item.link} onClick={() => setNavClick(!navClick)}>Home Version 0{item.id}</Link>
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                ) : (
-
-                    <li key={menu.id}>
-                        <Link
-                            to={menu.link}
-                            onClick={() => setNavClick(!navClick)}
-                            aria-current={isActive(menu.link) ? 'page' : undefined}
-                        >
-                            {t(getMenuTranslationKey(menu.title))}
-                        </Link>
-
-                        {menu.has_dropdown && (
-                            <>
-                                {menu.sub_menus && (
-                                    <ul className="submenu">
-                                        {menu.sub_menus.map((sub_m, i) => (
-                                            <li key={i}>
-                                                <Link to={sub_m.link} onClick={() => setNavClick(!navClick)}>
-                                                    {sub_m.title}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </>
-                        )}
-                    </li>
-                )
+            {navItems.map((menu) => (
+                <li key={menu.id}>
+                    <Link
+                        to={menu.link}
+                        onClick={() => setNavClick(!navClick)}
+                        aria-current={isActive(menu.link) ? 'page' : undefined}
+                    >
+                        {menu.title}
+                    </Link>
+                </li>
             ))}
         </ul>
     );
 };
+
+function getMenuTranslationKey(title: string): string {
+    const keyMap: { [key: string]: string } = {
+        'Home': 'nav.home',
+        'About us': 'nav.about',
+        'Services': 'nav.services',
+        'Projects': 'nav.projects',
+        'Contact': 'nav.contact',
+        'Blog': 'nav.blog'
+    };
+    return keyMap[title] || title;
+}
 
 export default NavMenu;

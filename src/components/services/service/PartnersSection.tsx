@@ -1,12 +1,24 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { api } from "../../../services/api";
+import { useCmsData } from "../../../hooks/useCmsData";
+
+const CMS_API = import.meta.env.VITE_CMS_API_URL || '';
+
+const resolveLogoUrl = (url: string) => {
+   if (!url) return '';
+   if (url.startsWith('http')) return url;
+   if (url.startsWith('/uploads/')) return `${CMS_API}${url}`;
+   return url;
+};
 
 interface Partner {
    name: string;
-   abbr: string;
+   logo: string;
 }
 
-const partnerLogos: Record<string, string> = {
+// Hardcoded fallback logos (used only when CMS has no data)
+const fallbackLogos: Record<string, string> = {
    KOFICE: "/assets/img/partners/Korea Foundation for International Cultural Exchange (KOFICE).png",
    KOSME: "/assets/img/partners/Korea SMEs and Startups Agency (KOSME).png",
    KTO: "/assets/img/partners/Korea Tourism Organization (KTO).png",
@@ -27,12 +39,30 @@ const PartnersSection = () => {
    const { t } = useTranslation();
    const [activeTab, setActiveTab] = useState<'kr' | 'in' | 'alliance'>('kr');
 
-   const rawKorea = t('services.partners.koreaPartners', { returnObjects: true });
-   const rawIndia = t('services.partners.indiaPartners', { returnObjects: true });
-   const rawAlliance = t('services.partners.alliancePartners', { returnObjects: true });
-   const koreaPartners: Partner[] = Array.isArray(rawKorea) ? rawKorea : [];
-   const indiaPartners: Partner[] = Array.isArray(rawIndia) ? rawIndia : [];
-   const alliancePartners: Partner[] = Array.isArray(rawAlliance) ? rawAlliance : [];
+   const { data: cmsPartners } = useCmsData(() => api.getPartners(), [] as any[]);
+
+   // Filter CMS partners by category
+   const filterByCategory = (cat: string): Partner[] =>
+      cmsPartners
+         .filter((p: any) => p.category?.includes(cat) && p.isActive !== false)
+         .map((p: any) => ({ name: p.name, logo: resolveLogoUrl(p.logoUrl || '') }));
+
+   const cmsKorea = filterByCategory('korea_partner');
+   const cmsIndia = filterByCategory('india_partner');
+   const cmsAlliance = filterByCategory('alliance_partner');
+   const useCms = cmsKorea.length > 0 || cmsIndia.length > 0 || cmsAlliance.length > 0;
+
+   // Fallback to i18n data
+   const toFallback = (key: string): Partner[] => {
+      const raw = t(key, { returnObjects: true });
+      return Array.isArray(raw)
+         ? raw.map((p: any) => ({ name: p.name, logo: fallbackLogos[p.abbr] || '' }))
+         : [];
+   };
+
+   const koreaPartners = useCms ? cmsKorea : toFallback('services.partners.koreaPartners');
+   const indiaPartners = useCms ? cmsIndia : toFallback('services.partners.indiaPartners');
+   const alliancePartners = useCms ? cmsAlliance : toFallback('services.partners.alliancePartners');
 
    const partners = activeTab === 'kr' ? koreaPartners : activeTab === 'in' ? indiaPartners : alliancePartners;
 
@@ -303,10 +333,10 @@ const PartnersSection = () => {
                      {partners.map((p, idx) => (
                         <div key={idx} className="ptr-logo-card">
                            <div className="ptr-logo-card__img">
-                              {partnerLogos[p.abbr] ? (
-                                 <img src={partnerLogos[p.abbr]} alt={p.name} loading="lazy" />
+                              {p.logo ? (
+                                 <img src={p.logo} alt={p.name} loading="lazy" />
                               ) : (
-                                 <span className="ptr-logo-card__abbr">{p.abbr}</span>
+                                 <span className="ptr-logo-card__abbr">{p.name}</span>
                               )}
                            </div>
                            <span className="ptr-logo-card__name">{p.name}</span>

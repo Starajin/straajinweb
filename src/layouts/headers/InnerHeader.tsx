@@ -6,6 +6,8 @@ import UseSticky from "../../hooks/UseSticky";
 import { Link, useLocation } from "react-router-dom";
 import LanguageSwitcher from "../../components/common/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
+import { api } from "../../services/api";
+import { useCmsData } from "../../hooks/useCmsData";
 
 const InnerHeader = () => {
 
@@ -15,13 +17,17 @@ const InnerHeader = () => {
    const [isSearch, setIsSearch] = useState<boolean>(false);
    const location = useLocation();
 
+   const { data: settings } = useCmsData(() => api.getSettings(), {} as Record<string, string>);
+
    const isKorean = (i18n.resolvedLanguage || i18n.language || "").toLowerCase().startsWith("ko");
-   const whatsappDigits = "918976241508";
+   const whatsappDigits = settings.whatsappNumber || "918976241508";
+   const kakaoUrl = settings.kakaoTalkUrl || "https://open.kakao.com/";
+   const headerLogo = settings.headerLogoUrl || settings.logoUrl || "/assets/img/logo/Starajin - Header  3x svg.svg";
 
    const support: { href: string; fallbackHref?: string; label: string } = isKorean
       ? {
          href: "kakaotalk://launch",
-         fallbackHref: "https://open.kakao.com/",
+         fallbackHref: kakaoUrl,
          label: "KakaoTalk",
       }
       : {
@@ -58,7 +64,7 @@ const InnerHeader = () => {
                      <div className="header-left">
                         <Link to="/" className="header-logo" aria-label={t('nav.goHome', 'StaraJIN — Go to homepage')}>
                            <img
-                              src="/assets/img/logo/Starajin - Header  3x svg.svg"
+                              src={headerLogo}
                               alt=""
                               role="presentation"
                               width="110"

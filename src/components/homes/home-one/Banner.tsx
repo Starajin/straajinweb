@@ -1,10 +1,23 @@
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next";
+import { api } from "../../../services/api";
+import { useCmsData } from "../../../hooks/useCmsData";
+import { useLang } from "../../../hooks/useLang";
 
 const Banner = () => {
    const { t } = useTranslation();
+   const { pick } = useLang();
 
-   const backgroundImage = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80";
+   const { data: sections } = useCmsData(() => api.getPageContent('home'), [] as any[]);
+   const hero = sections.find((s: any) => s.section === 'hero');
+
+   const meta = hero?.metadata || {};
+   const backgroundImage = hero?.imageUrl || "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80";
+   const heroTitle = hero ? pick(hero, 'title') : t('banner.slide1.title');
+   const heroSubtitle = hero ? pick(hero, 'subtitle') : t('banner.slide1.subtitle');
+   const heroH2 = hero ? pick(hero, 'content') : t('banner.slide1.h2');
+   const ctaText = hero ? pick(meta, 'cta') : t('banner.slide1.cta');
+   const cta2Text = hero ? pick(meta, 'cta2') : t('banner.slide1.cta2');
 
    return (
       <>
@@ -33,23 +46,23 @@ const Banner = () => {
 
                         {/* H1 */}
                         <h1 className="hero-h1 text-white mb-3">
-                           {t('banner.slide1.title')}
-                           <span className="hero-h1__accent"> {t('banner.slide1.subtitle')}</span>
+                           {heroTitle}
+                           <span className="hero-h1__accent"> {heroSubtitle}</span>
                         </h1>
 
                         {/* H2 / subtitle */}
                         <p className="hero-h2 text-white mb-4">
-                           {t('banner.slide1.h2')}
+                           {heroH2}
                         </p>
 
                         {/* CTAs */}
                         <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
                            <Link to="/contact" className="hero-btn hero-btn--primary">
-                              {t('banner.slide1.cta')}
+                              {ctaText}
                               <i className="fa-solid fa-arrow-right ms-2 hero-btn__arrow" />
                            </Link>
                            <Link to="/services" className="hero-btn hero-btn--ghost">
-                              {t('banner.slide1.cta2')}
+                              {cta2Text}
                               <i className="fa-solid fa-arrow-right ms-2 hero-btn__arrow" />
                            </Link>
                         </div>

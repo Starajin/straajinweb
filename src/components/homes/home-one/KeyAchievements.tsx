@@ -1,37 +1,53 @@
 ﻿import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { api } from "../../../services/api";
+import { useCmsData } from "../../../hooks/useCmsData";
+import { useLang } from "../../../hooks/useLang";
 
 interface AchievementItem {
   number: string;
   label: string;
   description: string;
   items: string[];
+  image?: string;
 }
+
+const defaultIconConfig = [
+  { icon: "fa-solid fa-handshake", image: "/assets/img/projects/MIDC_KOSME_Meeting_2026.jpg" },
+  { icon: "fa-solid fa-briefcase", image: "/assets/img/projects/GS_Patanjal Visit_2024_1.jpg" },
+  { icon: "fa-solid fa-globe", image: "/assets/img/projects/KTO-Edu-Tour-Roadshow-2025-Pune.jpg" },
+];
 
 const KeyAchievements = () => {
   const { t } = useTranslation();
-  
-  const rawStats = t('achievements.stats', { returnObjects: true });
-  const achievementsData: AchievementItem[] = Array.isArray(rawStats) ? rawStats : [];
+  const { lang, pick } = useLang();
 
-  // Icon configurations matching the theme
-  const iconConfig = [
-    {
-      icon: "fa-solid fa-handshake",
-      gradient: "linear-gradient(135deg, var(--theme) 0%, var(--theme3) 100%)",
-      image: "/assets/img/projects/MIDC_KOSME_Meeting_2026.jpg"
-    },
-    {
-      icon: "fa-solid fa-briefcase",
-      gradient: "linear-gradient(135deg, var(--theme3) 0%, var(--theme) 100%)",
-      image: "/assets/img/projects/GS_Patanjal Visit_2024_1.jpg"
-    },
-    {
-      icon: "fa-solid fa-globe",
-      gradient: "linear-gradient(135deg, var(--theme2) 0%, var(--theme) 100%)",
-      image: "/assets/img/projects/KTO-Edu-Tour-Roadshow-2025-Pune.jpg"
-    }
-  ];
+  const { data: sections } = useCmsData(() => api.getPageContent('home'), [] as any[]);
+  const achSection = sections.find((s: any) => s.section === 'achievements');
+  const meta = achSection?.metadata || {};
+
+  const cmsCards = Array.isArray(meta.cards) ? meta.cards : null;
+  const cmsBottomStats = Array.isArray(meta.bottom_stats) ? meta.bottom_stats : null;
+
+  const achievementsData: AchievementItem[] = cmsCards
+    ? cmsCards.map((c: any) => ({
+        number: c.number || '',
+        label: pick(c, 'label'),
+        description: pick(c, 'description') || '',
+        items: (c[`items_${lang}`] || c.items_en || []) as string[],
+        image: c.imageUrl,
+      }))
+    : (() => { const raw = t('achievements.stats', { returnObjects: true }); return Array.isArray(raw) ? raw : []; })();
+
+  const iconConfig = cmsCards
+    ? cmsCards.map((c: any, i: number) => ({
+        icon: c.icon || defaultIconConfig[i]?.icon || 'fa-solid fa-star',
+        image: c.imageUrl || defaultIconConfig[i]?.image || '',
+      }))
+    : defaultIconConfig;
+
+  const sectionTitle = achSection ? pick(achSection, 'title') : t('achievements.mainTitle');
+  const sectionSubtitle = achSection ? pick(achSection, 'subtitle') : t('achievements.title');
 
   return (
     <section className="section-bg pt-100" style={{ paddingBottom: '140px' }}>
@@ -41,11 +57,10 @@ const KeyAchievements = () => {
           <div className="col-lg-6 col-md-7">
             <div className="section-header">
               <div className="d-flex align-items-center gap-2 theme-clr fw-600 mb-2">
-                <img src="/assets/img/icon/section-step1.png" alt="img" /> {t('achievements.title')}
+                <img src="/assets/img/icon/section-step1.png" alt="img" /> {sectionSubtitle}
               </div>
               <h2 className="theme-clr4 fw-bold wow fadeInUp" data-wow-delay=".3s">
-                {t('achievements.mainTitle')}
-                <span className="fw-300 d-block">{t('achievements.mainSubtitle')}</span>
+                {sectionTitle}
               </h2>
             </div>
           </div>
@@ -193,18 +208,28 @@ const KeyAchievements = () => {
               }}
             >
               <div className="row align-items-center">
-                <div className="col-md-4 mb-3 mb-md-0">
-                  <h3 className="fw-bold mb-1" style={{ color: '#ffffff' }}>{t('achievements.bottomStats.mous.number')}</h3>
-                  <p className="mb-0 fz-14" style={{ color: 'rgba(255,255,255,0.9)' }}>{t('achievements.bottomStats.mous.label')}</p>
-                </div>
-                <div className="col-md-4 mb-3 mb-md-0">
-                  <h3 className="fw-bold mb-1" style={{ color: '#ffffff' }}>{t('achievements.bottomStats.consulting.number')}</h3>
-                  <p className="mb-0 fz-14" style={{ color: 'rgba(255,255,255,0.9)' }}>{t('achievements.bottomStats.consulting.label')}</p>
-                </div>
-                <div className="col-md-4">
-                  <h3 className="fw-bold mb-1" style={{ color: '#ffffff' }}>{t('achievements.bottomStats.partners.number')}</h3>
-                  <p className="mb-0 fz-14" style={{ color: 'rgba(255,255,255,0.9)' }}>{t('achievements.bottomStats.partners.label')}</p>
-                </div>
+                {cmsBottomStats
+                  ? cmsBottomStats.map((stat: any, i: number) => (
+                    <div key={i} className={`col-md-4 ${i < cmsBottomStats.length - 1 ? 'mb-3 mb-md-0' : ''}`}>
+                      <h3 className="fw-bold mb-1" style={{ color: '#ffffff' }}>{stat.value}</h3>
+                      <p className="mb-0 fz-14" style={{ color: 'rgba(255,255,255,0.9)' }}>{pick(stat, 'label')}</p>
+                    </div>
+                  ))
+                  : <>
+                    <div className="col-md-4 mb-3 mb-md-0">
+                      <h3 className="fw-bold mb-1" style={{ color: '#ffffff' }}>{t('achievements.bottomStats.mous.number')}</h3>
+                      <p className="mb-0 fz-14" style={{ color: 'rgba(255,255,255,0.9)' }}>{t('achievements.bottomStats.mous.label')}</p>
+                    </div>
+                    <div className="col-md-4 mb-3 mb-md-0">
+                      <h3 className="fw-bold mb-1" style={{ color: '#ffffff' }}>{t('achievements.bottomStats.consulting.number')}</h3>
+                      <p className="mb-0 fz-14" style={{ color: 'rgba(255,255,255,0.9)' }}>{t('achievements.bottomStats.consulting.label')}</p>
+                    </div>
+                    <div className="col-md-4">
+                      <h3 className="fw-bold mb-1" style={{ color: '#ffffff' }}>{t('achievements.bottomStats.partners.number')}</h3>
+                      <p className="mb-0 fz-14" style={{ color: 'rgba(255,255,255,0.9)' }}>{t('achievements.bottomStats.partners.label')}</p>
+                    </div>
+                  </>
+                }
               </div>
             </div>
           </div>

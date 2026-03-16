@@ -1,9 +1,20 @@
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
+import { api } from "../../services/api";
+import { useCmsData } from "../../hooks/useCmsData";
+import { useLang } from "../../hooks/useLang";
 
 const ContactInfo = () => {
    const { t } = useTranslation()
-   
+   const { pick } = useLang();
+
+   const { data: offices } = useCmsData(() => api.getOffices(), [] as any[]);
+   const koreaOffice = offices.find((o: any) => o.sortOrder === 1);
+
+   const phone = koreaOffice?.phone || t('footer.koreaPhone');
+   const email = koreaOffice?.email || t('footer.koreaEmail');
+   const hours = koreaOffice ? pick(koreaOffice, 'hours') : t('contact.info.hoursValue');
+
    return (
       <section className="contact-mail-section section-bg pt-100">
          <div className="container">
@@ -29,7 +40,7 @@ const ContactInfo = () => {
                      </div>
                      <span className="theme-clr4 d-block mb-00">{t('contact.info.phone')}</span>
                      <h5>
-                        <a href={`tel:${t('footer.koreaPhone')}`} className="fw-bold theme-clr4">{t('footer.koreaPhone')}</a>
+                        <a href={`tel:${phone}`} className="fw-bold theme-clr4">{phone}</a>
                      </h5>
                   </div>
                </div>
@@ -44,7 +55,7 @@ const ContactInfo = () => {
                      </div>
                      <span className="theme-clr4 d-block mb-00">{t('contact.info.email')}</span>
                      <h5>
-                        <a href={`mailto:${t('footer.koreaEmail')}`} className="fw-bold theme-clr4">{t('footer.koreaEmail')}</a>
+                        <a href={`mailto:${email}`} className="fw-bold theme-clr4">{email}</a>
                      </h5>
                   </div>
                </div>
@@ -59,7 +70,7 @@ const ContactInfo = () => {
                      </div>
                      <span className="theme-clr4 d-block mb-00">{t('contact.info.hours')}</span>
                      <h5>
-                        <Link to="/contact" className="fw-bold theme-clr4">{t('contact.info.hoursValue')}</Link>
+                        <Link to="/contact" className="fw-bold theme-clr4">{hours || t('contact.info.hoursValue')}</Link>
                      </h5>
                   </div>
                </div>

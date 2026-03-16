@@ -1,5 +1,16 @@
 import { useTranslation } from "react-i18next";
 import { useCallback, useEffect, useRef } from "react";
+import { api } from "../../../services/api";
+import { useCmsData } from "../../../hooks/useCmsData";
+import { useLang } from "../../../hooks/useLang";
+
+const CMS_API = import.meta.env.VITE_CMS_API_URL || '';
+const resolveLogoUrl = (url: string) => {
+   if (!url) return '';
+   if (url.startsWith('http')) return url;
+   if (url.startsWith('/uploads/')) return `${CMS_API}${url}`;
+   return url;
+};
 
 interface Client {
    name: string;
@@ -43,8 +54,21 @@ const clients: Client[] = [
 
 const ClientsSection = () => {
    const { t } = useTranslation();
+   const { pick } = useLang();
    const gridRef = useRef<HTMLDivElement>(null);
    const timeoutIds = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+   const { data: cmsPartners } = useCmsData(() => api.getPartners(), [] as any[]);
+   const { data: sections } = useCmsData(() => api.getPageContent('services'), [] as any[]);
+   const clientsSection = sections.find((s: any) => s.section === 'clients');
+   const clientsMeta = clientsSection?.metadata || {};
+
+   // Build client list from CMS partners or fall back to hardcoded
+   const cmsClients = cmsPartners
+      .filter((p: any) => p.category?.includes('client'))
+      .map((p: any) => ({ name: p.name, logo: resolveLogoUrl(p.logoUrl) }));
+
+   const displayClients: Client[] = cmsClients.length > 0 ? cmsClients : clients;
 
    const clearTimeouts = useCallback(() => {
       timeoutIds.current.forEach(clearTimeout);
@@ -79,12 +103,12 @@ const ClientsSection = () => {
          clearTimeouts();
          observer.disconnect();
       };
-   }, [clearTimeouts]);
+   }, [clearTimeouts, displayClients]);
 
    // Group into rows of 6
    const rows: Client[][] = [];
-   for (let i = 0; i < clients.length; i += 6) {
-      rows.push(clients.slice(i, i + 6));
+   for (let i = 0; i < displayClients.length; i += 6) {
+      rows.push(displayClients.slice(i, i + 6));
    }
 
    return (
@@ -96,14 +120,14 @@ const ClientsSection = () => {
                   <div className="d-flex align-items-center gap-2 fw-600 mb-lg-3 mb-2"
                      style={{ color: 'var(--theme2)' }}>
                      <img src="/assets/img/icon/section-step1.png" alt="img" style={{ filter: 'brightness(0) invert(1)' }} />
-                     {t('services.clients.tag')}
+                     {clientsMeta ? pick(clientsMeta, 'tag') || t('services.clients.tag') : t('services.clients.tag')}
                   </div>
                   <h2 className="text-white fw-bold mb-3 wow fadeInUp" data-wow-delay=".2s">
-                     {t('services.clients.title')}
+                     {clientsSection ? pick(clientsSection, 'title') : t('services.clients.title')}
                   </h2>
                   <p className="wow fadeInUp" data-wow-delay=".3s"
                      style={{ color: 'rgba(255,255,255,0.55)', maxWidth: '540px', lineHeight: 1.7 }}>
-                     {t('services.clients.description')}
+                     {clientsSection ? pick(clientsSection, 'content') || t('services.clients.description') : t('services.clients.description')}
                   </p>
                </div>
             </div>

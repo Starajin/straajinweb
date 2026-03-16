@@ -1,6 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { getTranslatedArray } from "../../../utils/i18n";
+import { api } from "../../../services/api";
+import { useCmsData } from "../../../hooks/useCmsData";
+import { useLang } from "../../../hooks/useLang";
 
 const capabilities = [
    {
@@ -43,6 +46,26 @@ const capabilities = [
 
 const ServiceTagline = () => {
    const { t } = useTranslation();
+   const { lang, pick } = useLang();
+
+   const { data: sections } = useCmsData(() => api.getPageContent('services'), [] as any[]);
+   const overviewSection = sections.find((s: any) => s.section === 'overview');
+   const overviewMeta = overviewSection?.metadata || {};
+
+   // Build cards from CMS or fall back to hardcoded
+   const cards = Array.isArray(overviewMeta.cards)
+      ? overviewMeta.cards.map((card: any) => ({
+         icon: card.icon?.startsWith('fa-solid ') ? card.icon : `fa-solid ${card.icon}`,
+         title: pick(card, 'title'),
+         items: card[`items_${lang}`] || card.items_en || [],
+         color: card.color || '#1E3A8A',
+      }))
+      : capabilities.map((cap) => ({
+         icon: cap.icon,
+         title: t(cap.titleKey),
+         items: getTranslatedArray(t, cap.itemsKey),
+         color: cap.color,
+      }));
 
    return (
       <>
@@ -145,23 +168,23 @@ const ServiceTagline = () => {
                   <div className="col-lg-6">
                      <div className="section-header">
                         <div className="d-flex align-items-center gap-2 theme-clr fw-600 mb-2">
-                           <img src="/assets/img/icon/section-step1.png" alt="img" /> {t('services.capabilities.tag')}
+                           <img src="/assets/img/icon/section-step1.png" alt="img" /> {overviewMeta ? pick(overviewMeta, 'tag') || t('services.capabilities.tag') : t('services.capabilities.tag')}
                         </div>
                         <h2 className="theme-clr4 fw-bold">
-                           {t('services.overview.title')}
+                           {overviewSection ? pick(overviewSection, 'title') : t('services.overview.title')}
                         </h2>
                      </div>
                   </div>
                   <div className="col-lg-5 offset-lg-1">
                      <p style={{ opacity: 0.6, lineHeight: 1.7, paddingTop: '1.5rem' }}>
-                        {t('services.overview.description')}
+                        {overviewSection ? pick(overviewSection, 'content') : t('services.overview.description')}
                      </p>
                   </div>
                </div>
 
                {/* Cards Grid */}
                <div className="row g-4">
-                  {capabilities.map((cap, i) => (
+                  {cards.map((cap: any, i: number) => (
                      <div key={i} className="col-lg-4 col-md-6">
                         <motion.div
                            className="svc-cap__card"
@@ -190,11 +213,11 @@ const ServiceTagline = () => {
                            </div>
 
                            {/* Title */}
-                           <h4 className="svc-cap__title">{t(cap.titleKey)}</h4>
+                           <h4 className="svc-cap__title">{cap.title}</h4>
 
                            {/* Items */}
                            <ul className="svc-cap__list">
-                              {getTranslatedArray(t, cap.itemsKey).map((item, idx) => (
+                              {cap.items.map((item: string, idx: number) => (
                                  <li key={idx}>
                                     <i className="fa-solid fa-check" style={{ color: cap.color }} />
                                     <span>{item}</span>

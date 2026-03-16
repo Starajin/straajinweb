@@ -1,8 +1,30 @@
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next";
+import { api } from "../../services/api";
+import { useCmsData } from "../../hooks/useCmsData";
+import { useLang } from "../../hooks/useLang";
+import { resolveImageUrl } from "../../utils/resolveImageUrl";
 
 const FooterOne = () => {
    const { t } = useTranslation();
+   const { lang, pick } = useLang();
+
+   const { data: settings } = useCmsData(() => api.getSettings(), {} as Record<string, string>);
+   const { data: offices } = useCmsData(() => api.getOffices(), [] as any[]);
+   const { data: cmsNav } = useCmsData(() => api.getNavigation(), [] as any[]);
+   const { data: cmsServices } = useCmsData(() => api.getServices(), [] as any[]);
+
+   const footerLogo = settings.footerLogoUrl || '/assets/img/logo/Starajin - White.png';
+   const footerDesc = lang === 'ko'
+      ? (settings.footerDescription_ko || t('footer.description'))
+      : (settings.footerDescription_en || t('footer.description'));
+   const copyright = lang === 'ko'
+      ? (settings.copyright_ko || settings.copyright || t('footer.rights'))
+      : (settings.copyright_en || settings.copyright || t('footer.rights'));
+   const contactEmail = settings.contactEmail || 'contact@starajin.com';
+
+   const koreaOffice = offices.find((o: any) => o.sortOrder === 1) || offices[0];
+   const indiaOffice = offices.find((o: any) => o.sortOrder === 2) || offices[1];
 
    return (
       <>
@@ -16,24 +38,42 @@ const FooterOne = () => {
                         <div className="col-lg-3 col-md-6 mb-3 mb-lg-0">
                            <div className="mb-3">
                               <img
-                                 src="/assets/img/logo/Starajin - White.png"
+                                 src={footerLogo}
                                  alt="Starajin Logo"
                                  className="img-fluid"
                                  loading="lazy"
                                  style={{ height: '60px', width: 'auto' }}
                               />
                            </div>
-                           
+
                            <p className="text-white mb-3" style={{ fontSize: '0.9rem', lineHeight: '1.6', maxWidth: '300px' }}>
-                              {t('footer.description')}
+                              {footerDesc}
                            </p>
-                           
+
                            {/* Social Links */}
                            <div className="d-flex gap-2">
-                              <a href="mailto:contact@starajin.com" className="d-flex align-items-center justify-content-center social-link"
+                              <a href={`mailto:${contactEmail}`} className="d-flex align-items-center justify-content-center social-link"
                                  style={{ width: '34px', height: '34px', backgroundColor: 'var(--footer-social-bg)', borderRadius: '50%', transition: 'all 0.3s ease' }}>
                                  <i className="fa-light fa-envelope text-white" style={{ fontSize: '14px' }}></i>
                               </a>
+                              {settings.linkedinUrl && (
+                                 <a href={settings.linkedinUrl} target="_blank" rel="noopener noreferrer" className="d-flex align-items-center justify-content-center social-link"
+                                    style={{ width: '34px', height: '34px', backgroundColor: 'var(--footer-social-bg)', borderRadius: '50%', transition: 'all 0.3s ease' }}>
+                                    <i className="fab fa-linkedin-in text-white" style={{ fontSize: '14px' }}></i>
+                                 </a>
+                              )}
+                              {settings.facebookUrl && (
+                                 <a href={settings.facebookUrl} target="_blank" rel="noopener noreferrer" className="d-flex align-items-center justify-content-center social-link"
+                                    style={{ width: '34px', height: '34px', backgroundColor: 'var(--footer-social-bg)', borderRadius: '50%', transition: 'all 0.3s ease' }}>
+                                    <i className="fab fa-facebook-f text-white" style={{ fontSize: '14px' }}></i>
+                                 </a>
+                              )}
+                              {settings.instagramUrl && (
+                                 <a href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" className="d-flex align-items-center justify-content-center social-link"
+                                    style={{ width: '34px', height: '34px', backgroundColor: 'var(--footer-social-bg)', borderRadius: '50%', transition: 'all 0.3s ease' }}>
+                                    <i className="fab fa-instagram text-white" style={{ fontSize: '14px' }}></i>
+                                 </a>
+                              )}
                            </div>
                         </div>
 
@@ -41,26 +81,24 @@ const FooterOne = () => {
                         <div className="col-lg-2 col-md-6 col-6 mb-3 mb-lg-0">
                            <h5 className="fw-semibold mb-3" style={{ color: '#ffc700', fontSize: '1rem' }}>{t('footer.quickLinks')}</h5>
                            <ul className="list-unstyled mb-0">
-                              <li className="mb-2">
-                                 <Link to="/about" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
-                                    {t('nav.about')}
-                                 </Link>
-                              </li>
-                              <li className="mb-2">
-                                 <Link to="/services" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
-                                    {t('nav.services')}
-                                 </Link>
-                              </li>
-                              <li className="mb-2">
-                                 <Link to="/projects" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
-                                    {t('nav.projects')}
-                                 </Link>
-                              </li>
-                              <li>
-                                 <Link to="/contact" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
-                                    {t('nav.contact')}
-                                 </Link>
-                              </li>
+                              {(cmsNav.length > 0
+                                 ? cmsNav.filter((n: any) => n.url !== '/').map((n: any) => ({
+                                    label: pick(n, 'label'),
+                                    url: n.url,
+                                 }))
+                                 : [
+                                    { label: t('nav.about'), url: '/about' },
+                                    { label: t('nav.services'), url: '/services' },
+                                    { label: t('nav.projects'), url: '/projects' },
+                                    { label: t('nav.contact'), url: '/contact' },
+                                 ]
+                              ).map((item: any, idx: number) => (
+                                 <li key={idx} className="mb-2">
+                                    <Link to={item.url} className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
+                                       {item.label}
+                                    </Link>
+                                 </li>
+                              ))}
                            </ul>
                         </div>
 
@@ -68,26 +106,24 @@ const FooterOne = () => {
                         <div className="col-lg-2 col-md-6 col-6 mb-3 mb-lg-0">
                            <h5 className="fw-semibold mb-3" style={{ color: '#ffc700', fontSize: '1rem' }}>{t('footer.services')}</h5>
                            <ul className="list-unstyled mb-0">
-                              <li className="mb-2">
-                                 <Link to="/services" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
-                                    {t('services.businessDev')}
-                                 </Link>
-                              </li>
-                              <li className="mb-2">
-                                 <Link to="/services" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
-                                    {t('services.consulting')}
-                                 </Link>
-                              </li>
-                              <li className="mb-2">
-                                 <Link to="/services" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
-                                    {t('services.partnerMatching')}
-                                 </Link>
-                              </li>
-                              <li>
-                                 <Link to="/services" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
-                                    {t('services.cultural')}
-                                 </Link>
-                              </li>
+                              {(cmsServices.length > 0
+                                 ? cmsServices.map((s: any) => ({
+                                    label: pick(s, 'title'),
+                                    icon: s.iconUrl ? resolveImageUrl(s.iconUrl) : null,
+                                 }))
+                                 : [
+                                    { label: t('services.businessDev'), icon: null },
+                                    { label: t('services.consulting'), icon: null },
+                                    { label: t('services.partnerMatching'), icon: null },
+                                    { label: t('services.cultural'), icon: null },
+                                 ]
+                              ).map((item: any, idx: number) => (
+                                 <li key={idx} className="mb-2">
+                                    <Link to="/services" className="text-white text-decoration-none footer-link" style={{ fontSize: '0.9rem' }}>
+                                       {item.label}
+                                    </Link>
+                                 </li>
+                              ))}
                            </ul>
                         </div>
 
@@ -96,52 +132,58 @@ const FooterOne = () => {
                            <h5 className="fw-semibold mb-3" style={{ color: '#ffc700', fontSize: '1rem' }}>{t('footer.contactUs')}</h5>
                            <div className="row">
                               {/* Korea Office */}
+                              {koreaOffice && (
                               <div className="col-md-6 mb-3 mb-md-0">
                                  <h6 className="fw-semibold text-white mb-1" style={{ fontSize: '0.9rem' }}>
-                                    {t('footer.koreaOffice')}
+                                    {pick(koreaOffice, 'officeName')}
                                  </h6>
-                                 <p className="text-white fw-semibold mb-1" style={{ fontSize: '0.85rem' }}>
-                                    {t('footer.koreaCompany')}
-                                 </p>
                                  <ul className="list-unstyled text-white mb-0" style={{ fontSize: '0.85rem' }}>
                                     <li className="d-flex align-items-start gap-2 mb-1">
                                        <i className="fa-light fa-location-dot" style={{ width: '14px', marginTop: '3px' }}></i>
-                                       <span>{t('footer.seoulLocation')}</span>
+                                       <span>{pick(koreaOffice, 'address')}</span>
                                     </li>
+                                    {koreaOffice.phone && (
                                     <li className="d-flex align-items-center gap-2 mb-1">
                                        <i className="fa-light fa-phone" style={{ width: '14px' }}></i>
-                                       <span>{t('footer.koreaPhone')}</span>
+                                       <span>{koreaOffice.phone}</span>
                                     </li>
+                                    )}
+                                    {koreaOffice.email && (
                                     <li className="d-flex align-items-center gap-2">
                                        <i className="fa-light fa-envelope" style={{ width: '14px' }}></i>
-                                       <span>{t('footer.koreaEmail')}</span>
+                                       <span>{koreaOffice.email}</span>
                                     </li>
+                                    )}
                                  </ul>
                               </div>
+                              )}
 
                               {/* India Office */}
+                              {indiaOffice && (
                               <div className="col-md-6">
                                  <h6 className="fw-semibold text-white mb-1" style={{ fontSize: '0.9rem' }}>
-                                    {t('footer.indiaOffice')}
+                                    {pick(indiaOffice, 'officeName')}
                                  </h6>
-                                 <p className="text-white fw-semibold mb-1" style={{ fontSize: '0.85rem' }}>
-                                    {t('footer.indiaCompany')}
-                                 </p>
                                  <ul className="list-unstyled text-white mb-0" style={{ fontSize: '0.85rem' }}>
                                     <li className="d-flex align-items-start gap-2 mb-1">
                                        <i className="fa-light fa-location-dot" style={{ width: '14px', marginTop: '3px' }}></i>
-                                       <span>{t('footer.mumbaiLocation')}</span>
+                                       <span>{pick(indiaOffice, 'address')}</span>
                                     </li>
+                                    {indiaOffice.phone && (
                                     <li className="d-flex align-items-center gap-2 mb-1">
                                        <i className="fa-light fa-phone" style={{ width: '14px' }}></i>
-                                       <span>{t('footer.indiaPhone')}</span>
+                                       <span>{indiaOffice.phone}</span>
                                     </li>
+                                    )}
+                                    {indiaOffice.email && (
                                     <li className="d-flex align-items-center gap-2">
                                        <i className="fa-light fa-envelope" style={{ width: '14px' }}></i>
-                                       <span>{t('footer.indiaEmail')}</span>
+                                       <span>{indiaOffice.email}</span>
                                     </li>
+                                    )}
                                  </ul>
                               </div>
+                              )}
                            </div>
                         </div>
                      </div>
@@ -151,9 +193,9 @@ const FooterOne = () => {
                   <div className="py-3" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
                      <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
                         <div className="text-white small" style={{ opacity: 0.8 }}>
-                           {t('footer.rights')}
+                           {copyright}
                         </div>
-                        
+
                         <div className="d-flex align-items-center gap-4 small">
                            <Link to="/privacy-policy" className="text-white text-decoration-none footer-legal-link" style={{ opacity: 0.8 }}>{t('footer.privacyPolicy')}</Link>
                            <Link to="/terms-of-service" className="text-white text-decoration-none footer-legal-link" style={{ opacity: 0.8 }}>{t('footer.termsOfService')}</Link>
@@ -171,15 +213,15 @@ const FooterOne = () => {
                background-color: #ffc700 !important;
                transform: scale(1.1);
             }
-            
+
             .footer-link {
                transition: all 0.2s ease;
             }
-            
+
             .footer-link:hover {
                color: #ffc700 !important;
             }
-            
+
             .footer-legal-link:hover {
                color: #ffc700 !important;
                opacity: 1 !important;

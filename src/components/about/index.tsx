@@ -12,7 +12,7 @@ const About = () => {
   return (
     <>
       <HeaderOne />
-      <BreadCrumb title="About Us" />
+      <BreadCrumb title="About Us" page="about" />
       <Financial />
       <Choose />
       <Solution />

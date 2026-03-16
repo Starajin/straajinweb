@@ -1,4 +1,7 @@
 import { useTranslation } from "react-i18next";
+import { api } from "../../services/api";
+import { useCmsData } from "../../hooks/useCmsData";
+import { useLang } from "../../hooks/useLang";
 
 interface CredentialItem {
    id: number;
@@ -9,33 +12,26 @@ interface CredentialItem {
 
 const Choose = () => {
    const { t } = useTranslation();
+   const { pick } = useLang();
 
-   const credentials: CredentialItem[] = [
-      {
-         id: 1,
-         stat: "18+",
-         label: t('about.choose.achievements.experienceLabel'),
-         desc: t('about.choose.achievements.experienceDesc'),
-      },
-      {
-         id: 2,
-         stat: "1000+",
-         label: t('about.choose.achievements.networkLabel'),
-         desc: t('about.choose.achievements.networkDesc'),
-      },
-      {
-         id: 3,
-         stat: "50+",
-         label: t('about.choose.achievements.casesLabel'),
-         desc: t('about.choose.achievements.casesDesc'),
-      },
-      {
-         id: 4,
-         stat: "100%",
-         label: t('about.choose.achievements.supportLabel'),
-         desc: t('about.choose.achievements.supportDesc'),
-      },
-   ];
+   const { data: sections } = useCmsData(() => api.getPageContent('about'), [] as any[]);
+   const whySection = sections.find((s: any) => s.section === 'why-choose');
+   const stats = whySection?.metadata?.stats;
+   const useCms = Array.isArray(stats) && stats.length > 0;
+
+   const credentials: CredentialItem[] = useCms
+      ? stats.map((s: any, i: number) => ({
+         id: i + 1,
+         stat: s.value || '',
+         label: pick(s, 'label'),
+         desc: pick(s, 'desc'),
+      }))
+      : [
+         { id: 1, stat: "18+", label: t('about.choose.achievements.experienceLabel'), desc: t('about.choose.achievements.experienceDesc') },
+         { id: 2, stat: "1000+", label: t('about.choose.achievements.networkLabel'), desc: t('about.choose.achievements.networkDesc') },
+         { id: 3, stat: "50+", label: t('about.choose.achievements.casesLabel'), desc: t('about.choose.achievements.casesDesc') },
+         { id: 4, stat: "100%", label: t('about.choose.achievements.supportLabel'), desc: t('about.choose.achievements.supportDesc') },
+      ];
 
    return (
       <section className="credentials-section">

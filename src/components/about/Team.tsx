@@ -1,4 +1,7 @@
 import { useTranslation } from "react-i18next"
+import { api } from "../../services/api";
+import { useCmsData } from "../../hooks/useCmsData";
+import { useLang } from "../../hooks/useLang";
 
 interface TeamMember {
    id: number;
@@ -11,25 +14,37 @@ interface TeamMember {
 
 const Team = () => {
    const { t } = useTranslation()
+   const { pick } = useLang();
 
-   const about_team_data: TeamMember[] = [
-      {
-         id: 1,
-         thumb: "/assets/img/team/Yujin Han.jpeg",
-         name: t('about.team.members.yujin.name'),
-         designation: t('about.team.members.yujin.designation'),
-         description: t('about.team.members.yujin.description'),
-         linkedin: t('about.team.members.yujin.linkedin')
-      },
-      {
-         id: 2,
-         thumb: "/assets/img/team/Vijay Vyas.jpeg",
-         name: t('about.team.members.vijay.name'),
-         designation: t('about.team.members.vijay.designation'),
-         description: t('about.team.members.vijay.description'),
-         linkedin: t('about.team.members.vijay.linkedin')
-      }
-   ]
+   const { data: cmsTeam } = useCmsData(() => api.getTeam(), [] as any[]);
+
+   const about_team_data: TeamMember[] = cmsTeam.length > 0
+      ? cmsTeam.map((m: any) => ({
+         id: m.id,
+         thumb: m.imageUrl || '/assets/img/team/placeholder.jpg',
+         name: pick(m, 'name'),
+         designation: pick(m, 'designation'),
+         description: pick(m, 'description'),
+         linkedin: m.linkedinUrl || '',
+      }))
+      : [
+         {
+            id: 1,
+            thumb: "/assets/img/team/Yujin Han.jpeg",
+            name: t('about.team.members.yujin.name'),
+            designation: t('about.team.members.yujin.designation'),
+            description: t('about.team.members.yujin.description'),
+            linkedin: t('about.team.members.yujin.linkedin')
+         },
+         {
+            id: 2,
+            thumb: "/assets/img/team/Vijay Vyas.jpeg",
+            name: t('about.team.members.vijay.name'),
+            designation: t('about.team.members.vijay.designation'),
+            description: t('about.team.members.vijay.description'),
+            linkedin: t('about.team.members.vijay.linkedin')
+         }
+      ]
 
    return (
       <section className="teams-section pt-100 pb-100">

@@ -12,10 +12,6 @@ dist
 dist-ssr
 *.local
 
-# CMS directories (not needed for Vercel deployment)
-cms-admin/
-cms-backend/
-cms-planning/
 
 # Editor directories and files
 .vscode/*

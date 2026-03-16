@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
 import MobileMenu from "./MobileMenu";
 import { useTranslation } from "react-i18next";
+import { api } from "../../../services/api";
+import { useCmsData } from "../../../hooks/useCmsData";
+import { useLang } from "../../../hooks/useLang";
 
 interface MobileSidebarProps {
    offCanvas: boolean;
@@ -9,11 +12,23 @@ interface MobileSidebarProps {
 
 const Offcanvas = ({ offCanvas, setOffCanvas }: MobileSidebarProps) => {
    const { t, i18n } = useTranslation();
+   const { pick } = useLang();
+
+   const { data: settings } = useCmsData(() => api.getSettings(), {} as Record<string, string>);
+   const { data: offices } = useCmsData(() => api.getOffices(), [] as any[]);
+   const koreaOffice = offices.find((o: any) => o.sortOrder === 1) || offices[0];
+
+   const headerLogo = settings.headerLogoUrl || settings.logoUrl || '/assets/img/logo/Starajin - Header.png';
 
    const toggleLanguage = () => {
       const newLang = i18n.language === 'en' ? 'ko' : 'en';
       i18n.changeLanguage(newLang);
    };
+
+   const address = koreaOffice ? pick(koreaOffice, 'address') : t('footer.seoulLocation');
+   const email = koreaOffice?.email || t('footer.koreaEmail');
+   const phone = koreaOffice?.phone || t('footer.koreaPhone');
+   const hours = koreaOffice ? pick(koreaOffice, 'hours') : t('cta.koreaOffice.hours');
 
    return (
       <>
@@ -25,13 +40,13 @@ const Offcanvas = ({ offCanvas, setOffCanvas }: MobileSidebarProps) => {
                      <div className="offcanvas__top mb-4 d-flex justify-content-between align-items-center">
                         <div className="offcanvas__logo">
                            <Link to="/">
-                              <img src="assets/img/logo/Starajin - Header.png" alt="StaraJIN Logo" style={{ maxWidth: '120px', height: 'auto' }} />
+                              <img src={headerLogo} alt="StaraJIN Logo" style={{ maxWidth: '120px', height: 'auto' }} />
                            </Link>
                         </div>
-                        
+
                         {/* Language Toggle */}
                         <div className="language-toggle me-3">
-                           <button 
+                           <button
                               onClick={toggleLanguage}
                               className="btn btn-sm btn-outline-primary d-flex align-items-center gap-1"
                               title={i18n.language === 'en' ? 'Switch to Korean' : 'Switch to English'}
@@ -40,7 +55,7 @@ const Offcanvas = ({ offCanvas, setOffCanvas }: MobileSidebarProps) => {
                               <span>{i18n.language === 'en' ? 'KO' : 'EN'}</span>
                            </button>
                         </div>
-                        
+
                         <div className="offcanvas__close">
                            <button onClick={() => setOffCanvas(false)}>
                               <i className="fas fa-times"></i>
@@ -64,7 +79,7 @@ const Offcanvas = ({ offCanvas, setOffCanvas }: MobileSidebarProps) => {
                                  <i className="fal fa-map-marker-alt"></i>
                               </div>
                               <div className="offcanvas__contact-text">
-                                 <span>{t('footer.seoulLocation')}</span>
+                                 <span>{address}</span>
                               </div>
                            </li>
                            <li className="d-flex align-items-center">
@@ -72,8 +87,8 @@ const Offcanvas = ({ offCanvas, setOffCanvas }: MobileSidebarProps) => {
                                  <i className="fal fa-envelope"></i>
                               </div>
                               <div className="offcanvas__contact-text">
-                                 <a href={`mailto:${t('footer.koreaEmail')}`}>
-                                    <span>{t('footer.koreaEmail')}</span>
+                                 <a href={`mailto:${email}`}>
+                                    <span>{email}</span>
                                  </a>
                               </div>
                            </li>
@@ -82,7 +97,7 @@ const Offcanvas = ({ offCanvas, setOffCanvas }: MobileSidebarProps) => {
                                  <i className="fal fa-clock"></i>
                               </div>
                               <div className="offcanvas__contact-text">
-                                 <span>{t('cta.koreaOffice.hours')}</span>
+                                 <span>{hours}</span>
                               </div>
                            </li>
                            <li className="d-flex align-items-center">
@@ -90,7 +105,7 @@ const Offcanvas = ({ offCanvas, setOffCanvas }: MobileSidebarProps) => {
                                  <i className="far fa-phone"></i>
                               </div>
                               <div className="offcanvas__contact-text">
-                                 <a href={`tel:${t('footer.koreaPhone')}`}>{t('footer.koreaPhone')}</a>
+                                 <a href={`tel:${phone}`}>{phone}</a>
                               </div>
                            </li>
                         </ul>
@@ -105,18 +120,31 @@ const Offcanvas = ({ offCanvas, setOffCanvas }: MobileSidebarProps) => {
                            </Link>
                         </div>
                         <div className="social-icon d-flex align-items-center">
-                           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                              <i className="fab fa-facebook-f"></i>
-                           </a>
-                           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                              <i className="fab fa-twitter"></i>
-                           </a>
-                           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                              <i className="fa-brands fa-instagram"></i>
-                           </a>
-                           <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">
-                              <i className="fa-brands fa-pinterest-p"></i>
-                           </a>
+                           {settings.facebookUrl && (
+                              <a href={settings.facebookUrl} target="_blank" rel="noopener noreferrer">
+                                 <i className="fab fa-facebook-f"></i>
+                              </a>
+                           )}
+                           {settings.twitterUrl && (
+                              <a href={settings.twitterUrl} target="_blank" rel="noopener noreferrer">
+                                 <i className="fab fa-twitter"></i>
+                              </a>
+                           )}
+                           {settings.instagramUrl && (
+                              <a href={settings.instagramUrl} target="_blank" rel="noopener noreferrer">
+                                 <i className="fa-brands fa-instagram"></i>
+                              </a>
+                           )}
+                           {settings.linkedinUrl && (
+                              <a href={settings.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                                 <i className="fab fa-linkedin-in"></i>
+                              </a>
+                           )}
+                           {settings.pinterestUrl && (
+                              <a href={settings.pinterestUrl} target="_blank" rel="noopener noreferrer">
+                                 <i className="fa-brands fa-pinterest-p"></i>
+                              </a>
+                           )}
                         </div>
                      </div>
                   </div>

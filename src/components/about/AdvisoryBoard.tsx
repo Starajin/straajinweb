@@ -1,41 +1,55 @@
 import { useTranslation } from "react-i18next";
+import { api } from "../../services/api";
+import { useCmsData } from "../../hooks/useCmsData";
+import { useLang } from "../../hooks/useLang";
 
 interface AdvisoryMember {
    id: number;
    image: string;
-   nameKey: string;
-   designationKey: string;
-   organizationKey: string;
+   name: string;
+   designation: string;
+   organization: string;
    imageStyle?: React.CSSProperties;
 }
 
 const AdvisoryBoard = () => {
    const { t } = useTranslation();
+   const { pick } = useLang();
 
-   const advisoryMembers: AdvisoryMember[] = [
-      {
-         id: 2,
-         image: "/assets/img/advisory/girish-desai.jpeg",
-         nameKey: "about.advisory.members.girish.name",
-         designationKey: "about.advisory.members.girish.designation",
-         organizationKey: "about.advisory.members.girish.organization",
-         imageStyle: { objectPosition: 'center 20%', transform: 'scale(1.15)' }
-      },
-      {
-         id: 3,
-         image: "/assets/img/advisory/sachin-itkar.jpeg",
-         nameKey: "about.advisory.members.sachin.name",
-         designationKey: "about.advisory.members.sachin.designation",
-         organizationKey: "about.advisory.members.sachin.organization"
-      },
-      {
-         id: 4,
-         image: "/assets/img/advisory/nadish-vyas.jpg",
-         nameKey: "about.advisory.members.nadish.name",
-         designationKey: "about.advisory.members.nadish.designation",
-         organizationKey: "about.advisory.members.nadish.organization"
-      }
-   ];
+   const { data: cmsAdvisory } = useCmsData(() => api.getAdvisory(), [] as any[]);
+
+   const advisoryMembers: AdvisoryMember[] = cmsAdvisory.length > 0
+      ? cmsAdvisory.map((m: any) => ({
+         id: m.id,
+         image: m.imageUrl || '/assets/img/advisory/placeholder.jpg',
+         name: pick(m, 'name'),
+         designation: pick(m, 'designation'),
+         organization: pick(m, 'organization'),
+      }))
+      : [
+         {
+            id: 2,
+            image: "/assets/img/advisory/girish-desai.jpeg",
+            name: t("about.advisory.members.girish.name"),
+            designation: t("about.advisory.members.girish.designation"),
+            organization: t("about.advisory.members.girish.organization"),
+            imageStyle: { objectPosition: 'center 20%', transform: 'scale(1.15)' }
+         },
+         {
+            id: 3,
+            image: "/assets/img/advisory/sachin-itkar.jpeg",
+            name: t("about.advisory.members.sachin.name"),
+            designation: t("about.advisory.members.sachin.designation"),
+            organization: t("about.advisory.members.sachin.organization"),
+         },
+         {
+            id: 4,
+            image: "/assets/img/advisory/nadish-vyas.jpg",
+            name: t("about.advisory.members.nadish.name"),
+            designation: t("about.advisory.members.nadish.designation"),
+            organization: t("about.advisory.members.nadish.organization"),
+         }
+      ];
 
    const capabilities = [
       t('about.advisory.capabilities.item1'),
@@ -68,7 +82,7 @@ const AdvisoryBoard = () => {
                         <div className="thumb w-100 overflow-hidden mb-4">
                            <img
                               src={member.image}
-                              alt={t(member.nameKey)}
+                              alt={member.name}
                               className="w-100 rounded-3"
                               loading="lazy"
                               style={{height: '220px', objectFit: 'cover', objectPosition: 'top', ...member.imageStyle}}
@@ -77,12 +91,12 @@ const AdvisoryBoard = () => {
                         <div className="content text-center">
                            <h5 className="mb-2 wow fadeInUp" data-wow-delay=".3s">
                               <span className="theme-clr4 lh-110 fw-600">
-                                 {t(member.nameKey)}
+                                 {member.name}
                               </span>
                            </h5>
-                           <span className="fz-14 d-block theme-clr fw-600 mb-2">{t(member.designationKey)}</span>
+                           <span className="fz-14 d-block theme-clr fw-600 mb-2">{member.designation}</span>
                            <p className="fz-13 theme-clr4 mb-0" style={{lineHeight: '1.5'}}>
-                              {t(member.organizationKey)}
+                              {member.organization}
                            </p>
                         </div>
                      </div>

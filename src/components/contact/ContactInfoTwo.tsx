@@ -1,32 +1,39 @@
 import { useTranslation } from "react-i18next"
-
-interface DataType {
-   id: number;
-   title: string;
-   desc: string;
-   number: string;
-   email: string;
-}
+import { api } from "../../services/api";
+import { useCmsData } from "../../hooks/useCmsData";
+import { useLang } from "../../hooks/useLang";
 
 const ContactInfoTwo = () => {
    const { t } = useTranslation()
+   const { pick } = useLang();
 
-   const contact_data: DataType[] = [
-      {
-         id: 1,
-         title: t('contact.offices.korea.title'),
-         desc: t('contact.offices.korea.location'),
-         number: t('footer.koreaPhone'),
-         email: t('footer.koreaEmail')
-      },
-      {
-         id: 2,
-         title: t('contact.offices.india.title'),
-         desc: t('contact.offices.india.location'),
-         number: t('footer.indiaPhone'),
-         email: t('footer.indiaEmail')
-      }
-   ]
+   const { data: offices } = useCmsData(() => api.getOffices(), [] as any[]);
+   const useCms = offices.length > 0;
+
+   const contact_data = useCms
+      ? offices.map((o: any) => ({
+         id: o.id,
+         title: pick(o, 'officeName'),
+         desc: pick(o, 'address'),
+         number: o.phone || '',
+         email: o.email || '',
+      }))
+      : [
+         {
+            id: 1,
+            title: t('contact.offices.korea.title'),
+            desc: t('contact.offices.korea.location'),
+            number: t('footer.koreaPhone'),
+            email: t('footer.koreaEmail')
+         },
+         {
+            id: 2,
+            title: t('contact.offices.india.title'),
+            desc: t('contact.offices.india.location'),
+            number: t('footer.indiaPhone'),
+            email: t('footer.indiaEmail')
+         }
+      ];
 
    return (
       <section className="mail-adres-section section-bg pb-100">

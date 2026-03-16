@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { api } from "../../../services/api";
+import { useCmsData } from "../../../hooks/useCmsData";
+import { useLang } from "../../../hooks/useLang";
 
 interface StepData {
    title: string;
@@ -26,12 +29,32 @@ const highlightIcons = [
 
 const Integration = () => {
    const { t } = useTranslation();
+   const { lang, pick } = useLang();
 
-   const rawSteps = t('integration.steps', { returnObjects: true });
-   const steps: StepData[] = Array.isArray(rawSteps) ? rawSteps : [];
+   const { data: sections } = useCmsData(() => api.getPageContent('home'), [] as any[]);
+   const intSection = sections.find((s: any) => s.section === 'integration');
+   const meta = intSection?.metadata || {};
 
-   const rawHighlights = t('integration.highlights', { returnObjects: true });
-   const highlights: string[] = Array.isArray(rawHighlights) ? rawHighlights : [];
+   // CMS steps: metadata.steps is array of { title_en, title_ko, bullets_en, bullets_ko }
+   const cmsSteps = Array.isArray(meta.steps) ? meta.steps : null;
+   const steps: StepData[] = cmsSteps
+      ? cmsSteps.map((s: any) => ({
+         title: pick(s, 'title'),
+         intro: '',
+         bullets: (s[`bullets_${lang}`] || s.bullets_en || []) as string[],
+         closing: '',
+      }))
+      : (() => { const raw = t('integration.steps', { returnObjects: true }); return Array.isArray(raw) ? raw : []; })();
+
+   const cmsHighlights = Array.isArray(meta.highlights) ? meta.highlights : null;
+   const highlights: string[] = cmsHighlights
+      ? cmsHighlights.map((h: any) => typeof h === 'string' ? h : (h[lang] || h.en || h[`text_${lang}`] || h.text_en || ''))
+      : (() => { const raw = t('integration.highlights', { returnObjects: true }); return Array.isArray(raw) ? raw : []; })();
+
+   const sectionTitle = intSection ? pick(intSection, 'title') : t('integration.title');
+   const sectionLead = intSection ? pick(intSection, 'content') : t('integration.lead');
+   const sectionEyebrow = intSection ? pick(intSection, 'subtitle') : t('integration.eyebrow');
+   const ctaText = meta ? pick(meta, 'cta') : t('integration.cta');
 
    return (
       <section className="intg-h">
@@ -45,11 +68,10 @@ const Integration = () => {
                viewport={{ once: true }}
                transition={{ duration: 0.6 }}
             >
-               <span className="intg-h__eyebrow">{t('integration.eyebrow')}</span>
-               <h2 className="intg-h__title">{t('integration.title')}</h2>
+               <span className="intg-h__eyebrow">{sectionEyebrow}</span>
+               <h2 className="intg-h__title">{sectionTitle}</h2>
                <p className="intg-h__lead">
-                  {t('integration.lead')}{' '}
-                  <strong>{t('integration.leadBold')}</strong>
+                  {sectionLead}
                </p>
             </motion.div>
 
@@ -122,9 +144,8 @@ const Integration = () => {
                viewport={{ once: true }}
                transition={{ duration: 0.4, delay: 0.2 }}
             >
-               <p className="intg-h__cta-text">{t('integration.cta')}</p>
                <Link to="/services" className="intg-h__cta-btn">
-                  Explore Our Process
+                  {ctaText}
                   <i className="fa-solid fa-arrow-right" />
                </Link>
             </motion.div>

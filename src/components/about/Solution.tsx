@@ -1,4 +1,7 @@
 import { useTranslation } from "react-i18next";
+import { api } from "../../services/api";
+import { useCmsData } from "../../hooks/useCmsData";
+import { useLang } from "../../hooks/useLang";
 
 interface DataType {
    id: number;
@@ -9,63 +12,28 @@ interface DataType {
 
 const Solution = () => {
    const { t } = useTranslation()
+   const { pick } = useLang();
 
-   const solution_data: DataType[] = [
-      {
-         id: 1,
-         date: "2008-2018",
-         title: t('about.solution.timeline.2017.title'),
-         desc: t('about.solution.timeline.2017.desc'),
-      },
-      {
-         id: 2,
-         date: "2019",
-         title: t('about.solution.timeline.2019.title'),
-         desc: t('about.solution.timeline.2019.desc'),
-      },
-      {
-         id: 3,
-         date: "2020",
-         title: t('about.solution.timeline.2020.title'),
-         desc: t('about.solution.timeline.2020.desc'),
-      },
-      {
-         id: 4,
-         date: "2021",
-         title: t('about.solution.timeline.2021.title'),
-         desc: t('about.solution.timeline.2021.desc'),
-      },
-      {
-         id: 5,
-         date: "2023",
-         title: t('about.solution.timeline.2023.title'),
-         desc: t('about.solution.timeline.2023.desc'),
-      },
-      {
-         id: 6,
-         date: "2024",
-         title: t('about.solution.timeline.2024.title'),
-         desc: t('about.solution.timeline.2024.desc'),
-      },
-      {
-         id: 7,
-         date: "2025",
-         title: t('about.solution.timeline.2025a.title'),
-         desc: t('about.solution.timeline.2025a.desc'),
-      },
-      {
-         id: 8,
-         date: "2025",
-         title: t('about.solution.timeline.2025b.title'),
-         desc: t('about.solution.timeline.2025b.desc'),
-      },
-      {
-         id: 9,
-         date: "Ongoing",
-         title: t('about.solution.timeline.ongoing.title'),
-         desc: t('about.solution.timeline.ongoing.desc'),
-      },
-   ]
+   const { data: cmsTimeline } = useCmsData(() => api.getTimeline(), [] as any[]);
+
+   const solution_data: DataType[] = cmsTimeline.length > 0
+      ? cmsTimeline.map((item: any) => ({
+         id: item.id,
+         date: item.year || '',
+         title: pick(item, 'title'),
+         desc: pick(item, 'description'),
+      }))
+      : [
+         { id: 1, date: "2008-2018", title: t('about.solution.timeline.2017.title'), desc: t('about.solution.timeline.2017.desc') },
+         { id: 2, date: "2019", title: t('about.solution.timeline.2019.title'), desc: t('about.solution.timeline.2019.desc') },
+         { id: 3, date: "2020", title: t('about.solution.timeline.2020.title'), desc: t('about.solution.timeline.2020.desc') },
+         { id: 4, date: "2021", title: t('about.solution.timeline.2021.title'), desc: t('about.solution.timeline.2021.desc') },
+         { id: 5, date: "2023", title: t('about.solution.timeline.2023.title'), desc: t('about.solution.timeline.2023.desc') },
+         { id: 6, date: "2024", title: t('about.solution.timeline.2024.title'), desc: t('about.solution.timeline.2024.desc') },
+         { id: 7, date: "2025", title: t('about.solution.timeline.2025a.title'), desc: t('about.solution.timeline.2025a.desc') },
+         { id: 8, date: "2025", title: t('about.solution.timeline.2025b.title'), desc: t('about.solution.timeline.2025b.desc') },
+         { id: 9, date: "Ongoing", title: t('about.solution.timeline.ongoing.title'), desc: t('about.solution.timeline.ongoing.desc') },
+      ]
 
    return (
       <section className="step-solution section-bg pt-100 pb-100">
