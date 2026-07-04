@@ -12,7 +12,9 @@ const RouteTracker = () => {
   const location = useLocation();
   useEffect(() => {
     if (window.gtag) {
-      window.gtag('config', 'G-15RLTMB4XG', {
+      // page_view event instead of re-running 'config', which re-probes
+      // cookie domains on every navigation and spams console warnings
+      window.gtag('event', 'page_view', {
         page_path: location.pathname + location.search,
       });
     }

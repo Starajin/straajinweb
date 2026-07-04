@@ -67,13 +67,22 @@
       ]
     }
     </script>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-15RLTMB4XG"></script>
+    <!-- Google Analytics: loaded only on the production domain with a pinned
+         cookie_domain, so browsers never reject cookie-domain probes
+         (Firefox logs "invalid domain" warnings for the default 'auto' probing,
+         and vercel.app preview hosts can't accept GA cookies at all) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-15RLTMB4XG');
+      window.gtag = gtag;
+      if (/(^|\.)starajin\.com$/.test(location.hostname)) {
+        var gaScript = document.createElement('script');
+        gaScript.async = true;
+        gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-15RLTMB4XG';
+        document.head.appendChild(gaScript);
+        gtag('js', new Date());
+        gtag('config', 'G-15RLTMB4XG', { cookie_domain: 'starajin.com' });
+      }
     </script>
   </head>
   <body>
